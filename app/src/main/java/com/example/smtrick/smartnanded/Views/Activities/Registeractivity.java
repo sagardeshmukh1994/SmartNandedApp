@@ -145,8 +145,8 @@ public class Registeractivity extends AppCompatActivity implements
         user.setUserName(etname.getText().toString());
         user.setMobileNumber(etmobile.getText().toString());
         user.setPassword(etPassword.getText().toString());
-        user.setRole(Constant.ROLE_SALES);
-        user.setStatus(Constant.STATUS_DEACTIVE);
+        user.setRole(Constant.ROLE_CUSTOMER);
+        user.setStatus(Constant.STATUS_ACTIVE);
         user.setAgentId(Utility.generateAgentId(CUSTOMER_PREFIX));
 
         return user;

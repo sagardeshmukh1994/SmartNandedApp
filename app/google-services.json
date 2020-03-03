@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "619352460334",
+    "firebase_url": "https://dimos-c18d7.firebaseio.com",
+    "project_id": "dimos-c18d7",
+    "storage_bucket": "dimos-c18d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619352460334:android:eed2afaacc5bca274423bf",
+        "android_client_info": {
+          "package_name": "com.example.smtrick.smartnanded"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "619352460334-uhreegsoe9uvtajfl34ll2th5c9lek39.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smtrick.smartnanded",
+            "certificate_hash": "a058c77ec79e3080dd24bca3ee8567f802573eb9"
+          }
+        },
+        {
+          "client_id": "619352460334-jhhpc6atimnh2o3g86il4t11d1k4tqm4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjvKP_ZGwnwmzUOj_YpVlv5VLk5Zi_0OY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "619352460334-jhhpc6atimnh2o3g86il4t11d1k4tqm4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

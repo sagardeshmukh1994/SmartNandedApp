@@ -63,7 +63,7 @@ public class Constant {
     public static final int REQUEST_CODE = 101;
     public static final int RESULT_CODE = 201;
     //****************************************************************
-    public static final String ROLE_SALES = "SALES";
+    public static final String ROLE_CUSTOMER = "CUSTOMER";
     public static final String STATUS_ACTIVE = "ACTIVE";
     public static final String STATUS_DEACTIVE = "DEACTIVE";
     public static final String CUSTOMER_PREFIX = "CM-";
