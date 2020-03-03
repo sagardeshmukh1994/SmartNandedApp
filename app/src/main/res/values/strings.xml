@@ -10,5 +10,9 @@
     <string name="MOBILE_NUMBER_SHOULD_NOT_BE_EMPTY">Mobile number should not be empty.</string>
     <string name="INVALID_MOBILE_NUMBER">Invalid mobile number.</string>
     <string name="PASSWORD_SHOULD_NOT_BE_EMPTY">Password should not be empty.</string>
+    <string name="file_uploading_progress">Uploading in progress</string>
+    <string name="notification_message">Don\'t close the app.</string>
+    <string name="file_uploading_complited">Uploading to server done </string>
+    <string name="file_uploading_complited_message">Total uploaded files :&#160; </string>
 
 </resources>

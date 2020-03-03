@@ -8,9 +8,9 @@ import android.graphics.Paint;
 import android.media.ExifInterface;
 import android.os.AsyncTask;
 
-import com.example.choiceproperties_sales.CallBack.CallBack;
-import com.example.choiceproperties_sales.Exception.ExceptionUtil;
-import com.example.choiceproperties_sales.service.ImageCompressionService;
+import com.example.smtrick.smartnanded.Exception.ExceptionUtil;
+import com.example.smtrick.smartnanded.callback.CallBack;
+import com.example.smtrick.smartnanded.service.ImageCompressionService;
 
 
 public class ImageCompressionServiceImp implements ImageCompressionService {

@@ -6,8 +6,8 @@ import android.os.AsyncTask;
 
 import androidx.core.app.NotificationCompat;
 
-import com.example.choiceproperties_sales.Exception.ExceptionUtil;
-import com.example.choiceproperties_sales.R;
+import com.example.smtrick.smartnanded.Exception.ExceptionUtil;
+import com.example.smtrick.smartnanded.R;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AppSingleton {

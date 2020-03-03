@@ -50,5 +50,12 @@ dependencies {
     implementation 'com.stone.vega.library:VegaLayoutManager:1.0.6'
     implementation 'commons-io:commons-io:+'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
+        config.resolutionStrategy.eachDependency { details ->
+            details.useVersion("3.3.2-5309881")
+        }
+    }
+
 }
 

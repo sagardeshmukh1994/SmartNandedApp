@@ -10,15 +10,15 @@ import android.net.Uri;
 import android.os.IBinder;
 import android.os.SystemClock;
 
-import com.example.choiceproperties_sales.CallBack.CallBack;
-import com.example.choiceproperties_sales.Constant.Constant;
-import com.example.choiceproperties_sales.Models.ImagesModel;
-import com.example.choiceproperties_sales.firebasestorage.StorageService;
-import com.example.choiceproperties_sales.repository.LeedRepository;
-import com.example.choiceproperties_sales.repository.impl.LeedRepositoryImpl;
-import com.example.choiceproperties_sales.service.impl.ImageCompressionServiceImp;
-import com.example.choiceproperties_sales.utilities.FileUtils;
-import com.example.choiceproperties_sales.utilities.Utility;
+import com.example.smtrick.smartnanded.Models.ImagesModel;
+import com.example.smtrick.smartnanded.callback.CallBack;
+import com.example.smtrick.smartnanded.constants.Constant;
+import com.example.smtrick.smartnanded.firebasestorage.StorageService;
+import com.example.smtrick.smartnanded.repository.LeedRepository;
+import com.example.smtrick.smartnanded.repository.impl.LeedRepositoryImpl;
+import com.example.smtrick.smartnanded.service.impl.ImageCompressionServiceImp;
+import com.example.smtrick.smartnanded.utilities.FileUtils;
+import com.example.smtrick.smartnanded.utilities.Utility;
 
 import java.io.InputStream;
 import java.util.ArrayList;
