@@ -11,8 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.smtrick.smartnanded.R;
+import com.example.smtrick.smartnanded.Views.Fragments.MainFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -22,6 +24,8 @@ public class Main_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Advance3DDrawerLayout drawer;
+    Class fragmentClass;
+    public static Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,16 @@ public class Main_Activity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.frameLayout, fragment).commit();
+        }
 
         drawer = (Advance3DDrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -74,6 +88,11 @@ public class Main_Activity extends AppCompatActivity
         int id = item.getItemId();
         //NOTE: creating fragment object
         Fragment fragment = null;
+        switch (item.getItemId()){
+            case R.id.nav_camera:
+                fragmentClass = MainFragment.class;
+                break;
+        }
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
