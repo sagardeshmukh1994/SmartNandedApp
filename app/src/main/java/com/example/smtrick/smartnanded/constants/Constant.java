@@ -54,30 +54,6 @@ public class Constant {
     public static final String LEED_MODEL = "LEED_MODEL";
     public static final String INVICES_LEEDS = "INVICES_LEEDS";
     //********************************************STATUS FLEADS*****************************
-    public static final String STATUS_GENERATED = "GENERATED";
-    public static final String STATUS_APPROVED = "APPROVED";
-    public static final String STATUS_REJECTED = "REJECTED";
-    public static final String STATUS_VERIFIED = "VERIFIED";
-    public static final String STATUS_SUBMITED = "SUBMITED";
-
-    public static final String STATUS_INPROCESS = "INPROCESS";
-    public static final String STATUS_LOGIN = "LOGIN";
-    public static final String STATUS_SANCTION = "SANCTION";
-    public static final String STATUS_DOCPICKUP = "DOCUMENTS";
-    public static final String STATUS_SUBMITEFORDISBUSS = "SUBMITEFORDISBUSS";
-    public static final String STATUS_PARTIAL_DISBUSS = "PARTIAL_DISBUSS";
-    public static final String STATUS_FULL_DISBUSS = "FULLDISBUSS";
-
-
-    public static final String STATUS_IN_PROGRESS = "IN-PROGRESS";
-    public static final String STATUS_SENT = "SENT";
-    public static final String STATUS_PAID = "PAID";
-    public static final String STATUS_UPDATED = "UPDATED";
-
-
-
-
-
     //***************************************************************************************
     public static final String GLOBAL_DATE_FORMATE = "dd MMM yyyy hh:mm a";
     public static final String CALANDER_DATE_FORMATE = "dd/MM/yy";
@@ -87,4 +63,9 @@ public class Constant {
     public static final int REQUEST_CODE = 101;
     public static final int RESULT_CODE = 201;
     //****************************************************************
+    public static final String ROLE_SALES = "SALES";
+    public static final String STATUS_ACTIVE = "ACTIVE";
+    public static final String STATUS_DEACTIVE = "DEACTIVE";
+    public static final String CUSTOMER_PREFIX = "CM-";
+
 }

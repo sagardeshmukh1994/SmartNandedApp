@@ -52,9 +52,9 @@ public class LoginScreen extends AppCompatActivity {
         Register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-//                Intent i = new Intent(LoginScreen.this, Registeractivity.class);
-//                startActivity(i);
-//                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+                Intent i = new Intent(LoginScreen.this, Registeractivity.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 
             }
         });

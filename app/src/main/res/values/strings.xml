@@ -14,5 +14,15 @@
     <string name="notification_message">Don\'t close the app.</string>
     <string name="file_uploading_complited">Uploading to server done </string>
     <string name="file_uploading_complited_message">Total uploaded files :&#160; </string>
+    <string name="PLEASE_ENTER_NAME"> Please enter the name.</string>
+    <string name="please_wait">Please wait</string>
+    <string name="registration_fail">Registration fail, please try again.</string>
+    <string name="phone">Mobile Number</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="back_to_login">Back to Login</string>
 
 </resources>

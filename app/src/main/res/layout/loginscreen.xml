@@ -26,7 +26,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="20sp"
-                android:background="@drawable/dimos_logo"
+                android:background="@drawable/dimos_app_logo"
                 android:gravity="bottom" />
 
         </RelativeLayout>
@@ -80,8 +80,8 @@
                             android:maxLength="10"
                             android:padding="10sp"
                             android:paddingLeft="4dp"
-                            android:textColor="@color/whitetextcolor"
-                            android:textColorHint="@color/hinttextcolor"
+                            android:textColor="@color/hederbackground"
+                            android:textColorHint="@color/hederbackground"
                             android:textSize="15sp" />
 
                         <EditText
@@ -98,8 +98,8 @@
                             android:maxLength="20"
                             android:padding="10sp"
                             android:paddingLeft="4dp"
-                            android:textColor="@color/whitetextcolor"
-                            android:textColorHint="@color/hinttextcolor"
+                            android:textColor="@color/hederbackground"
+                            android:textColorHint="@color/hederbackground"
                             android:textSize="15sp" />
                     </LinearLayout>
 
