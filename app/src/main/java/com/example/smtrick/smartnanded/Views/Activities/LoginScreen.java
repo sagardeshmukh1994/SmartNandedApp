@@ -12,7 +12,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smtrick.smartnanded.Exception.ExceptionUtil;
@@ -26,6 +28,11 @@ import com.example.smtrick.smartnanded.repository.UserRepository;
 import com.example.smtrick.smartnanded.repository.impl.UserRepositoryImpl;
 import com.example.smtrick.smartnanded.utilities.Utility;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginScreen extends AppCompatActivity {
     TextView txtregister;
@@ -61,7 +68,7 @@ public class LoginScreen extends AppCompatActivity {
 
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                login();
+                login1();
             }
         });
         etMobileNumber.setOnTouchListener(new View.OnTouchListener() {
@@ -98,43 +105,105 @@ public class LoginScreen extends AppCompatActivity {
     }
 
     private void loginToApp() {
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, Main_Activity.class);
         startActivity(i);
         finish();
     }
 
-    public void login() {
-        if (!Utility.isNetworkConnected(this)) {
-            Utility.showMessage(this, this.getString(R.string.network_not_available));
+//    public void login() {
+//        if (!Utility.isNetworkConnected(this)) {
+//            Utility.showMessage(this, this.getString(R.string.network_not_available));
+//            return;
+//        }
+//        final String mobileNumber = etMobileNumber.getText().toString();
+//        final String password = etpassword.getText().toString();
+//        if (validate(mobileNumber, password)) {
+//            if (!Utility.isNetworkConnected(this)) {
+//                Utility.showMessage(this, this.getString(R.string.network_not_available));
+//                return;
+//            }
+//            progressDialog = new ProgressDialogClass(this);
+//            progressDialog.showDialog(this.getString(R.string.SIGNING_IN), this.getString(R.string.PLEASE_WAIT));
+//            userRepository.signIn(mobileNumber, password, new CallBack() {
+//                @Override
+//                public void onSuccess(Object object) {
+//                    // Sign in success, update UI with the signed-in user's information
+//                    FirebaseUser userFirebase = Constant.AUTH.getCurrentUser();
+//                    if (userFirebase != null) {
+//                        signInUserData(userFirebase.getUid());
+//                    }
+//                }
+//
+//                @Override
+//                public void onError(Object object) {
+//                    if (progressDialog != null)
+//                        progressDialog.dismissDialog();
+//                    Utility.showSnackBar(activity,etpassword, getMessage(R.string.login_fail_try_again));
+//                }
+//            });
+//        }
+//    }
+
+    private void login1() {
+        progressDialog = new ProgressDialogClass(this);
+        progressDialog.showDialog(this.getString(R.string.SIGNING_IN), this.getString(R.string.PLEASE_WAIT));
+        String code = "91";
+        String number = etMobileNumber.getText().toString().trim();
+        final String username = etpassword.getText().toString().trim();
+
+        if (number.isEmpty() || number.length() < 10) {
+            etMobileNumber.setError("Valid number is required");
+            etMobileNumber.requestFocus();
             return;
         }
-        final String mobileNumber = etMobileNumber.getText().toString();
-        final String password = etpassword.getText().toString();
-        if (validate(mobileNumber, password)) {
-            if (!Utility.isNetworkConnected(this)) {
-                Utility.showMessage(this, this.getString(R.string.network_not_available));
-                return;
-            }
-            progressDialog = new ProgressDialogClass(this);
-            progressDialog.showDialog(this.getString(R.string.SIGNING_IN), this.getString(R.string.PLEASE_WAIT));
-            userRepository.signIn(mobileNumber, password, new CallBack() {
-                @Override
-                public void onSuccess(Object object) {
-                    // Sign in success, update UI with the signed-in user's information
-                    FirebaseUser userFirebase = Constant.AUTH.getCurrentUser();
-                    if (userFirebase != null) {
-                        signInUserData(userFirebase.getUid());
-                    }
-                }
-
-                @Override
-                public void onError(Object object) {
-                    if (progressDialog != null)
-                        progressDialog.dismissDialog();
-                    Utility.showSnackBar(activity,etpassword, getMessage(R.string.login_fail_try_again));
-                }
-            });
+        if (username.isEmpty()) {
+            etpassword.setError("Password is required");
+            etpassword.requestFocus();
+            return;
         }
+
+        final String phoneNumber = number;
+
+
+        DatabaseReference Dref = FirebaseDatabase.getInstance().getReference("users");
+        Dref.orderByChild("mobileNumber").equalTo(phoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.getValue() != null) {
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+
+                        User user = postSnapshot.getValue(User.class);
+
+                        progressDialog.dismissDialog();
+                        if (user.getPassword().equalsIgnoreCase(etpassword.getText().toString())) {
+                            String userid = user.getUserId();
+                            appSharedPreference.createUserLoginSession();
+                            appSharedPreference.addUserDetails(user);
+                            Toast.makeText(LoginScreen.this, "Login Successfull", Toast.LENGTH_SHORT).show();
+                            loginToApp();
+                        }else {
+                            Toast.makeText(LoginScreen.this, "Sorry Wrong Password", Toast.LENGTH_SHORT).show();
+                        }
+
+                        //                        signInUserData(userid);
+
+                    }
+
+
+                } else {
+                    progressDialog.dismissDialog();
+                    Toast.makeText(LoginScreen.this, "Login failed Please Register", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private void signInUserData(final String userId) {

@@ -50,6 +50,9 @@ dependencies {
     implementation 'com.stone.vega.library:VegaLayoutManager:1.0.6'
     implementation 'commons-io:commons-io:+'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.app.infideap.stylishwidget:stylish-widget:1.5.1'
+
+    implementation project(':drawerbehavior')
 
     configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
         config.resolutionStrategy.eachDependency { details ->
@@ -59,3 +62,4 @@ dependencies {
 
 }
 apply plugin: 'com.google.gms.google-services'
+

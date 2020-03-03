@@ -26,6 +26,7 @@
         <activity android:name=".Views.Activities.LoginScreen"/>
 
         <activity android:name=".Views.Activities.Registeractivity"/>
+        <activity android:name=".Views.Activities.Main_Activity"/>
 
     </application>
 
