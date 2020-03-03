@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <item type="color" name="hederbackground">#1E88E5</item>
+    <item type="color" name="white">#ffffff</item>
+    <color name="graycolor">#d3d3d3</color>
+    <item type="color" name="whitetextcolor">#000000</item>
+    <item type="color" name="hinttextcolor">#c3c3c3</item>
+    <color name="darkgraycolor">#848484</color>
+
+
+</resources>
