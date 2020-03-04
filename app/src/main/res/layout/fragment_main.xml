@@ -18,7 +18,7 @@
             <LinearLayout
                 android:id="@+id/adds"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="250dp"
                 android:layout_margin="5dp"
                 android:layout_weight="60"
                 android:orientation="vertical"
@@ -58,6 +58,7 @@
                         android:textColor="@color/Black"/>
 
                     <TextView
+                        android:id="@+id/txtSeeAll"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
@@ -86,8 +87,9 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/imgMarket"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_margin="30dp"
                             android:background="@drawable/circle_market"
@@ -113,8 +115,9 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/imgCity"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_margin="30dp"
                             android:layout_weight="30"
@@ -141,8 +144,9 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/imgProperties"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_margin="30dp"
                             android:layout_weight="30"
@@ -168,6 +172,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
+                    android:layout_marginTop="-10dp"
                     android:orientation="horizontal"
                     android:weightSum="90">
 
@@ -180,8 +185,9 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/imgBikes"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_margin="30dp"
                             android:layout_weight="30"
@@ -208,8 +214,9 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/imgCars"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_margin="30dp"
                             android:layout_weight="30"
@@ -236,8 +243,9 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/imgTransport"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_margin="30dp"
                             android:layout_weight="30"
@@ -263,6 +271,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
                     android:weightSum="90">
 
@@ -275,14 +285,15 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/imgTravel"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_margin="30dp"
                             android:layout_weight="30"
                             android:background="@drawable/circle_travel"
                             android:padding="10dp"
-                            android:src="@drawable/travels" />
+                            android:src="@drawable/travel" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -290,7 +301,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_marginTop="-15dp"
-                            android:text="Bikes" />
+                            android:text="Travel" />
 
                     </LinearLayout>
 
@@ -303,8 +314,9 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/imgJobs"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_margin="30dp"
                             android:layout_weight="30"
@@ -318,7 +330,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_marginTop="-15dp"
-                            android:text="Cars" />
+                            android:text="Jobs" />
 
                     </LinearLayout>
 
@@ -331,8 +343,9 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/imgMobiles"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_margin="30dp"
                             android:layout_weight="30"
@@ -346,7 +359,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_marginTop="-15dp"
-                            android:text="Transport" />
+                            android:text="Mobiles" />
 
                     </LinearLayout>
 
