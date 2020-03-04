@@ -11,6 +11,19 @@
     <item type="color" name="hinttextcolor">#4D65B8</item>
     <color name="darkgraycolor">#848484</color>
     <color name="Black">#000000</color>
+    <color name="Link_color">#346AF0</color>
 
+    <color name="circle_color_market">#5DADE2</color>
+    <color name="circle_color_city">#82E0AA</color>
+    <color name="circle_color_properties">#F7DC6F</color>
+    <color name="circle_color_bikes">#F1948A</color>
+    <color name="circle_color_cars">#AF7AC5</color>
+    <color name="circle_color_transport">#AED6F1</color>
+    <color name="circle_color_travel">#AAB7B8</color>
+    <color name="circle_color_jobs">#85929E</color>
+    <color name="circle_color_mobiles">#E2A8EF</color>
+    <color name="circle_color_agri">#52BE80</color>
+    <color name="circle_color_offer">#F4E59C</color>
+    <color name="circle_color_other">#FAB2B9</color>
 
 </resources>

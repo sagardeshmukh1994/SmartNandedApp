@@ -20,6 +20,7 @@ public class Main_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Advance3DDrawerLayout drawer;
+    private Fragment selectedFragement;
 
 
     @Override
@@ -53,6 +54,10 @@ public class Main_Activity extends AppCompatActivity
         drawer.setViewElevation(Gravity.START, 8);
         drawer.setViewRotation(Gravity.START, 15);
 
+        selectedFragement = new Fragment_Home();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.mainFrame, selectedFragement);
+        ft.commit();
 
 
     }
