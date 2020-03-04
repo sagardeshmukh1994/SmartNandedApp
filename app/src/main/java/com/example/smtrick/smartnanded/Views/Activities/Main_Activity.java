@@ -2,30 +2,25 @@ package com.example.smtrick.smartnanded.Views.Activities;
 
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.smtrick.smartnanded.R;
-import com.example.smtrick.smartnanded.Views.Fragments.MainFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Home;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.infideap.drawerbehavior.Advance3DDrawerLayout;
 
 public class Main_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Advance3DDrawerLayout drawer;
-    Class fragmentClass;
-    public static Fragment fragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,24 +29,15 @@ public class Main_Activity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        if (fragment != null) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.frameLayout, fragment).commit();
-        }
 
         drawer = (Advance3DDrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -88,31 +74,35 @@ public class Main_Activity extends AppCompatActivity
         int id = item.getItemId();
         //NOTE: creating fragment object
         Fragment fragment = null;
-        switch (item.getItemId()){
-            case R.id.nav_camera:
-                fragmentClass = MainFragment.class;
-                break;
+        if  (id == R.id.nav_camera) {
+            fragment = new Fragment_Home();
+        }
+
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.mainFrame, fragment);
+            ft.commit();
         }
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.action_right_drawer:
-                drawer.openDrawer(Gravity.END);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()){
+//            case R.id.action_right_drawer:
+//                drawer.openDrawer(Gravity.END);
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
 }
