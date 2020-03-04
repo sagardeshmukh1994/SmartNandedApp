@@ -13,21 +13,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Views.Activities.MainActivity">
-        </activity>
-
-        <activity android:name=".Views.Activities.SplashScreen" >
+        <activity android:name=".Views.Activities.Activity_Others"></activity>
+        <activity android:name=".Views.Activities.Activity_Offers" />
+        <activity android:name=".Views.Activities.Activity_Aggriculture" />
+        <activity android:name=".Views.Activities.Activity_Mobiles" />
+        <activity android:name=".Views.Activities.Activity_Jobs" />
+        <activity android:name=".Views.Activities.Activity_Travels" />
+        <activity android:name=".Views.Activities.Activity_Transport" />
+        <activity android:name=".Views.Activities.Activity_Cars" />
+        <activity android:name=".Views.Activities.Activity_Bike" />
+        <activity android:name=".Views.Activities.Activity_Properties" />
+        <activity android:name=".Views.Activities.Activity_City" />
+        <activity android:name=".Views.Activities.Activity_Market" />
+        <activity android:name=".Views.Activities.MainActivity" />
+        <activity android:name=".Views.Activities.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Views.Activities.LoginScreen"/>
-
-        <activity android:name=".Views.Activities.Registeractivity"/>
-        <activity android:name=".Views.Activities.Main_Activity"/>
-
+        <activity android:name=".Views.Activities.LoginScreen" />
+        <activity android:name=".Views.Activities.Registeractivity" />
+        <activity android:name=".Views.Activities.Main_Activity" />
     </application>
 
 </manifest>

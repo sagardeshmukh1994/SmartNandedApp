@@ -19,6 +19,15 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.smtrick.smartnanded.R;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Bike;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Cars;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_City;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Jobs;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Market;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Mobiles;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Properties;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Transport;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Travels;
 import com.example.smtrick.smartnanded.Views.Activities.MainActivity;
 
 /**
@@ -56,31 +65,40 @@ public class Fragment_Home extends Fragment implements View.OnClickListener {
             startActivity(intent);
         }
         else if (view == imgMarket){
-
+            Intent intent = new Intent(getContext(), Activity_Market.class);
+            startActivity(intent);
         }
         else if (view == imgCity){
-
+            Intent intent = new Intent(getContext(), Activity_City.class);
+            startActivity(intent);
         }
         else if (view == imgProperties){
-
+            Intent intent = new Intent(getContext(), Activity_Properties.class);
+            startActivity(intent);
         }
         else if (view == imgBikes){
-
+            Intent intent = new Intent(getContext(), Activity_Bike.class);
+            startActivity(intent);
         }
         else if (view == imgCars){
-
+            Intent intent = new Intent(getContext(), Activity_Cars.class);
+            startActivity(intent);
         }
         else if (view == imgTransport){
-
+            Intent intent = new Intent(getContext(), Activity_Transport.class);
+            startActivity(intent);
         }
         else if (view == imgTravel){
-
+            Intent intent = new Intent(getContext(), Activity_Travels.class);
+            startActivity(intent);
         }
         else if (view == imgJobs){
-
+            Intent intent = new Intent(getContext(), Activity_Jobs.class);
+            startActivity(intent);
         }
         else if (view == imgMobiles){
-
+            Intent intent = new Intent(getContext(), Activity_Mobiles.class);
+            startActivity(intent);
         }
     }
 }

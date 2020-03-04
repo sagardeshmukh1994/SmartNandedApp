@@ -3,6 +3,7 @@ package com.example.smtrick.smartnanded.Views.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
@@ -62,40 +63,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view == frdMarket){
-            
+            Intent intent = new Intent(MainActivity.this,Activity_Market.class);
+            startActivity(intent);
         }
         else if (view == frdCity){
-
+            Intent intent = new Intent(MainActivity.this,Activity_City.class);
+            startActivity(intent);
         }
         else if (view == frdProperties){
-
+            Intent intent = new Intent(MainActivity.this,Activity_Properties.class);
+            startActivity(intent);
         }
         else if (view == frdbike){
-
+            Intent intent = new Intent(MainActivity.this,Activity_Bike.class);
+            startActivity(intent);
         }
         else if (view == frdCar){
-
+            Intent intent = new Intent(MainActivity.this,Activity_Cars.class);
+            startActivity(intent);
         }
         else if (view == frdTransport){
-
+            Intent intent = new Intent(MainActivity.this,Activity_Transport.class);
+            startActivity(intent);
         }
         else if (view == frdTravel){
-
+            Intent intent = new Intent(MainActivity.this,Activity_Travels.class);
+            startActivity(intent);
         }
         else if (view == frdJobs){
-
+            Intent intent = new Intent(MainActivity.this,Activity_Jobs.class);
+            startActivity(intent);
         }
         else if (view == frdMobiles){
-
+            Intent intent = new Intent(MainActivity.this,Activity_Mobiles.class);
+            startActivity(intent);
         }
         else if (view == frdAgree){
-
+            Intent intent = new Intent(MainActivity.this,Activity_Aggriculture.class);
+            startActivity(intent);
         }
         else if (view == frdOffers){
-
+            Intent intent = new Intent(MainActivity.this,Activity_Offers.class);
+            startActivity(intent);
         }
         else if (view == frdOthers){
-
+            Intent intent = new Intent(MainActivity.this,Activity_Others.class);
+            startActivity(intent);
         }
     }
 }
