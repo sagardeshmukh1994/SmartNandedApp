@@ -42,8 +42,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="30"
-                android:padding="10dp"
-                android:layout_margin="5dp"
+                android:padding="15dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:src="@drawable/supermarket"
                 android:background="@drawable/circle"/>
 
@@ -51,18 +52,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="30"
-                android:padding="10dp"
-                android:layout_margin="5dp"
-                android:src="@drawable/supermarket"
+                android:padding="15dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:src="@drawable/city"
                 android:background="@drawable/circle"/>
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="30"
-                android:padding="10dp"
-                android:layout_margin="5dp"
-                android:src="@drawable/supermarket"
+                android:padding="15dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:src="@drawable/apartment"
                 android:background="@drawable/circle"/>
 
 
