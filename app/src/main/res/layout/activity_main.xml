@@ -7,49 +7,638 @@
     android:orientation="vertical"
     tools:context=".Views.Activities.MainActivity">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="100"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_weight="100">
+            android:orientation="vertical"
+            android:weightSum="100">
 
-            <ImageView
-                android:id="@+id/imgMarket"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:background="@drawable/circle_market"
-                android:padding="10dp"
-                android:layout_weight="40"
-                android:src="@drawable/supermarket" />
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:text="Super Market"
-                android:textColor="@color/Black"/>
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="100"
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imgM"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="90"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgMarket"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_market"
+                        android:padding="10dp"
+                        android:src="@drawable/supermarket" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="Super Market"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/frdMarket"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="10"
+                    android:gravity="right"
+                    android:padding="10dp"
+                    android:src="@drawable/fast_forward" />
+
+
+            </LinearLayout>
+
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="10dp"
-                android:layout_weight="50"
-                android:src="@drawable/fast_forward" />
+                android:layout_height="2dp"
+                android:background="@color/graycolor" />
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="100"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="90"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgCity"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_city"
+                        android:padding="10dp"
+                        android:src="@drawable/city" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="My City"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/frdCity"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="10"
+                    android:gravity="right"
+                    android:padding="10dp"
+                    android:src="@drawable/fast_forward" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/graycolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="100"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="90"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgProperties"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_properties"
+                        android:padding="10dp"
+                        android:src="@drawable/apartment" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="Properties"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/frdProperties"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="10"
+                    android:gravity="right"
+                    android:padding="10dp"
+                    android:src="@drawable/fast_forward" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/graycolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="100"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="90"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgBike"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_bike"
+                        android:padding="10dp"
+                        android:src="@drawable/motorbike" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="Bikes"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/frdBikes"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="10"
+                    android:gravity="right"
+                    android:padding="10dp"
+                    android:src="@drawable/fast_forward" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/graycolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="100"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="90"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgCars"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_cars"
+                        android:padding="10dp"
+                        android:src="@drawable/car" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="Cars"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/frdCars"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="10"
+                    android:gravity="right"
+                    android:padding="10dp"
+                    android:src="@drawable/fast_forward" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/graycolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="100"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="90"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgTransport"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_transport"
+                        android:padding="10dp"
+                        android:src="@drawable/transport" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="Transport"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/frdTransport"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="10"
+                    android:gravity="right"
+                    android:padding="10dp"
+                    android:src="@drawable/fast_forward" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/graycolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="100"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="90"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgTravel"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_travel"
+                        android:padding="10dp"
+                        android:src="@drawable/travel" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="Travel"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/frdTravel"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="10"
+                    android:gravity="right"
+                    android:padding="10dp"
+                    android:src="@drawable/fast_forward" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/graycolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="100"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="90"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgJobs"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_jobs"
+                        android:padding="10dp"
+                        android:src="@drawable/jobs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="Jobs"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/frdJobs"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="10"
+                    android:gravity="right"
+                    android:padding="10dp"
+                    android:src="@drawable/fast_forward" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/graycolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="100"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="90"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgMobiles"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_mobiles"
+                        android:padding="10dp"
+                        android:src="@drawable/cellphone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="Mobiles"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/frdMobiles"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="10"
+                    android:gravity="right"
+                    android:padding="10dp"
+                    android:src="@drawable/fast_forward" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/graycolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="100"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="90"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgAggri"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_aggri"
+                        android:padding="10dp"
+                        android:src="@drawable/aggri" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="Aggriculture"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/frdAggri"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="10"
+                    android:gravity="right"
+                    android:padding="10dp"
+                    android:src="@drawable/fast_forward" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/graycolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="100"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="90"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgOffer"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_offer"
+                        android:padding="10dp"
+                        android:src="@drawable/discount" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="Offers"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/frdOffers"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="10"
+                    android:gravity="right"
+                    android:padding="10dp"
+                    android:src="@drawable/fast_forward" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/graycolor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="100"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="90"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgOthers"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_others"
+                        android:padding="10dp"
+                        android:src="@drawable/others" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="Others"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/frdOthers"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="10"
+                    android:gravity="right"
+                    android:padding="10dp"
+                    android:src="@drawable/fast_forward" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/graycolor" />
 
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

@@ -55,5 +55,32 @@ public class Fragment_Home extends Fragment implements View.OnClickListener {
             Intent intent = new Intent(getContext(), MainActivity.class);
             startActivity(intent);
         }
+        else if (view == imgMarket){
+
+        }
+        else if (view == imgCity){
+
+        }
+        else if (view == imgProperties){
+
+        }
+        else if (view == imgBikes){
+
+        }
+        else if (view == imgCars){
+
+        }
+        else if (view == imgTransport){
+
+        }
+        else if (view == imgTravel){
+
+        }
+        else if (view == imgJobs){
+
+        }
+        else if (view == imgMobiles){
+
+        }
     }
 }
