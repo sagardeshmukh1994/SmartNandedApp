@@ -54,6 +54,16 @@ public class Fragment_Home extends Fragment implements View.OnClickListener {
         txtSeeAll = (TextView) view.findViewById(R.id.txtSeeAll);
 
         txtSeeAll.setOnClickListener(this);
+        imgMarket.setOnClickListener(this);
+        imgCity.setOnClickListener(this);
+        imgProperties.setOnClickListener(this);
+        imgBikes.setOnClickListener(this);
+        imgCars.setOnClickListener(this);
+        imgTransport.setOnClickListener(this);
+        imgTravel.setOnClickListener(this);
+        imgJobs.setOnClickListener(this);
+        imgMobiles.setOnClickListener(this);
+
 
         return view;
     }
