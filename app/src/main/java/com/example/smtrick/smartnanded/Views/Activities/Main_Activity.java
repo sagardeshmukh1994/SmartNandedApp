@@ -13,11 +13,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.smtrick.smartnanded.R;
 import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Home;
+import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Upload_Products;
+import com.example.smtrick.smartnanded.interfaces.OnFragmentInteractionListener;
 import com.google.android.material.navigation.NavigationView;
 import com.infideap.drawerbehavior.Advance3DDrawerLayout;
 
 public class Main_Activity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, OnFragmentInteractionListener {
 
     private Advance3DDrawerLayout drawer;
     private Fragment selectedFragement;
@@ -79,8 +81,11 @@ public class Main_Activity extends AppCompatActivity
         int id = item.getItemId();
         //NOTE: creating fragment object
         Fragment fragment = null;
-        if  (id == R.id.nav_camera) {
+        if  (id == R.id.home) {
             fragment = new Fragment_Home();
+        }
+        if  (id == R.id.upload_product) {
+            fragment = new Fragment_Upload_Products();
         }
 
         if (fragment != null) {
@@ -91,6 +96,11 @@ public class Main_Activity extends AppCompatActivity
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(String title) {
+
     }
 
 //    @Override
