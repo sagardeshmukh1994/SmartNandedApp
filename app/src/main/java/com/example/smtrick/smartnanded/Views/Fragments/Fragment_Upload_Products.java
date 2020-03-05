@@ -218,22 +218,69 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
                             progressDialog.dismiss();
 
                             //displaying success toast
-                            Toast.makeText(getContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
                             sRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String downloadurl = uri.toString();
 
-                                    String uploadId = mDatabase.push().getKey();
-                                    Products product = new Products();
-                                    product.setProductDescription(Idescription.getText().toString().trim());
-                                    product.setProductName(editTextName.getText().toString().trim());
-                                    product.setProductPrice(editTextPrice.getText().toString().trim());
-                                    product.setProductCategory(spinnerCategory.getSelectedItem().toString());
-                                    product.setUrl(downloadurl);
-                                    product.setProductId(uploadId);
+                                    for (int i = 0; i < fileDoneList.size(); i++) {
 
-                                    mDatabase.child(uploadId).setValue(product);
+                                        //getting the storage reference
+                                        final StorageReference sRef = storageReference.child(Constant.STORAGE_PATH_UPLOADS + System.currentTimeMillis() + "." + getFileExtension(fileDoneList.get(i)));
+
+                                        //adding the file to reference
+                                        sRef.putFile(fileDoneList.get(i))
+                                                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                        //dismissing the progress dialog
+                                                        progressDialog.dismiss();
+
+                                                        //displaying success toast
+                                                        Toast.makeText(getContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
+                                                        sRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                            @Override
+                                                            public void onSuccess(Uri uri) {
+                                                                String downloadurl = uri.toString();
+                                                                fileDoneList1.add(downloadurl);
+                                                                if (fileDoneList.size() == fileDoneList1.size()) {
+                                                                    String uploadId = mDatabase.push().getKey();
+                                                                    Products product = new Products();
+                                                                    product.setProductDescription(Idescription.getText().toString().trim());
+                                                                    product.setProductName(editTextName.getText().toString().trim());
+                                                                    product.setProductPrice(editTextPrice.getText().toString().trim());
+                                                                    product.setProductCategory(spinnerCategory.getSelectedItem().toString());
+                                                                    product.setUrl(downloadurl);
+                                                                    product.setProductId(uploadId);
+
+                                                                    mDatabase.child(uploadId).setValue(product);
+                                                                }
+
+
+                                                            }
+                                                        });
+
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception exception) {
+                                                        progressDialog.dismiss();
+                                                        Toast.makeText(getContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+                                                    }
+                                                })
+                                                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                                                    @Override
+                                                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                                        //displaying the upload progress
+                                                        double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                                                        progressDialog.setMessage("Uploaded " + ((int) progress) + "%...");
+                                                    }
+                                                });
+                                    }
+
+
                                 }
                             });
 
