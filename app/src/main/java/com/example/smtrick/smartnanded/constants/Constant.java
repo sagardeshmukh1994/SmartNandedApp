@@ -16,17 +16,15 @@ public class Constant {
     public static final FirebaseAuth AUTH = FirebaseAuth.getInstance();
     public static final DatabaseReference USER_TABLE_REF = DATABASE.getReference("users");
     public static final DatabaseReference LEEDS_TABLE_REF = DATABASE.getReference("leeds");
-    public static final DatabaseReference INVOICE_TABLE_REF = DATABASE.getReference("invoice");
+    public static final DatabaseReference PRODUCTS_TABLE_REF = DATABASE.getReference("Products");
+
 
 
     public static final String DOCUMENTS_PATH = "images/documents";
     public static final String CUSROMER_PROFILE_PATH = "images/customer";
-    public static final String USER_PROFILE_PATH = "images/user";
     public static final String STORAGE_PATH_UPLOADS = "Products/";
     public static final String DATABASE_PATH_UPLOADS = "Products";
-    public static final String CHANNEL_ID = "samar app";
-    public static final String CHANNEL_NAME = "samr app";
-    public static final String CHANNEL_DESC = "samar app notification";
+
     /************************************** Firebase Authentication reference constants ***************************************************************************/
 
     /************************************** Calender Constatns ***************************************************************************/
@@ -67,5 +65,20 @@ public class Constant {
     public static final String STATUS_ACTIVE = "ACTIVE";
     public static final String STATUS_DEACTIVE = "DEACTIVE";
     public static final String CUSTOMER_PREFIX = "CM-";
+    //*********************************************************************************************
+    //**************************CATEGORIES*********************************************************
+
+    public static final String CATEGORY_MARKET = "Super Market";
+    public static final String CATEGORY_CITY = "My City";
+    public static final String CATEGORY_PROPERTIES = "Properties";
+    public static final String CATEGORY_BIKE = "Bike";
+    public static final String CATEGORY_CAR = "Car";
+    public static final String CATEGORY_TRANSPORT = "Transport";
+    public static final String CATEGORY_TRAVELS = "Travels";
+    public static final String CATEGORY_JOBS = "Jobs";
+    public static final String CATEGORY_MOBILES = "Mobiles";
+    public static final String CATEGORY_AGRICULTURE = "Agriculture";
+    public static final String CATEGORY_OFFERS = "Offers";
+    public static final String CATEGORY_OTHERS = "Others";
 
 }

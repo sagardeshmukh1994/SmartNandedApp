@@ -10,4 +10,6 @@ public interface LeedRepository {
 
     void updateLeed(final String leedId, final Map leedMap, final CallBack callback);
 
+    void readProductsByCategory(final String id, final CallBack callBack);
+
 }
