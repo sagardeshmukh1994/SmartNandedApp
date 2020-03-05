@@ -33,7 +33,7 @@
 
         <item name="colorAccent">@color/colorPrimaryDark</item>
         <item name="colorControlNormal">#e34b1c</item>
-        <item name="colorControlActivated">@color/hederbackground</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 
 </resources>

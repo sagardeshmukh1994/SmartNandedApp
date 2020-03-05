@@ -21,6 +21,7 @@
             android:id="@+id/spinnerCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:padding="10dp"
             android:background="@drawable/edittextanimation"/>
 
@@ -38,6 +39,24 @@
                 android:background="@drawable/edittextanimation"
                 android:padding="10dp"
                 android:hint="Product Name"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:textColorHint="@color/colorPrimary"
+            android:theme="@style/TextLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextProductPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittextanimation"
+                android:padding="10dp"
+                android:hint="Product Price"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -69,8 +88,23 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@color/colorPrimary"
-            android:text="Choose Product"
+            android:text="Choose Main Image"
             android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/buttonChooseSubImages"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Choose Sub Image"
+            android:textColor="@color/white"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleSubImages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <ImageView
             android:id="@+id/imageView"

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -25,10 +26,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.R;
 import com.example.smtrick.smartnanded.Views.Activities.ImagePickerActivity;
+import com.example.smtrick.smartnanded.Views.Adapters.Product_SubImages_Adapter;
 import com.example.smtrick.smartnanded.constants.Constant;
 import com.example.smtrick.smartnanded.interfaces.OnFragmentInteractionListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -41,24 +45,31 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
 public class Fragment_Upload_Products extends Fragment implements View.OnClickListener {
 
     private static final int REQUEST_PICK_IMAGE = 1002;
+    private static final int RESULT_LOAD_IMAGE = 1;
     String image;
 
     //view objects
-    private Button buttonChoose;
+    private Button buttonChoose,buttonChooseSubImages;
     private Button buttonUpload;
-    private EditText editTextName;
+    private EditText editTextName,editTextPrice;
     private ImageView imageView;
     private EditText Idescription;
     private Spinner spinnerCategory;
+    private RecyclerView recycleSubImages;
+    private Product_SubImages_Adapter productSubImagesAdapter;
 
     //uri to store file
     private Uri filePath;
+    private List<Uri> fileDoneList;
+    private ArrayList<String> fileDoneList1;
 
     //firebase objects
     private StorageReference storageReference;
@@ -84,12 +95,19 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
+        fileDoneList = new ArrayList<>();
+        fileDoneList1 = new ArrayList<>();
+
         buttonChoose = (Button) view.findViewById(R.id.buttonChoose);
+        buttonChooseSubImages = (Button) view.findViewById(R.id.buttonChooseSubImages);
         buttonUpload = (Button) view.findViewById(R.id.buttonUpload);
         imageView = (ImageView) view.findViewById(R.id.imageView);
         editTextName = (EditText) view.findViewById(R.id.editText);
+        editTextPrice = (EditText) view.findViewById(R.id.editTextProductPrice);
         Idescription = (EditText) view.findViewById(R.id.description);
         spinnerCategory = (Spinner) view.findViewById(R.id.spinnerCategory);
+
+        recycleSubImages = (RecyclerView) view.findViewById(R.id.recycleSubImages);
 
         String[] recidential = new String[]{"Super Market", "My City", "Properties", "Bike",
         "Car","Transport","Travels","Jobs","Mobiles","Agriculture","Offers","Others"};
@@ -103,6 +121,7 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
 
 
         buttonChoose.setOnClickListener(this);
+        buttonChooseSubImages.setOnClickListener(this);
         buttonUpload.setOnClickListener(this);
 
 
@@ -134,6 +153,29 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
                         }
 
                         break;
+
+                    case RESULT_LOAD_IMAGE:
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                            if (data.getClipData() != null) {
+
+                                int totalItemsSelected = data.getClipData().getItemCount();
+
+                                for (int i = 0; i < totalItemsSelected; i++) {
+
+                                    Uri fileUri = data.getClipData().getItemAt(i).getUri();
+                                    fileDoneList.add(data.getClipData().getItemAt(i).getUri());
+
+                                    //String fileName = getFileName(fileUri);
+                                }
+                                productSubImagesAdapter = new Product_SubImages_Adapter(getActivity(), fileDoneList);
+                                recycleSubImages.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
+                                recycleSubImages.setHasFixedSize(true);
+                                recycleSubImages.setAdapter(productSubImagesAdapter);
+
+                            } else if (data.getData() != null) {
+
+                            }
+                        }
                 }
             }
         } else {
@@ -186,6 +228,8 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
                                     Products product = new Products();
                                     product.setProductDescription(Idescription.getText().toString().trim());
                                     product.setProductName(editTextName.getText().toString().trim());
+                                    product.setProductPrice(editTextPrice.getText().toString().trim());
+                                    product.setProductCategory(spinnerCategory.getSelectedItem().toString());
                                     product.setUrl(downloadurl);
                                     product.setProductId(uploadId);
 
@@ -222,7 +266,14 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
 
             pickImage();
 
-        } else if (view == buttonUpload) {
+        } else if(view == buttonChooseSubImages){
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), RESULT_LOAD_IMAGE);
+        }
+        else if (view == buttonUpload) {
 
             String name = editTextName.getText().toString().trim();
             String DESC = Idescription.getText().toString().trim();
