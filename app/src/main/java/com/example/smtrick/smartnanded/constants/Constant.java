@@ -22,8 +22,8 @@ public class Constant {
     public static final String DOCUMENTS_PATH = "images/documents";
     public static final String CUSROMER_PROFILE_PATH = "images/customer";
     public static final String USER_PROFILE_PATH = "images/user";
-    public static final String STORAGE_PATH_UPLOADS = "Advertise/";
-    public static final String DATABASE_PATH_UPLOADS = "Advertise";
+    public static final String STORAGE_PATH_UPLOADS = "Products/";
+    public static final String DATABASE_PATH_UPLOADS = "Products";
     public static final String CHANNEL_ID = "samar app";
     public static final String CHANNEL_NAME = "samr app";
     public static final String CHANNEL_DESC = "samar app notification";

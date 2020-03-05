@@ -17,6 +17,13 @@
         android:layout_marginBottom="10dp"
         android:orientation="vertical">
 
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/edittextanimation"/>
+
         <com.google.android.material.textfield.TextInputLayout
             android:textColorHint="@color/colorPrimary"
             android:theme="@style/TextLabel"

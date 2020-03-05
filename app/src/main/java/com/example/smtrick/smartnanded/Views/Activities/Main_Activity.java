@@ -1,12 +1,17 @@
 package com.example.smtrick.smartnanded.Views.Activities;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -41,6 +46,12 @@ public class Main_Activity extends AppCompatActivity
 //            }
 //        });
 
+        Boolean per = isStoragePermissionGranted();
+        if (per) {
+            //   Toast.makeText(this, "Storage Premission Granted", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Storage Premission Required", Toast.LENGTH_SHORT).show();
+        }
 
         drawer = (Advance3DDrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -73,6 +84,28 @@ public class Main_Activity extends AppCompatActivity
         }
     }
 
+    public boolean isStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                //   Log.v(TAG,"Permission is granted");
+                return true;
+            } else {
+
+                // Log.v(TAG,"Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        == PackageManager.PERMISSION_GRANTED) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        } else { //permission is automatically granted on sdk<23 upon installation
+            //  Log.v(TAG,"Permission is granted");
+            return true;
+        }
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

@@ -14,9 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -47,15 +49,13 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
     private static final int REQUEST_PICK_IMAGE = 1002;
     String image;
 
-    //constant to track image chooser intent
-    private static final int PICK_IMAGE_REQUEST = 234;
-
     //view objects
     private Button buttonChoose;
     private Button buttonUpload;
     private EditText editTextName;
     private ImageView imageView;
     private EditText Idescription;
+    private Spinner spinnerCategory;
 
     //uri to store file
     private Uri filePath;
@@ -67,8 +67,8 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
     // NOTE: Removed Some unwanted Boiler Plate Codes
     private OnFragmentInteractionListener mListener;
 
-    public Fragment_Upload_Products() {}
-
+    public Fragment_Upload_Products() {
+    }
 
 
     @Override
@@ -79,22 +79,29 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view= inflater.inflate(R.layout.fragment_imageupload, container, false);
+        View view = inflater.inflate(R.layout.fragment_imageupload, container, false);
 
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
         buttonChoose = (Button) view.findViewById(R.id.buttonChoose);
         buttonUpload = (Button) view.findViewById(R.id.buttonUpload);
         imageView = (ImageView) view.findViewById(R.id.imageView);
         editTextName = (EditText) view.findViewById(R.id.editText);
         Idescription = (EditText) view.findViewById(R.id.description);
+        spinnerCategory = (Spinner) view.findViewById(R.id.spinnerCategory);
+
+        String[] recidential = new String[]{"Super Market", "My City", "Properties", "Bike",
+        "Car","Transport","Travels","Jobs","Mobiles","Agriculture","Offers","Others"};
+
+        ArrayAdapter<String> spinnerArrayAdapterRecidential = new ArrayAdapter<String>(getContext(), R.layout.sppinner_layout_listitem, recidential);
+        spinnerArrayAdapterRecidential.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerCategory.setAdapter(spinnerArrayAdapterRecidential);
+
         storageReference = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference(Constant.DATABASE_PATH_UPLOADS);
-        
-//          Boolean per = isStoragePermissionGranted();
-//        spinnervalue();
-//        subspinnervalue();
+
+
         buttonChoose.setOnClickListener(this);
         buttonUpload.setOnClickListener(this);
 
@@ -111,7 +118,6 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
                 switch (requestCode) {
                     case REQUEST_PICK_IMAGE:
 
-//                        String path = "file:///storage/emulated/0/Download/Image-5312.jpg";
                         if (data.hasExtra("image_path")) {
                             Uri imagePath = Uri.parse(data.getStringExtra("image_path"));
 
@@ -176,10 +182,13 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
                                 public void onSuccess(Uri uri) {
                                     String downloadurl = uri.toString();
 
-
-                                    Products product = new Products(Idescription.getText().toString().trim(), editTextName.getText().toString().trim(), downloadurl);
-
                                     String uploadId = mDatabase.push().getKey();
+                                    Products product = new Products();
+                                    product.setProductDescription(Idescription.getText().toString().trim());
+                                    product.setProductName(editTextName.getText().toString().trim());
+                                    product.setUrl(downloadurl);
+                                    product.setProductId(uploadId);
+
                                     mDatabase.child(uploadId).setValue(product);
                                 }
                             });
@@ -211,7 +220,6 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
     public void onClick(View view) {
         if (view == buttonChoose) {
 
-            // showFileChooser();
             pickImage();
 
         } else if (view == buttonUpload) {
@@ -249,8 +257,6 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
             pickImage();
         }
     }
-
-
 
 
     @Override

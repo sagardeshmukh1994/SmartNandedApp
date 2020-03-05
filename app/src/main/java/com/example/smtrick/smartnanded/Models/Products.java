@@ -9,8 +9,9 @@ import com.google.firebase.database.IgnoreExtraProperties;
 public class Products {
 
 
-    public String desc;
-    public String name;
+    public String productDescription;
+    public String productName;
+    public String productId;
     public String url;
 
     // Default constructor required for calls to
@@ -18,24 +19,41 @@ public class Products {
     public Products() {
     }
 
-    public Products(String desc, String name, String url) {
+    public Products(String desc, String name, String url,String id) {
 
-        this.desc = desc;
-        this.name = name;
+        this.productDescription = desc;
+        this.productName = name;
+        this.productId = id;
         this.url = url;
     }
 
 
-    public String getDesc() {
-        return desc;
+    public String getProductDescription() {
+        return productDescription;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
-    public String getName() {
-        return name;
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getUrl() {
