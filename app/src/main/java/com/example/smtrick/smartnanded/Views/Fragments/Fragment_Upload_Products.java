@@ -214,15 +214,11 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            //dismissing the progress dialog
-                            progressDialog.dismiss();
-
-                            //displaying success toast
-//                            Toast.makeText(getContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
+                         
                             sRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    String downloadurl = uri.toString();
+                                    final String downloadurl1 = uri.toString();
 
                                     for (int i = 0; i < fileDoneList.size(); i++) {
 
@@ -251,7 +247,8 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
                                                                     product.setProductName(editTextName.getText().toString().trim());
                                                                     product.setProductPrice(editTextPrice.getText().toString().trim());
                                                                     product.setProductCategory(spinnerCategory.getSelectedItem().toString());
-                                                                    product.setUrl(downloadurl);
+                                                                    product.setUrl(downloadurl1);
+                                                                    product.setSubImages(fileDoneList1);
                                                                     product.setProductId(uploadId);
 
                                                                     mDatabase.child(uploadId).setValue(product);
