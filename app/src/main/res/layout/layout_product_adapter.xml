@@ -68,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="Description"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/darkgraycolor"
                         android:textSize="14dp" />
 
                 </LinearLayout>
