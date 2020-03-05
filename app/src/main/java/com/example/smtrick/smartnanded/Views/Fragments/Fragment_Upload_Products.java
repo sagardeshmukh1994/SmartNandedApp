@@ -32,6 +32,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.R;
 import com.example.smtrick.smartnanded.Views.Activities.ImagePickerActivity;
+import com.example.smtrick.smartnanded.Views.Activities.Main_Activity;
 import com.example.smtrick.smartnanded.Views.Adapters.Product_SubImages_Adapter;
 import com.example.smtrick.smartnanded.constants.Constant;
 import com.example.smtrick.smartnanded.interfaces.OnFragmentInteractionListener;
@@ -57,9 +58,9 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
     String image;
 
     //view objects
-    private Button buttonChoose,buttonChooseSubImages;
+    private Button buttonChoose, buttonChooseSubImages;
     private Button buttonUpload;
-    private EditText editTextName,editTextPrice;
+    private EditText editTextName, editTextPrice;
     private ImageView imageView;
     private EditText Idescription;
     private Spinner spinnerCategory;
@@ -68,6 +69,7 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
 
     //uri to store file
     private Uri filePath;
+    private String downloadurl1;
     private List<Uri> fileDoneList;
     private ArrayList<String> fileDoneList1;
 
@@ -110,7 +112,7 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
         recycleSubImages = (RecyclerView) view.findViewById(R.id.recycleSubImages);
 
         String[] recidential = new String[]{"Super Market", "My City", "Properties", "Bike",
-        "Car","Transport","Travels","Jobs","Mobiles","Agriculture","Offers","Others"};
+                "Car", "Transport", "Travels", "Jobs", "Mobiles", "Agriculture", "Offers", "Others"};
 
         ArrayAdapter<String> spinnerArrayAdapterRecidential = new ArrayAdapter<String>(getContext(), R.layout.sppinner_layout_listitem, recidential);
         spinnerArrayAdapterRecidential.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -214,11 +216,11 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                         
+
                             sRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    final String downloadurl1 = uri.toString();
+                                    downloadurl1 = uri.toString();
 
                                     for (int i = 0; i < fileDoneList.size(); i++) {
 
@@ -234,24 +236,18 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
                                                         progressDialog.dismiss();
 
                                                         //displaying success toast
-                                                        Toast.makeText(getContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
                                                         sRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                                             @Override
                                                             public void onSuccess(Uri uri) {
                                                                 String downloadurl = uri.toString();
                                                                 fileDoneList1.add(downloadurl);
                                                                 if (fileDoneList.size() == fileDoneList1.size()) {
-                                                                    String uploadId = mDatabase.push().getKey();
-                                                                    Products product = new Products();
-                                                                    product.setProductDescription(Idescription.getText().toString().trim());
-                                                                    product.setProductName(editTextName.getText().toString().trim());
-                                                                    product.setProductPrice(editTextPrice.getText().toString().trim());
-                                                                    product.setProductCategory(spinnerCategory.getSelectedItem().toString());
-                                                                    product.setUrl(downloadurl1);
-                                                                    product.setSubImages(fileDoneList1);
-                                                                    product.setProductId(uploadId);
 
-                                                                    mDatabase.child(uploadId).setValue(product);
+                                                                    Products product = fillUserModel();
+                                                                    mDatabase.child(product.getProductId()).setValue(product);
+                                                                    Toast.makeText(getContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
+                                                                    Intent intent = new Intent(getContext(), Main_Activity.class);
+                                                                    startActivity(intent);
                                                                 }
 
 
@@ -304,20 +300,33 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
         }
     }
 
+    private Products fillUserModel() {
+
+        String uploadId = mDatabase.push().getKey();
+        Products product = new Products();
+        product.setProductDescription(Idescription.getText().toString().trim());
+        product.setProductName(editTextName.getText().toString().trim());
+        product.setProductPrice(editTextPrice.getText().toString().trim());
+        product.setProductCategory(spinnerCategory.getSelectedItem().toString());
+        product.setUrl(downloadurl1);
+        product.setSubImages(fileDoneList1);
+        product.setProductId(uploadId);
+        return product;
+    }
+
     @Override
     public void onClick(View view) {
         if (view == buttonChoose) {
 
             pickImage();
 
-        } else if(view == buttonChooseSubImages){
+        } else if (view == buttonChooseSubImages) {
             Intent intent = new Intent();
             intent.setType("image/*");
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
             intent.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(Intent.createChooser(intent, "Select Picture"), RESULT_LOAD_IMAGE);
-        }
-        else if (view == buttonUpload) {
+        } else if (view == buttonUpload) {
 
             String name = editTextName.getText().toString().trim();
             String DESC = Idescription.getText().toString().trim();
