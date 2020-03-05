@@ -2,6 +2,8 @@ package com.example.smtrick.smartnanded.Models;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.util.ArrayList;
+
 /**
  * Created by Belal on 2/23/2017.
  */
@@ -15,6 +17,7 @@ public class Products {
     public String productCategory;
     public String productPrice;
     public String url;
+    private ArrayList<String> subImages;
     public String carKM;
     public String carBrand;
     public String carModel;
@@ -35,6 +38,7 @@ public class Products {
         this.productCategory = category;
         this.productPrice = price;
         this.url = url;
+        this.subImages = new ArrayList<String>();
     }
 
 
@@ -84,5 +88,13 @@ public class Products {
 
     public String getUrl() {
         return url;
+    }
+
+    public ArrayList<String> getSubImages() {
+        return subImages;
+    }
+
+    public void setSubImages(ArrayList<String> subImages) {
+        this.subImages = subImages;
     }
 }
