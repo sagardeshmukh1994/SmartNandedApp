@@ -43,7 +43,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="60"
                     android:layout_margin="5dp"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitCenter"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -78,6 +78,10 @@
 
         </androidx.cardview.widget.CardView>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/darkgraycolor"/>
 
     </LinearLayout>
 
