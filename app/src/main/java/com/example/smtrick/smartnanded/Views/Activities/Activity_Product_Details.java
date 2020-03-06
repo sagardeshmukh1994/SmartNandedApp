@@ -46,7 +46,7 @@ public class Activity_Product_Details extends AppCompatActivity {
         txtDescription = findViewById(R.id.desciption);
 
         txtDescription.setText(product.getProductDescription());
-        txtPrice.setText(product.getProductPrice());
+        txtPrice.setText("र "+ product.getProductPrice());
 
         adapter = new SliderAdapterExample(this);
         sliderView.setSliderAdapter(adapter);
