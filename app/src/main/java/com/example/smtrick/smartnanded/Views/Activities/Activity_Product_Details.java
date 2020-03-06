@@ -2,13 +2,16 @@ package com.example.smtrick.smartnanded.Views.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.Models.SliderItem;
 import com.example.smtrick.smartnanded.R;
+import com.example.smtrick.smartnanded.RecyclerListener.RecyclerTouchListener;
 import com.example.smtrick.smartnanded.Views.Adapters.SliderAdapterExample;
 import com.example.smtrick.smartnanded.constants.Constant;
 import com.smarteist.autoimageslider.IndicatorAnimations;
@@ -18,12 +21,15 @@ import com.smarteist.autoimageslider.SliderView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.smtrick.smartnanded.constants.Constant.LEED_MODEL;
+
 public class Activity_Product_Details extends AppCompatActivity {
 
     SliderView sliderView;
     private SliderAdapterExample adapter;
     Products product;
     ArrayList<String> imageList;
+    TextView txtPrice, txtDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,11 @@ public class Activity_Product_Details extends AppCompatActivity {
         imageList.addAll(product.getSubImages());
 
         sliderView = findViewById(R.id.imageSlider);
+        txtPrice = findViewById(R.id.price);
+        txtDescription = findViewById(R.id.desciption);
+
+        txtDescription.setText(product.getProductDescription());
+        txtPrice.setText(product.getProductPrice());
 
         adapter = new SliderAdapterExample(this);
         sliderView.setSliderAdapter(adapter);
