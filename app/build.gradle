@@ -53,6 +53,8 @@ dependencies {
     implementation 'com.app.infideap.stylishwidget:stylish-widget:1.5.1'
 
     implementation project(':drawerbehavior')
+    implementation project(':autoimageslider')
+
 
     configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
         config.resolutionStrategy.eachDependency { details ->

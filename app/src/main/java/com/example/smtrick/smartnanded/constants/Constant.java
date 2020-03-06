@@ -45,12 +45,11 @@ public class Constant {
     public static final String STORAGE_PATH = "STORAGE_PATH";
     public static final String BITMAP_IMG = "BITMAP_IMG";
     public static final String IMAGE_URI_LIST = "IMAGE_URI_LIST";
-    public static final String CURRENT_PAGE = "CURRENT_PAGE";
     public static final String LEED_ID = "LEED_ID";
     public static final String IMAGE_COUNT = "IMAGE_COUNT";
     public static final String TOTAL_IMAGE_COUNT = "TOTAL_IMAGE_COUNT";
     public static final String LEED_MODEL = "LEED_MODEL";
-    public static final String INVICES_LEEDS = "INVICES_LEEDS";
+    public static final String PRODUCT_MODEL = "LEED_MODEL";
     //********************************************STATUS FLEADS*****************************
     //***************************************************************************************
     public static final String GLOBAL_DATE_FORMATE = "dd MMM yyyy hh:mm a";

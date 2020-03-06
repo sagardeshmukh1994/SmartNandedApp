@@ -1,6 +1,7 @@
 package com.example.smtrick.smartnanded.Views.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.R;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Product_Details;
 
 import java.util.List;
+
+import static com.example.smtrick.smartnanded.constants.Constant.LEED_MODEL;
+import static com.example.smtrick.smartnanded.constants.Constant.PRODUCT_MODEL;
 
 /**
  * Created by akshayejh on 19/12/17.
@@ -52,6 +57,15 @@ public class Products_Adapter extends RecyclerView.Adapter<Products_Adapter.View
         holder.txtPrice.setText("र "+products.getProductPrice());
         holder.txtDescription.setText(products.getProductDescription());
         Glide.with(mContext).load(products.getUrl()).placeholder(R.drawable.loading).into(holder.product);
+
+        holder.imagecard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.imagecard.getContext(), Activity_Product_Details.class);
+                intent.putExtra(PRODUCT_MODEL, products);
+                holder.imagecard.getContext().startActivity(intent);
+            }
+        });
 
     }
 

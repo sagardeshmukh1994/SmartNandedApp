@@ -1,2 +1,2 @@
-include ':app', ':drawerbehavior'
+include ':app', ':drawerbehavior', ':autoimageslider'
 rootProject.name='Smart Nanded'

@@ -2,13 +2,14 @@ package com.example.smtrick.smartnanded.Models;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Belal on 2/23/2017.
  */
 @IgnoreExtraProperties
-public class Products {
+public class Products implements Serializable {
 
 
     public String productDescription;
