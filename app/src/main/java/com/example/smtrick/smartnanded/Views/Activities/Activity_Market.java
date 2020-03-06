@@ -72,6 +72,8 @@ public class Activity_Market extends AppCompatActivity {
                     productsAdapter.notifyDataSetChanged();
                     progressDialogClass.dismissDialog();
 
+                }else {
+                    progressDialogClass.dismissDialog();
                 }
 
             }
