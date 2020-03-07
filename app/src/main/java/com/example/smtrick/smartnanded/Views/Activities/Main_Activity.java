@@ -2,6 +2,8 @@ package com.example.smtrick.smartnanded.Views.Activities;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -36,6 +38,10 @@ public class Main_Activity extends AppCompatActivity
         setContentView(R.layout.activity_main_3d);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            toolbar.setTitleTextColor(getColor(R.color.drower_color));
+        }
+
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {

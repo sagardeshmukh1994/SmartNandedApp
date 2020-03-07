@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="drawerArrowStyle">@style/DrawerIcon</item>
     </style>
 
     <style name="DefaultButton" parent="@android:style/Widget.Button">
@@ -34,6 +35,14 @@
         <item name="colorAccent">@color/colorPrimaryDark</item>
         <item name="colorControlNormal">#e34b1c</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
+    </style>
+
+    <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/drower_color</item>
+    </style>
+
+    <style name="DrawerText" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/drower_color</item>
     </style>
 
 </resources>
