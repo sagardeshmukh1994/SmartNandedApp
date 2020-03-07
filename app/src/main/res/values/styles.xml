@@ -42,7 +42,7 @@
     </style>
 
     <style name="DrawerText" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="color">@color/drower_color</item>
+        <item name="color">@color/drower_icon_color</item>
     </style>
 
 </resources>

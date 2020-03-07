@@ -40,14 +40,20 @@ public class Activity_Product_Details extends AppCompatActivity {
 
         imageList = new ArrayList<>();
         imageList.add(product.getUrl());
-        imageList.addAll(product.getSubImages());
+        if (product.getSubImages() != null) {
+            imageList.addAll(product.getSubImages());
+        }
 
         sliderView = findViewById(R.id.imageSlider);
         txtPrice = findViewById(R.id.price);
         txtDescription = findViewById(R.id.desciption);
 
         txtDescription.setText(product.getProductDescription());
-        txtPrice.setText("र "+ product.getProductPrice());
+        if (product.getProductPrice() != null && !product.getProductPrice().equalsIgnoreCase("")) {
+            txtPrice.setText("र " + product.getProductPrice());
+        }else {
+            txtPrice.setText("");
+        }
 
         adapter = new SliderAdapterExample(this);
         sliderView.setSliderAdapter(adapter);

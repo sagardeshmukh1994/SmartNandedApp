@@ -39,7 +39,7 @@ public class Main_Activity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            toolbar.setTitleTextColor(getColor(R.color.drower_color));
+            toolbar.setTitleTextColor(getColor(R.color.drower_icon_color));
         }
 
 
