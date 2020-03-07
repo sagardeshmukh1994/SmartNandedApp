@@ -198,7 +198,7 @@ public class Main_Activity extends AppCompatActivity
             textViewName.setText(appSharedPreference.getUserName());
             textViewMobileNumber.setText(appSharedPreference.getMobileNo());
 
-            DatabaseReference Dref = FirebaseDatabase.getInstance().getReference("users\n");
+            DatabaseReference Dref = FirebaseDatabase.getInstance().getReference("users");
             Dref.orderByChild("mobileNumber").equalTo(mobile).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -238,6 +238,7 @@ public class Main_Activity extends AppCompatActivity
                 });
                 textViewMobileNumber.setText(user.getPhoneNumber());
             }
+
 
 
             if (!Utility.isEmptyOrNull(appSharedPreference.getProfileLargeImage())) {

@@ -83,13 +83,14 @@
 
         <Button
             android:id="@+id/buttonChoose"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/button_shape"
             android:text="Choose Main Image"
-            android:textColor="@color/white"/>
+            android:padding="5dp"
+            android:textColor="@color/drower_icon_color"/>
 
 
 
@@ -103,13 +104,14 @@
 
         <Button
             android:id="@+id/buttonChooseSubImages"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:background="@color/colorPrimary"
+            android:padding="5dp"
+            android:background="@drawable/button_shape"
             android:text="Choose Sub Image"
-            android:textColor="@color/white"/>
+            android:textColor="@color/drower_icon_color"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleSubImages"
@@ -125,8 +127,8 @@
             android:layout_marginTop="10dp"
             android:text="Upload Product"
             android:layout_marginBottom="20dp"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/white"/>
+            android:background="@drawable/button_shape"
+            android:textColor="@color/drower_icon_color"/>
 
     </LinearLayout>
 </ScrollView>
