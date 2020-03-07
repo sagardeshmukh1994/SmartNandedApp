@@ -39,6 +39,7 @@ public class Activity_Product_Details extends AppCompatActivity {
         product = (Products) getIntent().getSerializableExtra(Constant.PRODUCT_MODEL);
 
         imageList = new ArrayList<>();
+        imageList.add(product.getUrl());
         imageList.addAll(product.getSubImages());
 
         sliderView = findViewById(R.id.imageSlider);
@@ -67,6 +68,7 @@ public class Activity_Product_Details extends AppCompatActivity {
 
         adapter.renewItems(imageList);
     }
+
 
 
     public void addNewItem() {

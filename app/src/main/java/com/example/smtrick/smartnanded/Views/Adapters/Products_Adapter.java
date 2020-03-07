@@ -54,7 +54,11 @@ public class Products_Adapter extends RecyclerView.Adapter<Products_Adapter.View
 
         final Products products = ProductList.get(position);
 
-        holder.txtPrice.setText("र "+products.getProductPrice());
+        if (products.getProductPrice() != null && !products.getProductPrice().equalsIgnoreCase("")) {
+            holder.txtPrice.setText("र " + products.getProductPrice());
+        }else {
+            holder.txtPrice.setText("");
+        }
         holder.txtDescription.setText(products.getProductDescription());
         Glide.with(mContext).load(products.getUrl()).placeholder(R.drawable.loading).into(holder.product);
 

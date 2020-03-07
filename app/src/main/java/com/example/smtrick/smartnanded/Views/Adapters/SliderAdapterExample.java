@@ -57,6 +57,7 @@ public class SliderAdapterExample extends
 
         Glide.with(viewHolder.itemView.getContext())
                 .load(sliderItem)
+                .placeholder(R.drawable.loading)
                 .fitCenter()
                 .into(viewHolder.imageViewBackground);
 
