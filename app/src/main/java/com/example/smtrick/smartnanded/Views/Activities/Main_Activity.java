@@ -8,8 +8,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,18 +22,35 @@ import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.smtrick.smartnanded.Exception.ExceptionUtil;
+import com.example.smtrick.smartnanded.Models.User;
 import com.example.smtrick.smartnanded.R;
 import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Home;
 import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Upload_Products;
 import com.example.smtrick.smartnanded.interfaces.OnFragmentInteractionListener;
+import com.example.smtrick.smartnanded.preferences.AppSharedPreference;
+import com.example.smtrick.smartnanded.utilities.Utility;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.infideap.drawerbehavior.Advance3DDrawerLayout;
+import com.squareup.picasso.Picasso;
 
 public class Main_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnFragmentInteractionListener {
 
     private Advance3DDrawerLayout drawer;
+    private NavigationView navigationView;
     private Fragment selectedFragement;
+    private AppSharedPreference appSharedPreference;
+    String mobile;
+    User username1;
 
 
     @Override
@@ -42,7 +63,15 @@ public class Main_Activity extends AppCompatActivity
             toolbar.setTitleTextColor(getColor(R.color.drower_icon_color));
         }
 
+        appSharedPreference = new AppSharedPreference(this);
 
+        mobile = appSharedPreference.getMobileNo();
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        //NOTE:  Checks first item in the navigation drawer initially
+        navigationView.setCheckedItem(R.id.home);
+
+        updateNavigationHeader();
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -157,6 +186,70 @@ public class Main_Activity extends AppCompatActivity
 //        }
 //        return super.onOptionsItemSelected(item);
 //    }
+
+
+    public void updateNavigationHeader() {
+        try {
+            View header = navigationView.getHeaderView(0);
+
+            final TextView textViewName = (TextView) header.findViewById(R.id.textViewuserName);
+            final TextView textViewMobileNumber = (TextView) header.findViewById(R.id.textViewMobile);
+            ImageView imageViewProfile = (ImageView) header.findViewById(R.id.memberImage);
+            textViewName.setText(appSharedPreference.getUserName());
+            textViewMobileNumber.setText(appSharedPreference.getMobileNo());
+
+            DatabaseReference Dref = FirebaseDatabase.getInstance().getReference("users\n");
+            Dref.orderByChild("mobileNumber").equalTo(mobile).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot appleSnapshot : dataSnapshot.getChildren()) {
+                        username1 = appleSnapshot.getValue(User.class);
+                        textViewName.setText(username1.getUserName());
+                        textViewMobileNumber.setText(username1.getMobileNumber());
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null) {
+                DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference();
+                Query applesQuery1 = ref1.child("users").orderByChild("mobilenumber").equalTo(user.getPhoneNumber());
+
+                applesQuery1.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot appleSnapshot : dataSnapshot.getChildren()) {
+                            User username = appleSnapshot.getValue(User.class);
+                            textViewName.setText(username.getUserName());
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        //    Log.e(TAG, "onCancelled", databaseError.toException());
+                    }
+                });
+                textViewMobileNumber.setText(user.getPhoneNumber());
+            }
+
+
+            if (!Utility.isEmptyOrNull(appSharedPreference.getProfileLargeImage())) {
+                Picasso.with(this).load(appSharedPreference.getProfileLargeImage()).resize(200, 200).centerCrop().placeholder(R.drawable.user).into(imageViewProfile);
+            } else
+                imageViewProfile.setImageResource(R.drawable.user);
+
+
+        } catch (Exception ex) {
+            ExceptionUtil.logException(ex);
+        }
+    }
 
 
 }
