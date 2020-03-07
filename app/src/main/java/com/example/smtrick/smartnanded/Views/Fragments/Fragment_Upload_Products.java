@@ -222,55 +222,63 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
                                 public void onSuccess(Uri uri) {
                                     downloadurl1 = uri.toString();
 
-                                    for (int i = 0; i < fileDoneList.size(); i++) {
+                                    if (fileDoneList.size() != 0) {
+                                        for (int i = 0; i < fileDoneList.size(); i++) {
 
-                                        //getting the storage reference
-                                        final StorageReference sRef = storageReference.child(Constant.STORAGE_PATH_UPLOADS + System.currentTimeMillis() + "." + getFileExtension(fileDoneList.get(i)));
+                                            //getting the storage reference
+                                            final StorageReference sRef = storageReference.child(Constant.STORAGE_PATH_UPLOADS + System.currentTimeMillis() + "." + getFileExtension(fileDoneList.get(i)));
 
-                                        //adding the file to reference
-                                        sRef.putFile(fileDoneList.get(i))
-                                                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                                    @Override
-                                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                                        //dismissing the progress dialog
-                                                        progressDialog.dismiss();
+                                            //adding the file to reference
+                                            sRef.putFile(fileDoneList.get(i))
+                                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                        @Override
+                                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                            //dismissing the progress dialog
+                                                            progressDialog.dismiss();
 
-                                                        //displaying success toast
-                                                        sRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                                            @Override
-                                                            public void onSuccess(Uri uri) {
-                                                                String downloadurl = uri.toString();
-                                                                fileDoneList1.add(downloadurl);
-                                                                if (fileDoneList.size() == fileDoneList1.size()) {
+                                                            //displaying success toast
+                                                            sRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                                @Override
+                                                                public void onSuccess(Uri uri) {
+                                                                    String downloadurl = uri.toString();
+                                                                    fileDoneList1.add(downloadurl);
+                                                                    if (fileDoneList.size() == fileDoneList1.size()) {
 
-                                                                    Products product = fillUserModel();
-                                                                    mDatabase.child(product.getProductId()).setValue(product);
-                                                                    Toast.makeText(getContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
-                                                                    Intent intent = new Intent(getContext(), Main_Activity.class);
-                                                                    startActivity(intent);
+                                                                        Products product = fillUserModel("full");
+                                                                        mDatabase.child(product.getProductId()).setValue(product);
+                                                                        Toast.makeText(getContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
+                                                                        Intent intent = new Intent(getContext(), Main_Activity.class);
+                                                                        startActivity(intent);
+                                                                    }
+
+
                                                                 }
+                                                            });
 
-
-                                                            }
-                                                        });
-
-                                                    }
-                                                })
-                                                .addOnFailureListener(new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception exception) {
-                                                        progressDialog.dismiss();
-                                                        Toast.makeText(getContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
-                                                    }
-                                                })
-                                                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                                                    @Override
-                                                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                                                        //displaying the upload progress
-                                                        double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                                                        progressDialog.setMessage("Uploaded " + ((int) progress) + "%...");
-                                                    }
-                                                });
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception exception) {
+                                                            progressDialog.dismiss();
+                                                            Toast.makeText(getContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+                                                        }
+                                                    })
+                                                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                                                        @Override
+                                                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                                            //displaying the upload progress
+                                                            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                                                            progressDialog.setMessage("Uploaded " + ((int) progress) + "%...");
+                                                        }
+                                                    });
+                                        }
+                                    }else {
+                                        Products product = fillUserModel("part");
+                                        mDatabase.child(product.getProductId()).setValue(product);
+                                        Toast.makeText(getContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(getContext(), Main_Activity.class);
+                                        startActivity(intent);
                                     }
 
 
@@ -300,17 +308,29 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
         }
     }
 
-    private Products fillUserModel() {
+    private Products fillUserModel(String h) {
 
-        String uploadId = mDatabase.push().getKey();
         Products product = new Products();
-        product.setProductDescription(Idescription.getText().toString().trim());
-        product.setProductName(editTextName.getText().toString().trim());
-        product.setProductPrice(editTextPrice.getText().toString().trim());
-        product.setProductCategory(spinnerCategory.getSelectedItem().toString());
-        product.setUrl(downloadurl1);
-        product.setSubImages(fileDoneList1);
-        product.setProductId(uploadId);
+        String uploadId = mDatabase.push().getKey();
+
+        if (h.equalsIgnoreCase("full")) {
+
+            product.setProductDescription(Idescription.getText().toString().trim());
+            product.setProductName(editTextName.getText().toString().trim());
+            product.setProductPrice(editTextPrice.getText().toString().trim());
+            product.setProductCategory(spinnerCategory.getSelectedItem().toString());
+            product.setUrl(downloadurl1);
+            product.setSubImages(fileDoneList1);
+            product.setProductId(uploadId);
+        }else if (h.equalsIgnoreCase("part")){
+            product.setProductDescription(Idescription.getText().toString().trim());
+            product.setProductName(editTextName.getText().toString().trim());
+            product.setProductPrice(editTextPrice.getText().toString().trim());
+            product.setProductCategory(spinnerCategory.getSelectedItem().toString());
+            product.setUrl(downloadurl1);
+//            product.setSubImages(fileDoneList1);
+            product.setProductId(uploadId);
+        }
         return product;
     }
 
