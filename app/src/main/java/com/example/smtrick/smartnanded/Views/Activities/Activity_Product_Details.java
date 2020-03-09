@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -50,7 +51,9 @@ public class Activity_Product_Details extends AppCompatActivity {
 
         txtDescription.setText(product.getProductDescription());
         if (product.getProductPrice() != null && !product.getProductPrice().equalsIgnoreCase("")) {
-            txtPrice.setText("र " + product.getProductPrice());
+//            Typeface tf = Typeface.createFromAsset(getAssets(), "font/Rupee.ttf");
+//            txtPrice.setTypeface(tf);
+            txtPrice.setText("\u20B9 " + product.getProductPrice());
         }else {
             txtPrice.setText("");
         }

@@ -55,7 +55,7 @@ public class Products_Adapter extends RecyclerView.Adapter<Products_Adapter.View
         final Products products = ProductList.get(position);
 
         if (products.getProductPrice() != null && !products.getProductPrice().equalsIgnoreCase("")) {
-            holder.txtPrice.setText("र " + products.getProductPrice());
+            holder.txtPrice.setText("\u20B9 " + products.getProductPrice());
         }else {
             holder.txtPrice.setText("");
         }
