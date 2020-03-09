@@ -46,6 +46,7 @@ public class Activity_Market extends AppCompatActivity {
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.Black), PorterDuff.Mode.SRC_ATOP);
 
 
+
         leedRepository = new LeedRepositoryImpl();
         progressDialogClass = new ProgressDialogClass(this);
 
