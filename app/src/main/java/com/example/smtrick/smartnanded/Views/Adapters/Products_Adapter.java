@@ -1,8 +1,8 @@
 package com.example.smtrick.smartnanded.Views.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +15,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.R;
-import com.example.smtrick.smartnanded.Views.Activities.Activity_Product_Details;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Aggriculture;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Bike;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Cars;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_City;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Jobs;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Market;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Mobiles;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Offers;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Others;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Properties;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Transport;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Travels;
+import com.example.smtrick.smartnanded.constants.Constant;
 
 import java.util.List;
 
-import static com.example.smtrick.smartnanded.constants.Constant.LEED_MODEL;
 import static com.example.smtrick.smartnanded.constants.Constant.PRODUCT_MODEL;
 
 /**
@@ -32,13 +43,14 @@ public class Products_Adapter extends RecyclerView.Adapter<Products_Adapter.View
     public List<Products> ProductList;
     Context mContext, nContext;
     String CATEGORY;
+    Activity activity;
 
 
-    public Products_Adapter(Context fileNameList, List<Products> fileDoneList) {
+    public Products_Adapter(Context fileNameList, List<Products> fileDoneList,String category) {
 
         this.mContext = fileNameList;
         this.ProductList = fileDoneList;
-//        this.CATEGORY = category;
+        this.CATEGORY = category;
 
     }
 
@@ -67,9 +79,70 @@ public class Products_Adapter extends RecyclerView.Adapter<Products_Adapter.View
         holder.imagecard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(holder.imagecard.getContext(), Activity_Product_Details.class);
-                intent.putExtra(PRODUCT_MODEL, products);
-                holder.imagecard.getContext().startActivity(intent);
+
+        if (CATEGORY.equalsIgnoreCase(Constant.CATEGORY_MARKET)){
+            Intent intent = new Intent(holder.imagecard.getContext(), Activity_Market.class);
+            intent.putExtra(PRODUCT_MODEL, products);
+            holder.imagecard.getContext().startActivity(intent);
+
+        }else if (CATEGORY.equalsIgnoreCase(Constant.CATEGORY_CITY)){
+            Intent intent = new Intent(holder.imagecard.getContext(), Activity_City.class);
+            intent.putExtra(PRODUCT_MODEL, products);
+            holder.imagecard.getContext().startActivity(intent);
+
+        }else if (CATEGORY.equalsIgnoreCase(Constant.CATEGORY_PROPERTIES)){
+            Intent intent = new Intent(holder.imagecard.getContext(), Activity_Properties.class);
+            intent.putExtra(PRODUCT_MODEL, products);
+            holder.imagecard.getContext().startActivity(intent);
+
+        }else if (CATEGORY.equalsIgnoreCase(Constant.CATEGORY_BIKE)){
+            Intent intent = new Intent(holder.imagecard.getContext(), Activity_Bike.class);
+            intent.putExtra(PRODUCT_MODEL, products);
+            holder.imagecard.getContext().startActivity(intent);
+
+        }else if (CATEGORY.equalsIgnoreCase(Constant.CATEGORY_CAR)){
+            Intent intent = new Intent(holder.imagecard.getContext(), Activity_Cars.class);
+            intent.putExtra(PRODUCT_MODEL, products);
+            holder.imagecard.getContext().startActivity(intent);
+
+        }else if (CATEGORY.equalsIgnoreCase(Constant.CATEGORY_TRANSPORT)){
+            Intent intent = new Intent(holder.imagecard.getContext(), Activity_Transport.class);
+            intent.putExtra(PRODUCT_MODEL, products);
+            holder.imagecard.getContext().startActivity(intent);
+
+        }else if (CATEGORY.equalsIgnoreCase(Constant.CATEGORY_TRAVELS)){
+            Intent intent = new Intent(holder.imagecard.getContext(), Activity_Travels.class);
+            intent.putExtra(PRODUCT_MODEL, products);
+            holder.imagecard.getContext().startActivity(intent);
+
+        }else if (CATEGORY.equalsIgnoreCase(Constant.CATEGORY_JOBS)){
+            Intent intent = new Intent(holder.imagecard.getContext(), Activity_Jobs.class);
+            intent.putExtra(PRODUCT_MODEL, products);
+            holder.imagecard.getContext().startActivity(intent);
+
+        }else if (CATEGORY.equalsIgnoreCase(Constant.CATEGORY_MOBILES)){
+            Intent intent = new Intent(holder.imagecard.getContext(), Activity_Mobiles.class);
+            intent.putExtra(PRODUCT_MODEL, products);
+            holder.imagecard.getContext().startActivity(intent);
+
+        }else if (CATEGORY.equalsIgnoreCase(Constant.CATEGORY_AGRICULTURE)){
+            Intent intent = new Intent(holder.imagecard.getContext(), Activity_Aggriculture.class);
+            intent.putExtra(PRODUCT_MODEL, products);
+            holder.imagecard.getContext().startActivity(intent);
+
+        }else if (CATEGORY.equalsIgnoreCase(Constant.CATEGORY_OFFERS)){
+            Intent intent = new Intent(holder.imagecard.getContext(), Activity_Offers.class);
+            intent.putExtra(PRODUCT_MODEL, products);
+            holder.imagecard.getContext().startActivity(intent);
+
+        }else if (CATEGORY.equalsIgnoreCase(Constant.CATEGORY_OTHERS)){
+            Intent intent = new Intent(holder.imagecard.getContext(), Activity_Others.class);
+            intent.putExtra(PRODUCT_MODEL, products);
+            holder.imagecard.getContext().startActivity(intent);
+
+        }
+
+
             }
         });
 

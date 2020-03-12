@@ -24,7 +24,7 @@ import java.util.List;
 
 import static com.example.smtrick.smartnanded.constants.Constant.LEED_MODEL;
 
-public class Activity_Product_Details extends AppCompatActivity {
+public class Activity_Others extends AppCompatActivity {
 
     SliderView sliderView;
     private SliderAdapterExample adapter;

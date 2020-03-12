@@ -68,7 +68,7 @@ public class Activity_Products extends AppCompatActivity {
 
                     productsArrayList = (ArrayList<Products>) object;
 
-                    productsAdapter = new Products_Adapter(getApplication(), productsArrayList);
+                    productsAdapter = new Products_Adapter(getApplication(), productsArrayList,CATEGORY);
                     //adding adapter to recyclerview
                     recycleProducts.setAdapter(productsAdapter);
                     recycleProducts.setHasFixedSize(true);

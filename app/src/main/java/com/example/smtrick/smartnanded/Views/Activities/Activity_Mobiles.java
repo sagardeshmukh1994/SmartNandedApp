@@ -5,85 +5,83 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.R;
 import com.example.smtrick.smartnanded.Views.Adapters.Products_Adapter;
+import com.example.smtrick.smartnanded.Views.Adapters.SliderAdapterExample;
 import com.example.smtrick.smartnanded.Views.Dialog.ProgressDialogClass;
 import com.example.smtrick.smartnanded.callback.CallBack;
 import com.example.smtrick.smartnanded.constants.Constant;
 import com.example.smtrick.smartnanded.repository.LeedRepository;
 import com.example.smtrick.smartnanded.repository.impl.LeedRepositoryImpl;
 import com.example.smtrick.smartnanded.utilities.Utility;
+import com.smarteist.autoimageslider.IndicatorAnimations;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 
 public class Activity_Mobiles extends AppCompatActivity {
 
-    RecyclerView recycleProducts;
-    ProgressDialogClass progressDialogClass;
-    LeedRepository leedRepository;
-    ArrayList<Products> productsArrayList;
-    Products_Adapter productsAdapter;
+    SliderView sliderView;
+    private SliderAdapterExample adapter;
+    Products product;
+    ArrayList<String> imageList;
+    TextView txtPrice, txtDescription;
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__mobiles);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        assert getSupportActionBar() != null;   //null check
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.Black), PorterDuff.Mode.SRC_ATOP);
+        product = (Products) getIntent().getSerializableExtra(Constant.PRODUCT_MODEL);
 
+        imageList = new ArrayList<>();
+        imageList.add(product.getUrl());
+        if (product.getSubImages() != null) {
+            imageList.addAll(product.getSubImages());
+        }
 
-        leedRepository = new LeedRepositoryImpl();
-        progressDialogClass = new ProgressDialogClass(this);
+        sliderView = findViewById(R.id.imageSlider);
+        txtPrice = findViewById(R.id.price);
+        txtDescription = findViewById(R.id.desciption);
 
-        productsArrayList = new ArrayList<>();
+        txtDescription.setText(product.getProductDescription());
+        if (product.getProductPrice() != null && !product.getProductPrice().equalsIgnoreCase("")) {
+//            Typeface tf = Typeface.createFromAsset(getAssets(), "font/Rupee.ttf");
+//            txtPrice.setTypeface(tf);
+            txtPrice.setText("\u20B9 " + product.getProductPrice());
+        }else {
+            txtPrice.setText("");
+        }
 
-        recycleProducts = (RecyclerView) findViewById(R.id.recycleProducts);
-        getProducts();
+        adapter = new SliderAdapterExample(this);
+        sliderView.setSliderAdapter(adapter);
 
+        sliderView.setIndicatorAnimation(IndicatorAnimations.THIN_WORM); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
+        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_RIGHT);
+        sliderView.setIndicatorSelectedColor(Color.WHITE);
+        sliderView.setIndicatorUnselectedColor(Color.GRAY);
+        sliderView.setScrollTimeInSec(3);
+        sliderView.setAutoCycle(true);
+
+        renewItems();
+        addNewItem();
     }
-    private void getProducts() {
-        progressDialogClass.showDialog(this.getString(R.string.loading), this.getString(R.string.PLEASE_WAIT));
-        leedRepository.readProductsByCategory(Constant.CATEGORY_MOBILES, new CallBack() {
-            @Override
-            public void onSuccess(Object object) {
-                if (object != null) {
 
-                    productsArrayList = (ArrayList<Products>) object;
+    public void renewItems() {
 
-                    productsAdapter = new Products_Adapter(getApplication(), productsArrayList);
-                    //adding adapter to recyclerview
-                    recycleProducts.setAdapter(productsAdapter);
-                    recycleProducts.setHasFixedSize(true);
-                    recycleProducts.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                    productsAdapter.notifyDataSetChanged();
-                    progressDialogClass.dismissDialog();
+        adapter.renewItems(imageList);
+    }
+    public void addNewItem() {
 
-                }else {
-                    progressDialogClass.dismissDialog();
-                }
-
-            }
-
-            @Override
-            public void onError(Object object) {
-                progressDialogClass.dismissDialog();
-                Utility.showLongMessage(getApplication(), getString(R.string.server_error));
-            }
-        });
     }
 
 

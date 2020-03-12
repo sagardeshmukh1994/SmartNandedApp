@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Views.Activities.Activity_Product_Details"></activity>
+        <activity android:name=".Views.Activities.Activity_Others"></activity>
         <activity android:name=".Views.Activities.Activity_Products" />
         <activity android:name=".Views.Activities.Activity_Offers" />
         <activity android:name=".Views.Activities.Activity_Aggriculture" />

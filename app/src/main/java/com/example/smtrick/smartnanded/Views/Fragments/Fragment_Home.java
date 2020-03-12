@@ -25,10 +25,12 @@ import com.example.smtrick.smartnanded.Views.Activities.Activity_City;
 import com.example.smtrick.smartnanded.Views.Activities.Activity_Jobs;
 import com.example.smtrick.smartnanded.Views.Activities.Activity_Market;
 import com.example.smtrick.smartnanded.Views.Activities.Activity_Mobiles;
+import com.example.smtrick.smartnanded.Views.Activities.Activity_Products;
 import com.example.smtrick.smartnanded.Views.Activities.Activity_Properties;
 import com.example.smtrick.smartnanded.Views.Activities.Activity_Transport;
 import com.example.smtrick.smartnanded.Views.Activities.Activity_Travels;
 import com.example.smtrick.smartnanded.Views.Activities.MainActivity;
+import com.example.smtrick.smartnanded.constants.Constant;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,39 +77,48 @@ public class Fragment_Home extends Fragment implements View.OnClickListener {
             startActivity(intent);
         }
         else if (view == imgMarket){
-            Intent intent = new Intent(getContext(), Activity_Market.class);
+            Intent intent = new Intent(getContext(), Activity_Products.class);
+            intent.putExtra("CATEGORY", Constant.CATEGORY_MARKET);
             startActivity(intent);
         }
         else if (view == imgCity){
-            Intent intent = new Intent(getContext(), Activity_City.class);
+            Intent intent = new Intent(getContext(), Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_CITY);
             startActivity(intent);
         }
         else if (view == imgProperties){
-            Intent intent = new Intent(getContext(), Activity_Properties.class);
+            Intent intent = new Intent(getContext(), Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_PROPERTIES);
             startActivity(intent);
         }
         else if (view == imgBikes){
-            Intent intent = new Intent(getContext(), Activity_Bike.class);
+            Intent intent = new Intent(getContext(), Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_BIKE);
             startActivity(intent);
         }
         else if (view == imgCars){
-            Intent intent = new Intent(getContext(), Activity_Cars.class);
+            Intent intent = new Intent(getContext(), Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_CAR);
             startActivity(intent);
         }
         else if (view == imgTransport){
-            Intent intent = new Intent(getContext(), Activity_Transport.class);
+            Intent intent = new Intent(getContext(), Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_TRANSPORT);
             startActivity(intent);
         }
         else if (view == imgTravel){
-            Intent intent = new Intent(getContext(), Activity_Travels.class);
+            Intent intent = new Intent(getContext(), Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_TRAVELS);
             startActivity(intent);
         }
         else if (view == imgJobs){
-            Intent intent = new Intent(getContext(), Activity_Jobs.class);
+            Intent intent = new Intent(getContext(), Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_JOBS);
             startActivity(intent);
         }
         else if (view == imgMobiles){
-            Intent intent = new Intent(getContext(), Activity_Mobiles.class);
+            Intent intent = new Intent(getContext(), Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_MOBILES);
             startActivity(intent);
         }
     }
