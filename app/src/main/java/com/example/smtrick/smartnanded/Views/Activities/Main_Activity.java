@@ -1,6 +1,7 @@
 package com.example.smtrick.smartnanded.Views.Activities;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -155,6 +156,12 @@ public class Main_Activity extends AppCompatActivity
         if  (id == R.id.upload_product) {
             fragment = new Fragment_Upload_Products();
         }
+      if (id == R.id.logout) {
+
+             clearDataWithSignOut();
+
+
+        }
 
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -252,5 +259,17 @@ public class Main_Activity extends AppCompatActivity
         }
     }
 
+    private void clearDataWithSignOut() {
+        FirebaseAuth.getInstance().signOut();
+        appSharedPreference.clear();
+        logOut();
+    }
+    private void logOut() {
+        Intent intent = new Intent(this, LoginScreen.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+    }
 
 }

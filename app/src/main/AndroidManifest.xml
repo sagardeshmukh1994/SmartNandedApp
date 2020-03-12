@@ -35,7 +35,7 @@
             android:name=".Views.Activities.CropImageActivity"
             android:label="Crop Image"
             android:theme="@style/Base.Theme.AppCompat" />
-        
+
         <activity android:name=".Views.Activities.ResetPasswordActivity"></activity>
         <activity android:name=".Views.Activities.Activity_Others"></activity>
         <activity android:name=".Views.Activities.Activity_Products" />
