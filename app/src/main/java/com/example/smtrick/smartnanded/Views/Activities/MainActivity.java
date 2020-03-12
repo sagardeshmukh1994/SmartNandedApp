@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.smtrick.smartnanded.R;
+import com.example.smtrick.smartnanded.constants.Constant;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -63,51 +64,63 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view == frdMarket){
-            Intent intent = new Intent(MainActivity.this,Activity_Market.class);
+            Intent intent = new Intent(MainActivity.this,Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_MARKET);
             startActivity(intent);
         }
         else if (view == frdCity){
-            Intent intent = new Intent(MainActivity.this,Activity_City.class);
+            Intent intent = new Intent(MainActivity.this,Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_CITY);
             startActivity(intent);
         }
         else if (view == frdProperties){
-            Intent intent = new Intent(MainActivity.this,Activity_Properties.class);
+            Intent intent = new Intent(MainActivity.this,Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_PROPERTIES);
             startActivity(intent);
         }
         else if (view == frdbike){
             Intent intent = new Intent(MainActivity.this,Activity_Bike.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_BIKE);
             startActivity(intent);
         }
         else if (view == frdCar){
-            Intent intent = new Intent(MainActivity.this,Activity_Cars.class);
+            Intent intent = new Intent(MainActivity.this,Activity_Products.class);
+            intent.putExtra(Constant.CATEGORY_CAR,Constant.CATEGORY_CAR);
             startActivity(intent);
         }
         else if (view == frdTransport){
-            Intent intent = new Intent(MainActivity.this,Activity_Transport.class);
+            Intent intent = new Intent(MainActivity.this,Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_TRANSPORT);
             startActivity(intent);
         }
         else if (view == frdTravel){
-            Intent intent = new Intent(MainActivity.this,Activity_Travels.class);
+            Intent intent = new Intent(MainActivity.this,Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_TRAVELS);
             startActivity(intent);
         }
         else if (view == frdJobs){
-            Intent intent = new Intent(MainActivity.this,Activity_Jobs.class);
+            Intent intent = new Intent(MainActivity.this,Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_JOBS);
             startActivity(intent);
         }
         else if (view == frdMobiles){
-            Intent intent = new Intent(MainActivity.this,Activity_Mobiles.class);
+            Intent intent = new Intent(MainActivity.this,Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_MOBILES);
             startActivity(intent);
         }
         else if (view == frdAgree){
-            Intent intent = new Intent(MainActivity.this,Activity_Aggriculture.class);
+            Intent intent = new Intent(MainActivity.this,Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_AGRICULTURE);
             startActivity(intent);
         }
         else if (view == frdOffers){
-            Intent intent = new Intent(MainActivity.this,Activity_Offers.class);
+            Intent intent = new Intent(MainActivity.this,Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_OFFERS);
             startActivity(intent);
         }
         else if (view == frdOthers){
-            Intent intent = new Intent(MainActivity.this,Activity_Others.class);
+            Intent intent = new Intent(MainActivity.this, Activity_Products.class);
+            intent.putExtra("CATEGORY",Constant.CATEGORY_OTHERS);
             startActivity(intent);
         }
     }

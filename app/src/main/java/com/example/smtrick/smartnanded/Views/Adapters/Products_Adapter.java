@@ -31,12 +31,14 @@ public class Products_Adapter extends RecyclerView.Adapter<Products_Adapter.View
     //  public List<String> fileNameList;
     public List<Products> ProductList;
     Context mContext, nContext;
+    String CATEGORY;
 
 
     public Products_Adapter(Context fileNameList, List<Products> fileDoneList) {
 
         this.mContext = fileNameList;
         this.ProductList = fileDoneList;
+//        this.CATEGORY = category;
 
     }
 

@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 
@@ -20,13 +21,14 @@ import com.example.smtrick.smartnanded.utilities.Utility;
 
 import java.util.ArrayList;
 
-public class Activity_Others extends AppCompatActivity {
+public class Activity_Products extends AppCompatActivity {
 
     RecyclerView recycleProducts;
     ProgressDialogClass progressDialogClass;
     LeedRepository leedRepository;
     ArrayList<Products> productsArrayList;
     Products_Adapter productsAdapter;
+    String CATEGORY;
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -45,7 +47,8 @@ public class Activity_Others extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.Black), PorterDuff.Mode.SRC_ATOP);
 
-
+        Intent intent = getIntent();
+        CATEGORY = intent.getStringExtra("CATEGORY");
         leedRepository = new LeedRepositoryImpl();
         progressDialogClass = new ProgressDialogClass(this);
 
@@ -58,7 +61,7 @@ public class Activity_Others extends AppCompatActivity {
 
     private void getProducts() {
         progressDialogClass.showDialog(this.getString(R.string.loading), this.getString(R.string.PLEASE_WAIT));
-        leedRepository.readProductsByCategory(Constant.CATEGORY_OTHERS, new CallBack() {
+        leedRepository.readProductsByCategory(CATEGORY, new CallBack() {
             @Override
             public void onSuccess(Object object) {
                 if (object != null) {
@@ -73,7 +76,7 @@ public class Activity_Others extends AppCompatActivity {
                     productsAdapter.notifyDataSetChanged();
                     progressDialogClass.dismissDialog();
 
-                }else {
+                } else {
                     progressDialogClass.dismissDialog();
                 }
 
