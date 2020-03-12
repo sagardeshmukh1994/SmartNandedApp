@@ -36,7 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginScreen extends AppCompatActivity {
     TextView txtregister;
-    Button login, Register;
+    Button login, Register,btnReset;
     EditText etMobileNumber, etpassword;
     private AppSharedPreference appSharedPreference;
     private UserRepository userRepository;
@@ -54,8 +54,10 @@ public class LoginScreen extends AppCompatActivity {
         checkLoginState();
         Register = (Button) findViewById(R.id.buttonRegister);
         login = (Button) findViewById(R.id.buttonlogin);
+        btnReset = (Button) findViewById(R.id.btn_reset_password);
         etMobileNumber = (EditText) findViewById(R.id.edittext_mobile_number);
         etpassword = (EditText) findViewById(R.id.edittextpassword);
+
         Register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -83,6 +85,12 @@ public class LoginScreen extends AppCompatActivity {
                 Animation zoomOutAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoomin);
                 etpassword.startAnimation(zoomOutAnimation);
                 return false;
+            }
+        });
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginScreen.this, ResetPasswordActivity.class));
             }
         });
     }

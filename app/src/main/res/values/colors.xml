@@ -29,4 +29,8 @@
     <color name="drower_color">#27A08F</color>
     <color name="drower_icon_color">#24897B</color>
 
+    <color name="input_register">#888888</color>
+    <color name="input_register_bg">#3b4148</color>
+    <color name="input_register_hint">#5e6266</color>
+
 </resources>
