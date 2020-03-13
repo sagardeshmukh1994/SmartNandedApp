@@ -90,7 +90,7 @@ public class Fragment_Upload_Offers extends Fragment implements View.OnClickList
         editTextName = (EditText) view.findViewById(R.id.editText);
         Idescription = (EditText) view.findViewById(R.id.description);
         storageReference = FirebaseStorage.getInstance().getReference();
-        mDatabase = FirebaseDatabase.getInstance().getReference(Constant.DATABASE_PATH_UPLOADS);
+        mDatabase = FirebaseDatabase.getInstance().getReference(Constant.DATABASE_PATH_ADVERTISE);
 
 
         buttonChoose.setOnClickListener(this);

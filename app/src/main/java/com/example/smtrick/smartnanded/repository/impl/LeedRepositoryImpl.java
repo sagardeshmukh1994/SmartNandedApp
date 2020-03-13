@@ -1,5 +1,6 @@
 package com.example.smtrick.smartnanded.repository.impl;
 
+import com.example.smtrick.smartnanded.Models.Advertise;
 import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.callback.CallBack;
 import com.example.smtrick.smartnanded.constants.Constant;
@@ -61,6 +62,34 @@ public class LeedRepositoryImpl extends FirebaseTemplateRepository implements Le
                             Products leedsModel = suggestionSnapshot.getValue(Products.class);
 
                                 leedsModelArrayList.add(leedsModel);
+                        }
+                        callBack.onSuccess(leedsModelArrayList);
+                    } else {
+                        callBack.onSuccess(null);
+                    }
+                }
+            }
+
+            @Override
+            public void onError(Object object) {
+                callBack.onError(object);
+            }
+        });
+    }
+
+    @Override
+    public void readAdvertise(final CallBack callBack) {
+        final Query query = Constant.ADVERTISE_TABLE_REF;
+        fireBaseNotifyChange(query, new CallBack() {
+            @Override
+            public void onSuccess(Object object) {
+                if (object != null) {
+                    DataSnapshot dataSnapshot = (DataSnapshot) object;
+                    if (dataSnapshot.getValue() != null & dataSnapshot.hasChildren()) {
+                        ArrayList<Advertise> leedsModelArrayList = new ArrayList<>();
+                        for (DataSnapshot suggestionSnapshot : dataSnapshot.getChildren()) {
+                            Advertise add = suggestionSnapshot.getValue(Advertise.class);
+                            leedsModelArrayList.add(add);
                         }
                         callBack.onSuccess(leedsModelArrayList);
                     } else {

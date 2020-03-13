@@ -12,4 +12,6 @@ public interface LeedRepository {
 
     void readProductsByCategory(final String id, final CallBack callBack);
 
+    void readAdvertise(final CallBack callback);
+
 }

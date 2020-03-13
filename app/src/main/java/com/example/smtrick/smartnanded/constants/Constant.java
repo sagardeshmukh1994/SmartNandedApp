@@ -17,6 +17,7 @@ public class Constant {
     public static final DatabaseReference USER_TABLE_REF = DATABASE.getReference("users");
     public static final DatabaseReference LEEDS_TABLE_REF = DATABASE.getReference("leeds");
     public static final DatabaseReference PRODUCTS_TABLE_REF = DATABASE.getReference("Products");
+    public static final DatabaseReference ADVERTISE_TABLE_REF = DATABASE.getReference("Advertise");
 
 
 
@@ -24,8 +25,8 @@ public class Constant {
     public static final String CUSROMER_PROFILE_PATH = "images/customer";
     public static final String STORAGE_PATH_UPLOADS = "Products/";
     public static final String DATABASE_PATH_UPLOADS = "Products";
-    public static final String STORAGE_PATH_ADVERTISE = "Products/";
-    public static final String DATABASE_PATH_ADVERTISE = "Products";
+    public static final String STORAGE_PATH_ADVERTISE = "Advertise/";
+    public static final String DATABASE_PATH_ADVERTISE = "Advertise";
 
     /************************************** Firebase Authentication reference constants ***************************************************************************/
 
