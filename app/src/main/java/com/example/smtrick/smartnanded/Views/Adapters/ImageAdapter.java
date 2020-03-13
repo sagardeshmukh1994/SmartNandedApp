@@ -59,8 +59,7 @@ public class ImageAdapter extends PagerAdapter {
 //                Log.i("TAG", "This page was clicked: " + position);
 //                Toast.makeText(context, "This page was clicked:" +image1.get(position).getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, Activity_Advertise_Details.class);
-                intent.putExtra("imagename",image1.get(position).getName());
-                intent.putExtra("imagedescription",image1.get(position).getDesc());
+
                 intent.putExtra("imageurl",image1.get(position).getUrl());
                 context.startActivity(intent);
             }
