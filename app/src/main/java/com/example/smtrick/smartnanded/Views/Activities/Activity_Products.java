@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Html;
 
 import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.R;
@@ -45,10 +47,14 @@ public class Activity_Products extends AppCompatActivity {
         setSupportActionBar(toolbar);
         assert getSupportActionBar() != null;   //null check
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.Black), PorterDuff.Mode.SRC_ATOP);
+        toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.drower_icon_color), PorterDuff.Mode.SRC_ATOP);
+
 
         Intent intent = getIntent();
         CATEGORY = intent.getStringExtra("CATEGORY");
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#24897B'>"+CATEGORY+"</font>"));
+
+
         leedRepository = new LeedRepositoryImpl();
         progressDialogClass = new ProgressDialogClass(this);
 
