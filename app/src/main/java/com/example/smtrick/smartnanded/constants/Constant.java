@@ -24,6 +24,8 @@ public class Constant {
     public static final String CUSROMER_PROFILE_PATH = "images/customer";
     public static final String STORAGE_PATH_UPLOADS = "Products/";
     public static final String DATABASE_PATH_UPLOADS = "Products";
+    public static final String STORAGE_PATH_ADVERTISE = "Products/";
+    public static final String DATABASE_PATH_ADVERTISE = "Products";
 
     /************************************** Firebase Authentication reference constants ***************************************************************************/
 

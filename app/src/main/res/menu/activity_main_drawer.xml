@@ -11,6 +11,10 @@
             android:icon="@drawable/ic_cloud_upload_black_24dp"
             android:title="Upload Product" />
         <item
+            android:id="@+id/upload_add"
+            android:icon="@drawable/advertise"
+            android:title="Upload Advertise" />
+        <item
             android:id="@+id/logout"
             android:icon="@drawable/exit"
             android:title="Log Out" />

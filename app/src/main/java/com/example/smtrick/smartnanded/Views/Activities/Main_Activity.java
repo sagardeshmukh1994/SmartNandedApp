@@ -27,6 +27,7 @@ import com.example.smtrick.smartnanded.Exception.ExceptionUtil;
 import com.example.smtrick.smartnanded.Models.User;
 import com.example.smtrick.smartnanded.R;
 import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Home;
+import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Upload_Offers;
 import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Upload_Products;
 import com.example.smtrick.smartnanded.interfaces.OnFragmentInteractionListener;
 import com.example.smtrick.smartnanded.preferences.AppSharedPreference;
@@ -150,15 +151,18 @@ public class Main_Activity extends AppCompatActivity
         int id = item.getItemId();
         //NOTE: creating fragment object
         Fragment fragment = null;
-        if  (id == R.id.home) {
+        if (id == R.id.home) {
             fragment = new Fragment_Home();
         }
-        if  (id == R.id.upload_product) {
+        if (id == R.id.upload_product) {
             fragment = new Fragment_Upload_Products();
         }
-      if (id == R.id.logout) {
+        if (id == R.id.upload_add) {
+            fragment = new Fragment_Upload_Offers();
+        }
+        if (id == R.id.logout) {
 
-             clearDataWithSignOut();
+            clearDataWithSignOut();
 
 
         }
@@ -247,7 +251,6 @@ public class Main_Activity extends AppCompatActivity
             }
 
 
-
             if (!Utility.isEmptyOrNull(appSharedPreference.getProfileLargeImage())) {
                 Picasso.with(this).load(appSharedPreference.getProfileLargeImage()).resize(200, 200).centerCrop().placeholder(R.drawable.user).into(imageViewProfile);
             } else
@@ -264,6 +267,7 @@ public class Main_Activity extends AppCompatActivity
         appSharedPreference.clear();
         logOut();
     }
+
     private void logOut() {
         Intent intent = new Intent(this, LoginScreen.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
