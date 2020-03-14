@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -58,6 +61,10 @@ public class Fragment_Home extends Fragment implements View.OnClickListener {
     ViewPager viewPager;
     ArrayList<String> imageList;
 
+    private static final float ROTATE_FROM = 30.0f;
+    private static final float ROTATE_TO = 360.0f;
+    RotateAnimation r;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
@@ -93,6 +100,17 @@ public class Fragment_Home extends Fragment implements View.OnClickListener {
         imgJobs.setOnClickListener(this);
         imgMobiles.setOnClickListener(this);
 
+        CreateAnimation(imgMarket);
+        CreateAnimation(imgCity);
+        CreateAnimation(imgProperties);
+        CreateAnimation(imgBikes);
+        CreateAnimation(imgCars);
+        CreateAnimation(imgTransport);
+        CreateAnimation(imgTravel);
+        CreateAnimation(imgJobs);
+        CreateAnimation(imgMobiles);
+
+
         readAdvertise();
 
 
@@ -100,6 +118,13 @@ public class Fragment_Home extends Fragment implements View.OnClickListener {
 
 
         return view;
+    }
+
+    private void CreateAnimation(ImageView imgMarket) {
+        r = new RotateAnimation(ROTATE_FROM, ROTATE_TO, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        r.setDuration((long) 2*500);
+        r.setRepeatCount(0);
+        imgMarket.startAnimation(r);
     }
 
     private void readAdvertise() {
@@ -136,6 +161,7 @@ public class Fragment_Home extends Fragment implements View.OnClickListener {
             Intent intent = new Intent(getContext(), MainActivity.class);
             startActivity(intent);
         } else if (view == imgMarket) {
+
             Intent intent = new Intent(getContext(), Activity_Products.class);
             intent.putExtra("CATEGORY", Constant.CATEGORY_MARKET);
             startActivity(intent);
