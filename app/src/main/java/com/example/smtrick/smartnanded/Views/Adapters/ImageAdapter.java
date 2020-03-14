@@ -78,4 +78,6 @@ public class ImageAdapter extends PagerAdapter {
         vp.removeView(view);
 
     }
+
+    
 }
