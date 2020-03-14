@@ -179,6 +179,10 @@ public class Fragment_Upload_Offers extends Fragment implements View.OnClickList
 
                                     String uploadId = mDatabase.push().getKey();
                                     mDatabase.child(uploadId).setValue(upload);
+
+                                    editTextName.setText("");
+                                    Idescription.setText("");
+                                    imageView.setImageResource(0);
                                 }
                             });
 
