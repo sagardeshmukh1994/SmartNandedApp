@@ -57,9 +57,7 @@ public class ImageAdapter extends PagerAdapter {
             public void onClick(View v){
                 //this will log the page number that was click
 //                Log.i("TAG", "This page was clicked: " + position);
-//                Toast.makeText(context, "This page was clicked:" +image1.get(position).getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, Activity_Advertise_Details.class);
-
                 intent.putExtra("imageurl",image1.get(position).getUrl());
                 context.startActivity(intent);
             }

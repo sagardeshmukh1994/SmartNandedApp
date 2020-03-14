@@ -75,7 +75,8 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_marginTop="-15dp"
-                            android:text="Super Market" />
+                            android:text="Super Market"
+                            android:textColor="@color/Black"/>
 
                     </LinearLayout>
 
@@ -104,7 +105,8 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_marginTop="-15dp"
-                            android:text="My City" />
+                            android:text="My City"
+                            android:textColor="@color/Black"/>
 
                     </LinearLayout>
 
@@ -133,7 +135,8 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_marginTop="-15dp"
-                            android:text="Properties" />
+                            android:text="Properties"
+                            android:textColor="@color/Black"/>
 
                     </LinearLayout>
 
@@ -174,7 +177,8 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_marginTop="-15dp"
-                            android:text="Bikes" />
+                            android:text="Bikes"
+                            android:textColor="@color/Black"/>
 
                     </LinearLayout>
 
@@ -203,7 +207,8 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_marginTop="-15dp"
-                            android:text="Cars" />
+                            android:text="Cars"
+                            android:textColor="@color/Black"/>
 
                     </LinearLayout>
 
@@ -232,7 +237,8 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_marginTop="-15dp"
-                            android:text="Transport" />
+                            android:text="Transport"
+                            android:textColor="@color/Black"/>
 
                     </LinearLayout>
 
@@ -274,7 +280,8 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_marginTop="-15dp"
-                            android:text="Travel" />
+                            android:text="Travel"
+                            android:textColor="@color/Black"/>
 
                     </LinearLayout>
 
@@ -303,7 +310,8 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_marginTop="-15dp"
-                            android:text="Jobs" />
+                            android:text="Jobs"
+                            android:textColor="@color/Black"/>
 
                     </LinearLayout>
 
@@ -332,7 +340,8 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_marginTop="-15dp"
-                            android:text="Mobiles" />
+                            android:text="Mobiles"
+                            android:textColor="@color/Black"/>
 
                     </LinearLayout>
 
