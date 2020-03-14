@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/adds"
         android:layout_gravity="center"
-        android:layout_margin="2dp"
+        android:layout_margin="0dp"
         card_view:cardBackgroundColor="@color/card_color"
         card_view:cardCornerRadius="0dp"
         card_view:cardElevation="4dp"
