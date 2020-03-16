@@ -27,6 +27,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smtrick.smartnanded.Exception.ExceptionUtil;
@@ -152,7 +153,7 @@ public class Fragment_Reports extends Fragment {
         try {
 
 //                    catalogprogress.setVisibility(View.VISIBLE);
-                mdataRefpatient = FirebaseDatabase.getInstance().getReference("Members");
+                mdataRefpatient = FirebaseDatabase.getInstance().getReference("users");
                 mdataRefpatient.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -166,12 +167,12 @@ public class Fragment_Reports extends Fragment {
 
                         total.setText(String.valueOf(catalogList.size()));
 
-//                            leedsModelArrayList = (ArrayList<MemberVO>) catalogList;
-//                            adapter = new ReportAdapter(getActivity(), catalogList, Language);
-//                            //adding adapter to recyclerview
-//                            catalogRecycler.setAdapter(adapter);
-//                            catalogRecycler.setHasFixedSize(true);
-//                            catalogRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+                            leedsModelArrayList = (ArrayList<User>) catalogList;
+                            adapter = new ReportAdapter(getActivity(), catalogList);
+
+                            catalogRecycler.setAdapter(adapter);
+                            catalogRecycler.setHasFixedSize(true);
+                            catalogRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
                     }
@@ -281,9 +282,9 @@ public class Fragment_Reports extends Fragment {
             phraseTable5.setWidths(new int[]{30, 40, 30});
             phraseTable5.setHorizontalAlignment(Element.ALIGN_CENTER);
 
-            phraseTable5.addCell("MEMBER NAME");
+            phraseTable5.addCell("USER NAME");
             phraseTable5.addCell("CONTACT");
-            phraseTable5.addCell("WARD");
+            phraseTable5.addCell("ROLE");
 
             phrase5.setFont(paraFont2);
 
@@ -303,7 +304,7 @@ public class Fragment_Reports extends Fragment {
 
                 phraseTable.addCell(leedsModelArrayList.get(i).getUserName());
                 phraseTable.addCell(leedsModelArrayList.get(i).getMobileNumber());
-                phraseTable.addCell(leedsModelArrayList.get(i).getUserId());
+                phraseTable.addCell(leedsModelArrayList.get(i).getRole());
 
                 phrase.setFont(paraFont2);
 
