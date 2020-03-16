@@ -44,26 +44,27 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
         final User pveo = leedsModelArrayList.get(position);
 
         holder.name1.setText(pveo.getUserName());
+        holder.number.setText(pveo.getMobileNumber());
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        holder.cardView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+////                Intent intent = new Intent(holder.cardView.getContext(), View_Member_Report_Activity.class);
+////                intent.putExtra("report", pveo);
+////                holder.cardView.getContext().startActivity(intent);
+//
+//            }
+//        });
 
-//                Intent intent = new Intent(holder.cardView.getContext(), View_Member_Report_Activity.class);
-//                intent.putExtra("report", pveo);
-//                holder.cardView.getContext().startActivity(intent);
-
-            }
-        });
-
-        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-
-// custom dialog
-                return true;
-            }
-        });
+//        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View view) {
+//
+//// custom dialog
+//                return true;
+//            }
+//        });
 
     }
 
@@ -74,17 +75,17 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        public CardView cardView;
-        public TextView name1;
+
+        public TextView name1,number;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            cardView = (CardView) itemView.findViewById(R.id.card);
+
 
             name1 = (TextView) itemView.findViewById(R.id.textpname);
-
+            number = (TextView) itemView.findViewById(R.id.textpnumber);
 
 
 
