@@ -33,5 +33,6 @@
     <color name="input_register_bg">#3b4148</color>
     <color name="input_register_hint">#5e6266</color>
     <color name="card_color">#f6f6f6</color>
+    <color name="backgroundcolor">#e0f2ec</color>
 
 </resources>
