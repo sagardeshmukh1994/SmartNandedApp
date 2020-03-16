@@ -1,9 +1,11 @@
 package com.example.smtrick.smartnanded.Views.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smtrick.smartnanded.Models.User;
 import com.example.smtrick.smartnanded.R;
+import com.example.smtrick.smartnanded.Views.Activities.View_User_Report_Activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,16 +49,16 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
         holder.name1.setText(pveo.getUserName());
         holder.number.setText(pveo.getMobileNumber());
 
-//        holder.cardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-////                Intent intent = new Intent(holder.cardView.getContext(), View_Member_Report_Activity.class);
-////                intent.putExtra("report", pveo);
-////                holder.cardView.getContext().startActivity(intent);
-//
-//            }
-//        });
+        holder.layoutUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(holder.layoutUser.getContext(), View_User_Report_Activity.class);
+                intent.putExtra("report", pveo);
+                holder.layoutUser.getContext().startActivity(intent);
+
+            }
+        });
 
 //        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
 //            @Override
@@ -76,17 +79,17 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
     class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        public TextView name1,number;
+        public TextView name1, number;
+        private LinearLayout layoutUser;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
 
 
-
             name1 = (TextView) itemView.findViewById(R.id.textpname);
             number = (TextView) itemView.findViewById(R.id.textpnumber);
-
+            layoutUser = (LinearLayout) itemView.findViewById(R.id.card);
 
 
         }

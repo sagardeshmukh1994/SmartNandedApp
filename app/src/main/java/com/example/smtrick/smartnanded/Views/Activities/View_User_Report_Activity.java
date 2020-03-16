@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -58,9 +59,9 @@ public class View_User_Report_Activity extends AppCompatActivity implements View
 
     private Button AddmainData;
 
-    private TextView txtmemberward, txtmembername, txtmemberbirthdate, txtmembereducation, txtmemberoccupation;
-    private String Smemberward, Smembername, Smemberbirthdate, Smembereducation, Smemberoccupation;
-    private TextView wardnumber, name, age, dob, education, heading, details;
+    private TextView  txtmembername, txtmembernumber, txtmemberID, txtmemberRole,txtmemberRegistrationDate;
+    private String Smembername, Smembernumber, Smemberid, Smemberrole,SmemberRegistrationDate;
+//    private TextView wardnumber, name, age, dob, education, heading, details;
 
     User invoice;
     LeedRepository leedRepository;
@@ -78,32 +79,27 @@ public class View_User_Report_Activity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_user_report_activity);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-//        getSupportActionBar().setHomeButtonEnabled(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         assert getSupportActionBar() != null;   //null check
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.drower_icon_color), PorterDuff.Mode.SRC_ATOP);
+
 
         Intent intent = getIntent();
         invoice = (User) intent.getSerializableExtra("report");
         leedRepository = new LeedRepositoryImpl();
 
-        // AddsubData = (Button)findViewById(R.id.submit);
         AddmainData = (Button) findViewById(R.id.submit);
-        //spinneroccu = (Spinner)findViewById(R.id.occupation);
-        txtmemberward = (TextView) findViewById(R.id.wardnumber);
-        txtmembername = (TextView) findViewById(R.id.membername);
-        txtmemberbirthdate = (TextView) findViewById(R.id.dateofbirth);
-        txtmembereducation = (TextView) findViewById(R.id.education);
+
+        txtmembername = (TextView) findViewById(R.id.namevalue);
+        txtmembernumber = (TextView) findViewById(R.id.numbervalue);
+        txtmemberID = (TextView) findViewById(R.id.idvalue);
+        txtmemberRegistrationDate = (TextView) findViewById(R.id.registrationdatevalue);
+        txtmemberRole = (TextView) findViewById(R.id.rolevalue);
 
 
-        heading = (TextView) findViewById(R.id.reportheading);
-        details = (TextView) findViewById(R.id.reportdetails);
-        wardnumber = (TextView) findViewById(R.id.doctor);
-        name = (TextView) findViewById(R.id.patient);
-        age = (TextView) findViewById(R.id.age);
-        dob = (TextView) findViewById(R.id.memberdob);
-        education = (TextView) findViewById(R.id.membereducation);
 
         getdata();
         AddmainData.setOnClickListener(this);
@@ -112,27 +108,27 @@ public class View_User_Report_Activity extends AppCompatActivity implements View
 
     private void getdata() {
 
-        Smemberward = invoice.getUserName();
-        Smembername = invoice.getMobileNumber();
-        Smemberbirthdate = invoice.getAgentId();
-        Smembereducation = invoice.getRole();
-        Smemberoccupation = Utility.convertMilliSecondsToFormatedDate(invoice.getCreatedDateTimeLong(), GLOBAL_DATE_FORMATE);
+        Smembername = invoice.getUserName();
+        Smembernumber = invoice.getMobileNumber();
+        Smemberid = invoice.getAgentId();
+        Smemberrole = invoice.getRole();
+        SmemberRegistrationDate = Utility.convertMilliSecondsToFormatedDate(invoice.getCreatedDateTimeLong(), GLOBAL_DATE_FORMATE);
 
 
-        if (Smemberward != null) {
-            txtmemberward.setText(Smemberward);
-        }
         if (Smembername != null) {
             txtmembername.setText(Smembername);
         }
-        if (Smemberbirthdate != null) {
-            txtmemberbirthdate.setText(Smemberbirthdate);
+        if (Smembernumber != null) {
+            txtmembernumber.setText(Smembernumber);
         }
-        if (Smembereducation != null) {
-            txtmembereducation.setText(Smembereducation);
+        if (Smemberid != null) {
+            txtmemberID.setText(Smemberid);
         }
-        if (Smemberoccupation != null) {
-            txtmemberoccupation.setText(Smemberoccupation);
+        if (Smemberrole != null) {
+            txtmemberRole.setText(Smemberrole);
+        }
+        if (SmemberRegistrationDate != null) {
+            txtmemberRegistrationDate.setText(SmemberRegistrationDate);
         }
 
 

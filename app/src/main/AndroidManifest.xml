@@ -52,6 +52,7 @@
         <activity android:name=".Views.Activities.Activity_Market" />
         <activity android:name=".Views.Activities.MainActivity" />
         <activity android:name=".Views.Activities.Activity_Advertise_Details" />
+        <activity android:name=".Views.Activities.View_User_Report_Activity" />
     </application>
 
 </manifest>

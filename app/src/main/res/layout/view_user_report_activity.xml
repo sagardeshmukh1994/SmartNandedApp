@@ -7,6 +7,13 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -80,15 +87,15 @@
                     android:weightSum="2">
 
                     <TextView
-                        android:id="@+id/patient"
+                        android:id="@+id/number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:text="Member Name" />
+                        android:text="User Number" />
 
                     <TextView
-                        android:id="@+id/membername"
+                        android:id="@+id/numbervalue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -107,15 +114,15 @@
                     android:weightSum="2">
 
                     <TextView
-                        android:id="@+id/age"
+                        android:id="@+id/id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:text="Member Age" />
+                        android:text="User ID" />
 
                     <TextView
-                        android:id="@+id/memberage"
+                        android:id="@+id/idvalue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -136,15 +143,15 @@
                     android:weightSum="2">
 
                     <TextView
-                        android:id="@+id/memberdob"
+                        android:id="@+id/role"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:text="Date Of Birth" />
+                        android:text="ROLE" />
 
                     <TextView
-                        android:id="@+id/dateofbirth"
+                        android:id="@+id/rolevalue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -163,15 +170,15 @@
                     android:weightSum="2">
 
                     <TextView
-                        android:id="@+id/membereducation"
+                        android:id="@+id/registrationdate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:text="Education" />
+                        android:text="REGISTRATION DAY" />
 
                     <TextView
-                        android:id="@+id/education"
+                        android:id="@+id/registrationdatevalue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
