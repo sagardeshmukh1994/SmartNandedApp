@@ -27,6 +27,7 @@ import com.example.smtrick.smartnanded.Exception.ExceptionUtil;
 import com.example.smtrick.smartnanded.Models.User;
 import com.example.smtrick.smartnanded.R;
 import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Home;
+import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Reports;
 import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Upload_Offers;
 import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Upload_Products;
 import com.example.smtrick.smartnanded.interfaces.OnFragmentInteractionListener;
@@ -159,6 +160,9 @@ public class Main_Activity extends AppCompatActivity
         }
         if (id == R.id.upload_add) {
             fragment = new Fragment_Upload_Offers();
+        }
+        if (id == R.id.reports) {
+            fragment = new Fragment_Reports();
         }
         if (id == R.id.logout) {
 

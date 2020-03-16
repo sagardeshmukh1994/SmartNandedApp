@@ -54,6 +54,8 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.app.infideap.stylishwidget:stylish-widget:1.5.1'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.itextpdf:itextg:5.5.10'
+
 
     implementation project(':drawerbehavior')
     implementation project(':autoimageslider')
