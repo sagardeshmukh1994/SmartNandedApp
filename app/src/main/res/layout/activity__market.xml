@@ -3,18 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-  >
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="52dp"
+        android:layout_below="@id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_margin="16dp"
+            android:orientation="vertical"
+
             android:weightSum="100">
 
             <LinearLayout
@@ -44,9 +53,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
-                android:layout_weight="70"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:layout_weight="70"
                 android:orientation="vertical"
                 android:weightSum="1">
 
@@ -55,28 +64,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.25"
-                    android:text="Price"
-                    android:padding="5dp"
                     android:background="@drawable/button_border"
+                    android:padding="5dp"
+                    android:text="Price"
                     android:textColor="@color/drower_icon_color" />
 
                 <TextView
                     android:id="@+id/productDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
                     android:layout_weight="0.25"
                     android:text="Description" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                       android:layout_marginLeft="5dp"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
                         android:text="Quantity" />
 
                     <LinearLayout
@@ -88,8 +99,8 @@
                             android:id="@+id/minus"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="30"
                             android:layout_gravity="center"
+                            android:layout_weight="30"
                             app:srcCompat="@drawable/minus" />
 
                         <EditText
@@ -97,40 +108,40 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="25"
-                            android:textAlignment="center"
+                            android:background="@drawable/button_border"
                             android:editable="false"
                             android:focusable="false"
-                            android:background="@drawable/button_border"
+                            android:textAlignment="center"
                             android:textColor="@color/Black" />
 
                         <ImageView
                             android:id="@+id/plus"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="30"
                             android:layout_gravity="center"
+                            android:layout_weight="30"
                             app:srcCompat="@drawable/plus" />
 
                     </LinearLayout>
 
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spQuantity"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:background="@drawable/button_border"-->
-<!--                        android:padding="10dp"-->
-<!--                        android:layout_marginLeft="5dp" />-->
+                    <!--                    <Spinner-->
+                    <!--                        android:id="@+id/spQuantity"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:background="@drawable/button_border"-->
+                    <!--                        android:padding="10dp"-->
+                    <!--                        android:layout_marginLeft="5dp" />-->
 
-<!--                    <Button-->
-<!--                        android:id="@+id/bOrder"-->
-<!--                        android:layout_width="0dip"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_weight="0.5"-->
-<!--                        android:background="@color/colorPrimary"-->
-<!--                        android:text="Order"-->
-<!--                        android:textAllCaps="true"-->
-<!--                        android:textColor="@color/drower_icon_color"-->
-<!--                        android:textStyle="bold" />-->
+                    <!--                    <Button-->
+                    <!--                        android:id="@+id/bOrder"-->
+                    <!--                        android:layout_width="0dip"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_weight="0.5"-->
+                    <!--                        android:background="@color/colorPrimary"-->
+                    <!--                        android:text="Order"-->
+                    <!--                        android:textAllCaps="true"-->
+                    <!--                        android:textColor="@color/drower_icon_color"-->
+                    <!--                        android:textStyle="bold" />-->
 
                 </LinearLayout>
 
@@ -138,10 +149,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@color/darkgraycolor" />
 
             </LinearLayout>
-
 
 
         </LinearLayout>
@@ -154,14 +165,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
-<!--        <ImageButton-->
-<!--            android:id="@+id/whatsapp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/button_border"-->
-<!--            android:src="@drawable/whatsapp" />-->
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/whatsapp"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:background="@drawable/button_border"-->
+        <!--            android:src="@drawable/whatsapp" />-->
 
         <Button
             android:id="@+id/message"
@@ -169,9 +180,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_weight="1"
+            android:background="@color/drower_icon_color"
             android:text="ADD TO CART"
-            android:textColor="@color/white"
-            android:background="@color/drower_icon_color" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

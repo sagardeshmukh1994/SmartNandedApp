@@ -45,18 +45,25 @@ public class Activity_Market extends AppCompatActivity {
     public EditText count;
 
     @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__market);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.drower_icon_color), PorterDuff.Mode.SRC_ATOP);
+
         product = (Products) getIntent().getSerializableExtra(Constant.PRODUCT_MODEL);
 
         imageList = new ArrayList<>();
-        imageList.add(product.getUrl());
-        if (product.getSubImages() != null) {
-            imageList.addAll(product.getSubImages());
-        }
-
 
         txtPrice = (TextView) findViewById(R.id.productPrice);
         txtDescription = (TextView) findViewById(R.id.productDescription);
@@ -64,14 +71,14 @@ public class Activity_Market extends AppCompatActivity {
         pluse = (ImageView) findViewById(R.id.plus);
         minus = (ImageView) findViewById(R.id.minus);
         count = (EditText) findViewById(R.id.count);
-
+        count.setText("1");
 
         txtDescription.setText(product.getProductDescription());
         if (product.getProductPrice() != null && !product.getProductPrice().equalsIgnoreCase("")) {
 //            Typeface tf = Typeface.createFromAsset(getAssets(), "font/Rupee.ttf");
 //            txtPrice.setTypeface(tf);
             txtPrice.setText("\u20B9 " + product.getProductPrice());
-        }else {
+        } else {
             txtPrice.setText("");
         }
         Glide.with(getApplicationContext()).load(product.getUrl()).placeholder(R.drawable.loading).into(imgproduct);
@@ -97,7 +104,6 @@ public class Activity_Market extends AppCompatActivity {
 
 
     }
-
 
 
 }
