@@ -6,7 +6,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Constant {
     /************************************** Firebase Storage reference constants ***************************************************************************/
@@ -83,4 +85,10 @@ public class Constant {
     public static final String CATEGORY_OFFERS = "Offers";
     public static final String CATEGORY_OTHERS = "Others";
 
+
+    public static final List<Integer> QUANTITY_LIST = new ArrayList<Integer>();
+
+    static {
+        for (int i = 1; i < 11; i++) QUANTITY_LIST.add(i);
+    }
 }

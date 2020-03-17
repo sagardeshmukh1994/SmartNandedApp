@@ -8,10 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.R;
 import com.example.smtrick.smartnanded.Views.Adapters.Products_Adapter;
@@ -35,7 +40,9 @@ public class Activity_Market extends AppCompatActivity {
     ArrayList<String> imageList;
     TextView txtPrice, txtDescription;
     ImageView imgproduct;
-    Spinner psinnerQuantity;
+    final int[] i = {0};
+    public ImageView pluse, minus;
+    public EditText count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +61,10 @@ public class Activity_Market extends AppCompatActivity {
         txtPrice = (TextView) findViewById(R.id.productPrice);
         txtDescription = (TextView) findViewById(R.id.productDescription);
         imgproduct = (ImageView) findViewById(R.id.ivProductImage);
-        psinnerQuantity = (Spinner) findViewById(R.id.spQuantity);
+        pluse = (ImageView) findViewById(R.id.plus);
+        minus = (ImageView) findViewById(R.id.minus);
+        count = (EditText) findViewById(R.id.count);
+
 
         txtDescription.setText(product.getProductDescription());
         if (product.getProductPrice() != null && !product.getProductPrice().equalsIgnoreCase("")) {
@@ -64,12 +74,29 @@ public class Activity_Market extends AppCompatActivity {
         }else {
             txtPrice.setText("");
         }
+        Glide.with(getApplicationContext()).load(product.getUrl()).placeholder(R.drawable.loading).into(imgproduct);
 
-
+        minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (i[0] == 0) {
+                    Toast.makeText(getApplicationContext(), "Please increase", Toast.LENGTH_SHORT).show();
+                } else {
+                    i[0]--;
+                    count.setText(String.valueOf(i[0]));
+                }
+            }
+        });
+        pluse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                i[0] = i[0] + 1;
+                count.setText(String.valueOf(i[0]));
+            }
+        });
 
 
     }
-
 
 
 
