@@ -35,4 +35,8 @@
     <color name="card_color">#f6f6f6</color>
     <color name="backgroundcolor">#e0f2ec</color>
 
+    <color name="green">#008000</color>
+    <color name="orange">#ff5500</color>
+    <color name="blue">#0000FF</color>
+
 </resources>

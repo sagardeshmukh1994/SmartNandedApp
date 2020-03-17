@@ -91,4 +91,6 @@ public class Constant {
     static {
         for (int i = 1; i < 11; i++) QUANTITY_LIST.add(i);
     }
+
+    public static final String CURRENCY = "\u20B9";
 }

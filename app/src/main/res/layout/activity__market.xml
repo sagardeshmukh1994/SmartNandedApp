@@ -15,8 +15,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="52dp"
-        android:layout_below="@id/toolbar">
+        android:layout_below="@id/toolbar"
+        android:layout_marginBottom="52dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -124,24 +124,6 @@
 
                     </LinearLayout>
 
-                    <!--                    <Spinner-->
-                    <!--                        android:id="@+id/spQuantity"-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:background="@drawable/button_border"-->
-                    <!--                        android:padding="10dp"-->
-                    <!--                        android:layout_marginLeft="5dp" />-->
-
-                    <!--                    <Button-->
-                    <!--                        android:id="@+id/bOrder"-->
-                    <!--                        android:layout_width="0dip"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_weight="0.5"-->
-                    <!--                        android:background="@color/colorPrimary"-->
-                    <!--                        android:text="Order"-->
-                    <!--                        android:textAllCaps="true"-->
-                    <!--                        android:textColor="@color/drower_icon_color"-->
-                    <!--                        android:textStyle="bold" />-->
 
                 </LinearLayout>
 
@@ -165,17 +147,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
-        <!--        <ImageButton-->
-        <!--            android:id="@+id/whatsapp"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_alignParentBottom="true"-->
-        <!--            android:layout_weight="1"-->
-        <!--            android:background="@drawable/button_border"-->
-        <!--            android:src="@drawable/whatsapp" />-->
 
         <Button
-            android:id="@+id/message"
+            android:id="@+id/addtocart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

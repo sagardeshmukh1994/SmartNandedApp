@@ -3,6 +3,7 @@ package com.example.smtrick.smartnanded.Models;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
@@ -24,6 +25,8 @@ public class Products implements Serializable {
     public String carModel;
     public String carYear;
     public String carFuel;
+    private String pName;
+    private BigDecimal pPrice;
 
 
     // Default constructor required for calls to
@@ -98,4 +101,5 @@ public class Products implements Serializable {
     public void setSubImages(ArrayList<String> subImages) {
         this.subImages = subImages;
     }
+
 }

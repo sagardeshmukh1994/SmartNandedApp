@@ -1,48 +1,50 @@
 package com.example.smtrick.smartnanded.Views.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.graphics.Color;
+import android.app.AlertDialog;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.R;
-import com.example.smtrick.smartnanded.Views.Adapters.Products_Adapter;
-import com.example.smtrick.smartnanded.Views.Adapters.SliderAdapterExample;
-import com.example.smtrick.smartnanded.Views.Dialog.ProgressDialogClass;
-import com.example.smtrick.smartnanded.callback.CallBack;
 import com.example.smtrick.smartnanded.constants.Constant;
-import com.example.smtrick.smartnanded.repository.LeedRepository;
-import com.example.smtrick.smartnanded.repository.impl.LeedRepositoryImpl;
-import com.example.smtrick.smartnanded.utilities.Utility;
-import com.smarteist.autoimageslider.IndicatorAnimations;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderView;
+import com.example.smtrick.smartnanded.utilities.FragranceContract;
 
 import java.util.ArrayList;
 
 public class Activity_Market extends AppCompatActivity {
 
+    public static final String  FRAGRANCE_NAME = "fragranceName";
+    public static final String  FRAGRANCE_DESCRIPTION = "fragranceDescription";
+    public static final String  FRAGRANCE_RATING = "fragranceRating";
+    public static final String  FRAGRANCE_IMAGE = "fragranceImage";
+    public static final String  FRAGRANCE_PRICE = "fragrancePrice";
 
     Products product;
     ArrayList<String> imageList;
     TextView txtPrice, txtDescription;
     ImageView imgproduct;
+    Button btnAddToCart;
     final int[] i = {0};
     public ImageView pluse, minus;
     public EditText count;
+    String fragranceName,fragImage,description;
+    Double price;
+    private int mQuantity = 1;
+    private double mTotalPrice;
+    ContentResolver mContentResolver;
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -61,6 +63,8 @@ public class Activity_Market extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.drower_icon_color), PorterDuff.Mode.SRC_ATOP);
 
+        mContentResolver = this.getContentResolver();
+
         product = (Products) getIntent().getSerializableExtra(Constant.PRODUCT_MODEL);
 
         imageList = new ArrayList<>();
@@ -71,6 +75,7 @@ public class Activity_Market extends AppCompatActivity {
         pluse = (ImageView) findViewById(R.id.plus);
         minus = (ImageView) findViewById(R.id.minus);
         count = (EditText) findViewById(R.id.count);
+        btnAddToCart = (Button) findViewById(R.id.addtocart);
         count.setText("1");
 
         txtDescription.setText(product.getProductDescription());
@@ -82,6 +87,11 @@ public class Activity_Market extends AppCompatActivity {
             txtPrice.setText("");
         }
         Glide.with(getApplicationContext()).load(product.getUrl()).placeholder(R.drawable.loading).into(imgproduct);
+
+        fragranceName = product.getProductName();
+        description = product.getProductDescription();
+        fragImage = product.getUrl();
+        price = Double.valueOf(product.getProductPrice());
 
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,8 +112,57 @@ public class Activity_Market extends AppCompatActivity {
             }
         });
 
+        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
 
     }
 
+    public void addToCart(View view) {
+        // Create an AlertDialog.Builder and set the message, and click listeners
+        // for the postivie and negative buttons on the dialog.
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.add_to_cart);
+        builder.setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
 
+                addValuesToCart();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked the "Cancel" button, so dismiss the dialog
+                // and continue editing the items.
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+
+        // Create and show the AlertDialog
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void addValuesToCart() {
+
+        ContentValues cartValues = new ContentValues();
+
+        cartValues.put(FragranceContract.FragranceEntry.COLUMN_CART_NAME, fragranceName);
+        cartValues.put(FragranceContract.FragranceEntry.COLUMN_CART_IMAGE, fragImage);
+        cartValues.put(FragranceContract.FragranceEntry.COLUMN_CART_QUANTITY, mQuantity);
+        cartValues.put(FragranceContract.FragranceEntry.COLUMN_CART_TOTAL_PRICE, mTotalPrice);
+        
+
+        mContentResolver.insert(FragranceContract.FragranceEntry.CONTENT_URI, cartValues);
+
+        Toast.makeText(this, "Successfully added to Cart",
+                Toast.LENGTH_SHORT).show();
+
+
+    }
 }
