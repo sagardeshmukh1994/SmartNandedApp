@@ -19,6 +19,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -67,6 +69,7 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
     private RecyclerView recycleSubImages;
     private Product_SubImages_Adapter productSubImagesAdapter;
 
+
     //uri to store file
     private Uri filePath;
     private String downloadurl1;
@@ -92,7 +95,7 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_imageupload, container, false);
+        final View view = inflater.inflate(R.layout.fragment_imageupload, container, false);
 
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
@@ -108,6 +111,8 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
         editTextPrice = (EditText) view.findViewById(R.id.editTextProductPrice);
         Idescription = (EditText) view.findViewById(R.id.description);
         spinnerCategory = (Spinner) view.findViewById(R.id.spinnerCategory);
+
+
 
         recycleSubImages = (RecyclerView) view.findViewById(R.id.recycleSubImages);
 
@@ -125,6 +130,8 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
         buttonChoose.setOnClickListener(this);
         buttonChooseSubImages.setOnClickListener(this);
         buttonUpload.setOnClickListener(this);
+
+
 
 
         return view;
@@ -273,7 +280,7 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
                                                         }
                                                     });
                                         }
-                                    }else {
+                                    } else {
                                         Products product = fillUserModel("part");
                                         mDatabase.child(product.getProductId()).setValue(product);
                                         Toast.makeText(getContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
@@ -321,12 +328,14 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
             product.setProductCategory(spinnerCategory.getSelectedItem().toString());
             product.setUrl(downloadurl1);
             product.setSubImages(fileDoneList1);
+
             product.setProductId(uploadId);
-        }else if (h.equalsIgnoreCase("part")){
+        } else if (h.equalsIgnoreCase("part")) {
             product.setProductDescription(Idescription.getText().toString().trim());
             product.setProductName(editTextName.getText().toString().trim());
             product.setProductPrice(editTextPrice.getText().toString().trim());
             product.setProductCategory(spinnerCategory.getSelectedItem().toString());
+
             product.setUrl(downloadurl1);
 //            product.setSubImages(fileDoneList1);
             product.setProductId(uploadId);
@@ -363,6 +372,7 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
                 Toast.makeText(getContext(), "Image Required!", Toast.LENGTH_SHORT).show();
                 return;
             }
+            
             uploadFile();
 
         }

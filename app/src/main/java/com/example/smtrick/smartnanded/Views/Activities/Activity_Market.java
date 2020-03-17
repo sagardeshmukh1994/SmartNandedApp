@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.smtrick.smartnanded.Models.Products;
@@ -28,11 +30,12 @@ import java.util.ArrayList;
 
 public class Activity_Market extends AppCompatActivity {
 
-    SliderView sliderView;
-    private SliderAdapterExample adapter;
+
     Products product;
     ArrayList<String> imageList;
     TextView txtPrice, txtDescription;
+    ImageView imgproduct;
+    Spinner psinnerQuantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +50,11 @@ public class Activity_Market extends AppCompatActivity {
             imageList.addAll(product.getSubImages());
         }
 
-        sliderView = findViewById(R.id.imageSlider);
-        txtPrice = findViewById(R.id.price);
-        txtDescription = findViewById(R.id.desciption);
+
+        txtPrice = (TextView) findViewById(R.id.productPrice);
+        txtDescription = (TextView) findViewById(R.id.productDescription);
+        imgproduct = (ImageView) findViewById(R.id.ivProductImage);
+        psinnerQuantity = (Spinner) findViewById(R.id.spQuantity);
 
         txtDescription.setText(product.getProductDescription());
         if (product.getProductPrice() != null && !product.getProductPrice().equalsIgnoreCase("")) {
@@ -60,31 +65,12 @@ public class Activity_Market extends AppCompatActivity {
             txtPrice.setText("");
         }
 
-        adapter = new SliderAdapterExample(this);
-        sliderView.setSliderAdapter(adapter);
 
-        sliderView.setIndicatorAnimation(IndicatorAnimations.THIN_WORM); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
-        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
-        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_RIGHT);
-        sliderView.setIndicatorSelectedColor(Color.WHITE);
-        sliderView.setIndicatorUnselectedColor(Color.GRAY);
-        sliderView.setScrollTimeInSec(3);
-        sliderView.setAutoCycle(true);
 
-        renewItems();
-        addNewItem();
-    }
 
-    public void renewItems() {
-
-        adapter.renewItems(imageList);
     }
 
 
-
-    public void addNewItem() {
-
-    }
 
 
 }
