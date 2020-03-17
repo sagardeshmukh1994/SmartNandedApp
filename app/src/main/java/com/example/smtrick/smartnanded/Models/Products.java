@@ -19,6 +19,7 @@ public class Products implements Serializable {
     public String productCategory;
     public String productPrice;
     public String url;
+    public  String totalPrice;
     private ArrayList<String> subImages;
     public String carKM;
     public String carBrand;
@@ -34,7 +35,7 @@ public class Products implements Serializable {
     public Products() {
     }
 
-    public Products(String desc, String name, String url,String id,String category,String price) {
+    public Products(String desc, String name, String url,String id,String category,String price,String totalPrice) {
 
         this.productDescription = desc;
         this.productName = name;
@@ -42,6 +43,7 @@ public class Products implements Serializable {
         this.productCategory = category;
         this.productPrice = price;
         this.url = url;
+        this.totalPrice = totalPrice;
         this.subImages = new ArrayList<String>();
     }
 
@@ -92,6 +94,14 @@ public class Products implements Serializable {
 
     public String getUrl() {
         return url;
+    }
+
+    public String getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public ArrayList<String> getSubImages() {
