@@ -82,10 +82,15 @@ public class CartProducts_Adapter extends RecyclerView.Adapter<CartProducts_Adap
         if (products.getProductQuantity() != null) {
             holder.txtQTY.setText(products.getProductQuantity());
         }
+        if (products.getTotalPrice() != null) {
+            holder.txtTotal.setText(products.getTotalPrice());
+        }
 
         holder.btnRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Constant.CART_TABLE_REF.child(products.getProductId()).removeValue();
+
 
             }
         });
@@ -102,7 +107,7 @@ public class CartProducts_Adapter extends RecyclerView.Adapter<CartProducts_Adap
 
         View mView;
 
-        public TextView txtPrice, txtDescription, txtQTY;
+        public TextView txtPrice, txtDescription, txtQTY,txtTotal;
         public ImageView product;
         public Button btnRemove;
         public CardView imagecard;
@@ -118,6 +123,8 @@ public class CartProducts_Adapter extends RecyclerView.Adapter<CartProducts_Adap
             txtDescription = (TextView) mView.findViewById(R.id.description);
             txtQTY = (TextView) mView.findViewById(R.id.qtyvalue);
             btnRemove = (Button) mView.findViewById(R.id.btnRemove);
+            txtTotal = (TextView) mView.findViewById(R.id.totalpricevalue);
+
         }
 
     }
