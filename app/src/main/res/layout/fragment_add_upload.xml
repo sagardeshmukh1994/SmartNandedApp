@@ -63,7 +63,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/button_shape"
             android:text="Choose Image"
-            android:textColor="@color/drower_icon_color"/>
+            android:textColor="@color/colorPrimary"/>
 
         <ImageView
             android:id="@+id/imageView"
@@ -83,7 +83,7 @@
             android:text="Upload Offer"
             android:layout_marginBottom="20dp"
             android:background="@drawable/button_shape"
-            android:textColor="@color/drower_icon_color"/>
+            android:textColor="@color/colorPrimary"/>
 
     </LinearLayout>
 </ScrollView>

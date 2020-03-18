@@ -16,7 +16,7 @@
             android:title="Upload Advertise" />
         <item
             android:id="@+id/reports"
-            android:icon="@drawable/advertise"
+            android:icon="@drawable/file"
             android:title="Reports" />
         <item
             android:id="@+id/logout"

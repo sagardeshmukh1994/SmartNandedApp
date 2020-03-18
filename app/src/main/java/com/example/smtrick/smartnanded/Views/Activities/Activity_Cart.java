@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.Button;
@@ -49,6 +50,8 @@ public class Activity_Cart extends AppCompatActivity {
         assert getSupportActionBar() != null;   //null check
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.drower_icon_color), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#24897B'>" + "My Cart" + "</font>"));
+
         leedRepository = new LeedRepositoryImpl();
         appSharedPreference = new AppSharedPreference(this);
 
