@@ -70,7 +70,7 @@
                 android:layout_below="@+id/priceLayout"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/button_shape"
                 android:text="CHECK OUT"
                 android:textColor="#FFF"
                 android:textSize="16dp" />
