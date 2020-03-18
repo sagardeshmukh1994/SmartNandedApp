@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,7 +16,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginBottom="113dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -32,52 +34,73 @@
                 android:scrollbars="vertical" />
 
 
-            <TableLayout
-                android:id="@+id/priceLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cart_recycler"
-                android:padding="@dimen/activity_horizontal_margin">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp">
-
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="TOTAL PRICE"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                    <TextView
-                        android:id="@+id/totalPrice"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="6"
-                        android:gravity="center"
-                        android:hint="PRICE"
-                        android:textSize="24sp" />
-                </TableRow>
-
-            </TableLayout>
-
-            <Button
-                android:id="@+id/button_payment"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/priceLayout"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                android:background="@drawable/button_shape"
-                android:text="CHECK OUT"
-                android:textColor="#FFF"
-                android:textSize="16dp" />
 
         </RelativeLayout>
 
     </ScrollView>
 
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
 
-</LinearLayout>
+
+        <TableLayout
+            android:id="@+id/priceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cart_recycler"
+            android:padding="@dimen/activity_horizontal_margin">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/darkgraycolor"/>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="TOTAL PRICE"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/totalPrice"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:text="PRICE"
+                    android:textStyle="bold|italic"
+                    android:textSize="20sp"
+                    android:textColor="@color/green"/>
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/button_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/priceLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:background="@drawable/button_shape"
+            android:text="PLACE ORDER"
+            android:textColor="@color/colorPrimary"
+            android:layout_alignParentBottom="true"
+            android:textSize="16dp" />
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

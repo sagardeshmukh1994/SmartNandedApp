@@ -140,6 +140,7 @@ public class Activity_Market extends AppCompatActivity {
         String uploadId = Constant.CART_TABLE_REF.push().getKey();
         product.setTotalPrice(txtTotalPrice.getText().toString());
         product.setUserId(appSharedPreference.getAgeniId());
+        product.setProductQuantity(count.getText().toString());
         product.setProductId(uploadId);
         return product;
     }

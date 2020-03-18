@@ -20,6 +20,7 @@ public class Products implements Serializable {
     public String productPrice;
     public String url;
     public  String totalPrice;
+    public String productQuantity;
     private ArrayList<String> subImages;
     public String carKM;
     public String carBrand;
@@ -36,7 +37,8 @@ public class Products implements Serializable {
     public Products() {
     }
 
-    public Products(String desc, String name, String url,String id,String category,String price,String totalPrice,String userId) {
+    public Products(String desc, String name, String url,String id,String category,String price,String totalPrice,String userId,
+                    String productQuantity) {
 
         this.productDescription = desc;
         this.productName = name;
@@ -46,6 +48,7 @@ public class Products implements Serializable {
         this.url = url;
         this.totalPrice = totalPrice;
         this.userId = userId;
+        this.productQuantity = productQuantity;
         this.subImages = new ArrayList<String>();
     }
 
@@ -120,5 +123,13 @@ public class Products implements Serializable {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getProductQuantity() {
+        return productQuantity;
+    }
+
+    public void setProductQuantity(String productQuantity) {
+        this.productQuantity = productQuantity;
     }
 }

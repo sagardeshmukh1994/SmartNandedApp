@@ -74,6 +74,68 @@
                         android:textColor="@color/darkgraycolor"
                         android:textSize="14dp" />
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="100">
+
+                        <TextView
+                            android:id="@+id/qty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:text="QTY."
+                            android:layout_weight="70"
+                            android:textColor="@color/darkgraycolor"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/qtyvalue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="30"
+                            android:text="0"
+                            android:textStyle="bold|italic"
+                            android:textColor="@color/green"
+                            android:textSize="14dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="100">
+
+                        <TextView
+                            android:id="@+id/totalprice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Total"
+                            android:layout_weight="70"
+                            android:textColor="@color/darkgraycolor"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/totalpricevalue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="30"
+                            android:text="0"
+                            android:textStyle="bold|italic"
+                            android:textColor="@color/green"
+                            android:textSize="14dp" />
+
+                    </LinearLayout>
+
                     <RelativeLayout
                         android:id="@+id/buttons"
                         android:layout_width="match_parent"
@@ -82,7 +144,7 @@
 
 
                         <Button
-                            android:id="@+id/addtocart"
+                            android:id="@+id/btnRemove"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"

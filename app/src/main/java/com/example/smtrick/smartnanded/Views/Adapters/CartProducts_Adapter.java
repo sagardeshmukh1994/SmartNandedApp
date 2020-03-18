@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -69,12 +70,25 @@ public class CartProducts_Adapter extends RecyclerView.Adapter<CartProducts_Adap
 
         if (products.getProductPrice() != null && !products.getProductPrice().equalsIgnoreCase("")) {
             holder.txtPrice.setText("\u20B9 " + products.getProductPrice());
-        }else {
+        } else {
             holder.txtPrice.setText("");
         }
-        holder.txtDescription.setText(products.getProductDescription());
-        Glide.with(mContext).load(products.getUrl()).placeholder(R.drawable.loading).into(holder.product);
+        if (products.getProductDescription() != null) {
+            holder.txtDescription.setText(products.getProductDescription());
+        }
+        if (products.getUrl() != null) {
+            Glide.with(mContext).load(products.getUrl()).placeholder(R.drawable.loading).into(holder.product);
+        }
+        if (products.getProductQuantity() != null) {
+            holder.txtQTY.setText(products.getProductQuantity());
+        }
 
+        holder.btnRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
     }
 
@@ -88,8 +102,9 @@ public class CartProducts_Adapter extends RecyclerView.Adapter<CartProducts_Adap
 
         View mView;
 
-        public TextView txtPrice, txtDescription;
+        public TextView txtPrice, txtDescription, txtQTY;
         public ImageView product;
+        public Button btnRemove;
         public CardView imagecard;
 
         public ViewHolder(View itemView) {
@@ -101,6 +116,8 @@ public class CartProducts_Adapter extends RecyclerView.Adapter<CartProducts_Adap
             imagecard = (CardView) mView.findViewById(R.id.card_view);
             txtPrice = (TextView) mView.findViewById(R.id.price);
             txtDescription = (TextView) mView.findViewById(R.id.description);
+            txtQTY = (TextView) mView.findViewById(R.id.qtyvalue);
+            btnRemove = (Button) mView.findViewById(R.id.btnRemove);
         }
 
     }
