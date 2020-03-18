@@ -20,6 +20,7 @@ public class Constant {
     public static final DatabaseReference LEEDS_TABLE_REF = DATABASE.getReference("leeds");
     public static final DatabaseReference PRODUCTS_TABLE_REF = DATABASE.getReference("Products");
     public static final DatabaseReference ADVERTISE_TABLE_REF = DATABASE.getReference("Advertise");
+    public static final DatabaseReference CART_TABLE_REF = DATABASE.getReference("Cart");
 
 
 

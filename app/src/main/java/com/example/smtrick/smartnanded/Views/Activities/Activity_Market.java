@@ -16,17 +16,15 @@ import androidx.appcompat.widget.Toolbar;
 import com.bumptech.glide.Glide;
 import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.R;
+import com.example.smtrick.smartnanded.callback.CallBack;
 import com.example.smtrick.smartnanded.constants.Constant;
+import com.example.smtrick.smartnanded.preferences.AppSharedPreference;
+import com.example.smtrick.smartnanded.repository.LeedRepository;
+import com.example.smtrick.smartnanded.repository.impl.LeedRepositoryImpl;
 
 import java.util.ArrayList;
 
 public class Activity_Market extends AppCompatActivity {
-
-    public static final String FRAGRANCE_NAME = "fragranceName";
-    public static final String FRAGRANCE_DESCRIPTION = "fragranceDescription";
-    public static final String FRAGRANCE_RATING = "fragranceRating";
-    public static final String FRAGRANCE_IMAGE = "fragranceImage";
-    public static final String FRAGRANCE_PRICE = "fragrancePrice";
 
     Products product;
     static ArrayList<Products> productsArrayList;
@@ -36,6 +34,8 @@ public class Activity_Market extends AppCompatActivity {
     final int[] i = {0};
     public ImageView pluse, minus;
     public EditText count;
+    LeedRepository leedRepository;
+    private AppSharedPreference appSharedPreference;
 
 
     @Override
@@ -57,6 +57,8 @@ public class Activity_Market extends AppCompatActivity {
 
         product = (Products) getIntent().getSerializableExtra(Constant.PRODUCT_MODEL);
 
+        leedRepository = new LeedRepositoryImpl();
+        appSharedPreference = new AppSharedPreference(this);
         productsArrayList = new ArrayList<>();
 
         txtPrice = (TextView) findViewById(R.id.productPrice);
@@ -110,7 +112,18 @@ public class Activity_Market extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Products product1 = fillUserModel(product);
-                productsArrayList.add(product1);
+//                productsArrayList.add(product1);
+                leedRepository.addToCart(product1, new CallBack() {
+                    @Override
+                    public void onSuccess(Object object) {
+                        Toast.makeText(Activity_Market.this, "Added To Cart", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(Object object) {
+
+                    }
+                });
             }
         });
 
@@ -119,7 +132,11 @@ public class Activity_Market extends AppCompatActivity {
 
     private Products fillUserModel(Products product) {
 
+
+        String uploadId = Constant.CART_TABLE_REF.push().getKey();
         product.setTotalPrice(txtTotalPrice.getText().toString());
+        product.setUserId(appSharedPreference.getAgeniId());
+        product.setProductId(uploadId);
         return product;
     }
 

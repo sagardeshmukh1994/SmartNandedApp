@@ -1,5 +1,6 @@
 package com.example.smtrick.smartnanded.repository;
 
+import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.callback.CallBack;
 
 import java.util.Map;
@@ -13,5 +14,9 @@ public interface LeedRepository {
     void readProductsByCategory(final String id, final CallBack callBack);
 
     void readAdvertise(final CallBack callback);
+
+    void addToCart(final Products leedsModel, final CallBack callback);
+
+    void readCartProductsByuserId(final String id, final CallBack callBack);
 
 }

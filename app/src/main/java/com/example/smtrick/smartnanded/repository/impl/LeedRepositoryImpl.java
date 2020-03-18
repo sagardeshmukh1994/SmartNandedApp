@@ -105,4 +105,50 @@ public class LeedRepositoryImpl extends FirebaseTemplateRepository implements Le
         });
     }
 
+    @Override
+    public void addToCart(Products products, final CallBack callBack) {
+        DatabaseReference databaseReference = Constant.CART_TABLE_REF.child(products.getProductId());
+        fireBaseCreate(databaseReference, products, new CallBack() {
+            @Override
+            public void onSuccess(Object object) {
+                callBack.onSuccess(object);
+            }
+
+            @Override
+            public void onError(Object object) {
+                callBack.onError(object);
+            }
+        });
+    }
+
+
+    @Override
+    public void readCartProductsByuserId(String id, final CallBack callBack) {
+        final Query query = Constant.CART_TABLE_REF.orderByChild("userId").equalTo(id);
+        fireBaseNotifyChange(query, new CallBack() {
+            @Override
+            public void onSuccess(Object object) {
+                if (object != null) {
+                    DataSnapshot dataSnapshot = (DataSnapshot) object;
+                    if (dataSnapshot.getValue() != null & dataSnapshot.hasChildren()) {
+                        ArrayList<Products> leedsModelArrayList = new ArrayList<>();
+                        for (DataSnapshot suggestionSnapshot : dataSnapshot.getChildren()) {
+                            Products leedsModel = suggestionSnapshot.getValue(Products.class);
+
+                            leedsModelArrayList.add(leedsModel);
+                        }
+                        callBack.onSuccess(leedsModelArrayList);
+                    } else {
+                        callBack.onSuccess(null);
+                    }
+                }
+            }
+
+            @Override
+            public void onError(Object object) {
+                callBack.onError(object);
+            }
+        });
+    }
+
 }

@@ -28,6 +28,7 @@ public class Products implements Serializable {
     public String carFuel;
     private String pName;
     private BigDecimal pPrice;
+    private String userId;
 
 
     // Default constructor required for calls to
@@ -35,7 +36,7 @@ public class Products implements Serializable {
     public Products() {
     }
 
-    public Products(String desc, String name, String url,String id,String category,String price,String totalPrice) {
+    public Products(String desc, String name, String url,String id,String category,String price,String totalPrice,String userId) {
 
         this.productDescription = desc;
         this.productName = name;
@@ -44,6 +45,7 @@ public class Products implements Serializable {
         this.productPrice = price;
         this.url = url;
         this.totalPrice = totalPrice;
+        this.userId = userId;
         this.subImages = new ArrayList<String>();
     }
 
@@ -112,4 +114,11 @@ public class Products implements Serializable {
         this.subImages = subImages;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 }
