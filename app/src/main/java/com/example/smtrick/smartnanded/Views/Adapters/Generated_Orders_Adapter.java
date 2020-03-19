@@ -14,9 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smtrick.smartnanded.Models.Order;
 import com.example.smtrick.smartnanded.Models.User;
 import com.example.smtrick.smartnanded.R;
+import com.example.smtrick.smartnanded.constants.Constant;
 import com.example.smtrick.smartnanded.preferences.AppSharedPreference;
 import com.example.smtrick.smartnanded.repository.LeedRepository;
 import com.example.smtrick.smartnanded.repository.impl.LeedRepositoryImpl;
+import com.example.smtrick.smartnanded.utilities.Utility;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -58,10 +60,11 @@ public class Generated_Orders_Adapter extends RecyclerView.Adapter<Generated_Ord
         appSharedPreference = new AppSharedPreference(holder.CardApprove.getContext());
         leedRepository = new LeedRepositoryImpl();
 
-//        holder.textViewName.setText(order.getDate());
-//        holder.textViewMobile.setText(order.getUserName());
-//        holder.textViewPinCode.setText(order.getUserMobile());
-//        holder.textViewId.setText(order.getUserPinCode());
+        holder.textViewName.setText(order.getUserName());
+        holder.textViewMobile.setText(order.getUserMobile());
+        holder.textViewAddress.setText(order.getUserAddress());
+        holder.textViewDate.setText(Utility.convertMilliSecondsToFormatedDate(order.getCreatedDateTimeLong().longValue(), Constant.GLOBAL_DATE_FORMATE));
+
 
 
     }
@@ -78,7 +81,6 @@ public class Generated_Orders_Adapter extends RecyclerView.Adapter<Generated_Ord
         public TextView textViewAddress;
         public TextView textViewDate;
         public CardView userCard;
-
         public CardView CardApprove;
 
 
