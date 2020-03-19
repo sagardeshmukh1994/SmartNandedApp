@@ -21,6 +21,7 @@ public class Constant {
     public static final DatabaseReference PRODUCTS_TABLE_REF = DATABASE.getReference("Products");
     public static final DatabaseReference ADVERTISE_TABLE_REF = DATABASE.getReference("Advertise");
     public static final DatabaseReference CART_TABLE_REF = DATABASE.getReference("Cart");
+    public static final DatabaseReference ORDER_TABLE_REF = DATABASE.getReference("Order");
 
 
 
@@ -85,6 +86,9 @@ public class Constant {
     public static final String CATEGORY_AGRICULTURE = "Agriculture";
     public static final String CATEGORY_OFFERS = "Offers";
     public static final String CATEGORY_OTHERS = "Others";
+
+    public static final String STATUS_PLACED = "PLACED";
+    public static final String STATUS_COMPLTE = "COMPLETE";
 
 
     public static final List<Integer> QUANTITY_LIST = new ArrayList<Integer>();
