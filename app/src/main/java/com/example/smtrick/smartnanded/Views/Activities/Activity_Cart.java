@@ -6,12 +6,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Html;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -115,13 +120,60 @@ public class Activity_Cart extends AppCompatActivity implements View.OnClickList
             Button btnorder = (Button) dialog1.findViewById(R.id.btnsendrequest);
             Button btncancle = (Button) dialog1.findViewById(R.id.btncancle);
 
+            btnorder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    PlaceOrder();
+                }
+            });
+            btncancle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog1.dismiss();
+                }
+            });
+
             dialog1.show();
-            PlaceOrder();
+            Window window = dialog1.getWindow();
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
         }
     }
 
     private void PlaceOrder() {
         Order order = fillUserModel();
+
+        leedRepository.placeOrder(order, new CallBack() {
+            @Override
+            public void onSuccess(Object object) {
+                final Dialog dialog3 = new Dialog(Activity_Cart.this);
+                dialog3.getWindow().setBackgroundDrawableResource(R.drawable.dialogboxanimation);
+                dialog3.setContentView(R.layout.popup_layout);
+
+                dialog3.show();
+                new CountDownTimer(2000, 1000) {
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        // TODO Auto-generated method stub
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        // TODO Auto-generated method stub
+                        Intent intent = new Intent(Activity_Cart.this, Activity_Cart.class);
+                        startActivity(intent);
+                        dialog3.dismiss();
+                    }
+                }.start();
+            }
+
+            @Override
+            public void onError(Object object) {
+
+            }
+        });
     }
 
     private Order fillUserModel() {

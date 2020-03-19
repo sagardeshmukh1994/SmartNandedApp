@@ -1,6 +1,7 @@
 package com.example.smtrick.smartnanded.repository.impl;
 
 import com.example.smtrick.smartnanded.Models.Advertise;
+import com.example.smtrick.smartnanded.Models.Order;
 import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.callback.CallBack;
 import com.example.smtrick.smartnanded.constants.Constant;
@@ -142,6 +143,22 @@ public class LeedRepositoryImpl extends FirebaseTemplateRepository implements Le
                         callBack.onSuccess(null);
                     }
                 }
+            }
+
+            @Override
+            public void onError(Object object) {
+                callBack.onError(object);
+            }
+        });
+    }
+
+    @Override
+    public void placeOrder(Order order, final CallBack callBack) {
+        DatabaseReference databaseReference = Constant.ORDER_TABLE_REF.child(order.getOrdertId());
+        fireBaseCreate(databaseReference, order, new CallBack() {
+            @Override
+            public void onSuccess(Object object) {
+                callBack.onSuccess(object);
             }
 
             @Override

@@ -1,5 +1,6 @@
 package com.example.smtrick.smartnanded.repository;
 
+import com.example.smtrick.smartnanded.Models.Order;
 import com.example.smtrick.smartnanded.Models.Products;
 import com.example.smtrick.smartnanded.callback.CallBack;
 
@@ -18,5 +19,7 @@ public interface LeedRepository {
     void addToCart(final Products leedsModel, final CallBack callback);
 
     void readCartProductsByuserId(final String id, final CallBack callBack);
+
+    void placeOrder(final Order order, final CallBack callback);
 
 }
