@@ -22,4 +22,6 @@ public interface LeedRepository {
 
     void placeOrder(final Order order, final CallBack callback);
 
+    void readOrders(final CallBack callback);
+
 }
