@@ -24,4 +24,6 @@ public interface LeedRepository {
 
     void readOrders(final CallBack callback);
 
+    void readreadOrdersByStatus(final String status, final CallBack callBack);
+
 }

@@ -6,12 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smtrick.smartnanded.Models.Order;
 import com.example.smtrick.smartnanded.R;
 import com.example.smtrick.smartnanded.Views.Adapters.Generated_Orders_Adapter;
 import com.example.smtrick.smartnanded.callback.CallBack;
+import com.example.smtrick.smartnanded.constants.Constant;
 import com.example.smtrick.smartnanded.repository.LeedRepository;
 import com.example.smtrick.smartnanded.repository.impl.LeedRepositoryImpl;
 
@@ -45,12 +47,15 @@ public class Fragment_View_Orders extends Fragment {
     }
 
     private void readOrders() {
-        leedRepository.readOrders(new CallBack() {
+        leedRepository.readreadOrdersByStatus(Constant.STATUS_PLACED, new CallBack() {
             @Override
             public void onSuccess(Object object) {
-                if (object != null){
+                if (object != null) {
                     orderArrayList = (ArrayList<Order>) object;
-                    adapter = new Generated_Orders_Adapter(getContext(),orderArrayList);
+                    adapter = new Generated_Orders_Adapter(getContext(), orderArrayList);
+                    recyclerOrders.setAdapter(adapter);
+                    recyclerOrders.setHasFixedSize(true);
+                    recyclerOrders.setLayoutManager(new LinearLayoutManager(getContext()));
                 }
             }
 
