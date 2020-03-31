@@ -26,4 +26,8 @@ public interface LeedRepository {
 
     void readreadOrdersByStatus(final String status, final CallBack callBack);
 
+    void updateOrder(final String leedId, final Map leedMap, final CallBack callback);
+
+    void readreadOrdersByUserId(final String userId, final CallBack callBack);
+
 }

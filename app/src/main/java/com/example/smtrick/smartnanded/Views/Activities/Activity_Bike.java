@@ -32,7 +32,7 @@ public class Activity_Bike extends AppCompatActivity {
     private SliderAdapterExample adapter;
     Products product;
     ArrayList<String> imageList;
-    TextView txtPrice, txtDescription;
+    TextView txtPrice, txtDescription,txtcarrBrand,txtcarModel,txtcarYear,txtcarKMDriven;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,10 @@ public class Activity_Bike extends AppCompatActivity {
         sliderView = findViewById(R.id.imageSlider);
         txtPrice = findViewById(R.id.price);
         txtDescription = findViewById(R.id.desciption);
+        txtcarrBrand = findViewById(R.id.bikebrandvalue);
+        txtcarModel = findViewById(R.id.bikeModelvalue);
+        txtcarYear = findViewById(R.id.bikeYearvalue);
+        txtcarKMDriven = findViewById(R.id.bikekmdrivenvalue);
 
         txtDescription.setText(product.getProductDescription());
         if (product.getProductPrice() != null && !product.getProductPrice().equalsIgnoreCase("")) {
@@ -58,6 +62,10 @@ public class Activity_Bike extends AppCompatActivity {
         }else {
             txtPrice.setText("");
         }
+        txtcarrBrand.setText(product.getProductName());
+        txtcarModel.setText(product.getCarModel());
+        txtcarYear.setText(product.getCarYear());
+        txtcarKMDriven.setText(product.getCarKM());
 
         adapter = new SliderAdapterExample(this);
         sliderView.setSliderAdapter(adapter);

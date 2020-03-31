@@ -19,6 +19,7 @@ public class Order {
     public String status;
     public String date;
     public String userName;
+    public String totalAmount;
     List<String> orderList;
     private Long createdDateTime;
 
@@ -27,7 +28,8 @@ public class Order {
     }
 
     public Order(String userId, String userPinCode, String userMobile
-            , String userAddress, String ordertId, String date, String status, String userName ) {
+            , String userAddress, String ordertId, String date, String status, String userName,
+                 String totalAmount) {
 
         this.userId = userId;
         this.userPinCode = userPinCode;
@@ -37,6 +39,7 @@ public class Order {
         this.date = date;
         this.status = status;
         this.userName = userName;
+        this.totalAmount = totalAmount;
         this.orderList = new ArrayList<String>();
 
     }
@@ -112,6 +115,14 @@ public class Order {
 
     public void setOrderList(List<String> orderList) {
         this.orderList = orderList;
+    }
+
+    public String getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(String totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
     @Exclude

@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "619352460334",
-    "firebase_url": "https://dimos-c18d7.firebaseio.com",
-    "project_id": "dimos-c18d7",
-    "storage_bucket": "dimos-c18d7.appspot.com"
+    "project_number": "697086778971",
+    "firebase_url": "https://dimos-e17c6.firebaseio.com",
+    "project_id": "dimos-e17c6",
+    "storage_bucket": "dimos-e17c6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:619352460334:android:eed2afaacc5bca274423bf",
+        "mobilesdk_app_id": "1:697086778971:android:39770f88d16cb18c1be97e",
         "android_client_info": {
           "package_name": "com.example.smtrick.smartnanded"
         }
       },
       "oauth_client": [
         {
-          "client_id": "619352460334-uhreegsoe9uvtajfl34ll2th5c9lek39.apps.googleusercontent.com",
+          "client_id": "697086778971-thteml6b2tfke01jis30b6g240t2f18c.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.smtrick.smartnanded",
-            "certificate_hash": "a058c77ec79e3080dd24bca3ee8567f802573eb9"
+            "certificate_hash": "8e0384037ccb31c72d0ea33aa4643f1fa1651032"
           }
         },
         {
-          "client_id": "619352460334-jhhpc6atimnh2o3g86il4t11d1k4tqm4.apps.googleusercontent.com",
+          "client_id": "697086778971-gj1h2bjgub7nul1m88p8n4122s720e83.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDjvKP_ZGwnwmzUOj_YpVlv5VLk5Zi_0OY"
+          "current_key": "AIzaSyDMp4tMHCWWNj-_N4UoEYTPTcaMJvr2wPQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "619352460334-jhhpc6atimnh2o3g86il4t11d1k4tqm4.apps.googleusercontent.com",
+              "client_id": "697086778971-gj1h2bjgub7nul1m88p8n4122s720e83.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

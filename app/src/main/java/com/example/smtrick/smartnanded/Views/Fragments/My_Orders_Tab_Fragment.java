@@ -15,13 +15,13 @@ import com.example.smtrick.smartnanded.Views.Adapters.ViewPagerAdapter;
 import com.example.smtrick.smartnanded.interfaces.OnFragmentInteractionListener;
 import com.google.android.material.tabs.TabLayout;
 
-public class Orders_Tab_Fragment extends Fragment {
+public class My_Orders_Tab_Fragment extends Fragment {
     TabLayout tabLayout;
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
     public OnFragmentInteractionListener mListener;
 
-    public Orders_Tab_Fragment() {
+    public My_Orders_Tab_Fragment() {
     }
 
     @Override
@@ -35,8 +35,8 @@ public class Orders_Tab_Fragment extends Fragment {
         viewPager.setOffscreenPageLimit(3);
 
         viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
-        viewPagerAdapter.addFragement(new Fragment_View_Orders(), "Generated Orders");
-        viewPagerAdapter.addFragement(new Fragment_View_Comleted_Orders(), "Completed Orders");
+        viewPagerAdapter.addFragement(new Fragment_User_Placed_Orders(), "Generated Orders");
+        viewPagerAdapter.addFragement(new Fragment_Users_Completed_Orders(), "Completed Orders");
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);

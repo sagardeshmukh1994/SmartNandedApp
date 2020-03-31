@@ -51,10 +51,10 @@
                     android:id="@+id/price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:padding="6dp"
                     android:text="Price"
                     android:textColor="#000000"
-                    android:layout_marginTop="15dp"
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
@@ -96,6 +96,147 @@
                     android:textColor="#000000"
                     android:textSize="16dp"
                     android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/layoutcarbrand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="6dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:id="@+id/carbrand"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="70"
+                        android:text="Brand"
+                        android:textColor="@color/Black" />
+
+                    <TextView
+                        android:id="@+id/carbrandvalue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="30"
+                        android:text="Band Name"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutcarmodel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="6dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:id="@+id/carmodel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="70"
+                        android:text="Model"
+                        android:textColor="@color/Black" />
+
+                    <TextView
+                        android:id="@+id/carmodelvalue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="30"
+                        android:text="Model Name"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutcaryear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:padding="6dp"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:id="@+id/caryear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="70"
+                        android:text="Year"
+                        android:textColor="@color/Black" />
+
+                    <TextView
+                        android:id="@+id/caryearvalue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="30"
+                        android:text="Year"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutcarfuel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:padding="6dp"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:id="@+id/carfuel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="70"
+                        android:text="Fuel"
+                        android:textColor="@color/Black" />
+
+                    <TextView
+                        android:id="@+id/carfuelvalue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="30"
+                        android:text="Fuel Type"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutcarkmdriven"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:padding="6dp"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:id="@+id/carkmdriven"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="70"
+                        android:text="KM Driven"
+                        android:textColor="@color/Black" />
+
+                    <TextView
+                        android:id="@+id/carkmdrivendriven"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="30"
+                        android:text="KM"
+                        android:textColor="@color/Black" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/darkgraycolor"/>
 
             </LinearLayout>
 

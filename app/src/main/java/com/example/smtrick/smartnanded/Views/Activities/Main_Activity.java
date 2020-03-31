@@ -30,6 +30,7 @@ import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Home;
 import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Reports;
 import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Upload_Offers;
 import com.example.smtrick.smartnanded.Views.Fragments.Fragment_Upload_Products;
+import com.example.smtrick.smartnanded.Views.Fragments.My_Orders_Tab_Fragment;
 import com.example.smtrick.smartnanded.Views.Fragments.Orders_Tab_Fragment;
 import com.example.smtrick.smartnanded.interfaces.OnFragmentInteractionListener;
 import com.example.smtrick.smartnanded.preferences.AppSharedPreference;
@@ -167,6 +168,9 @@ public class Main_Activity extends AppCompatActivity
         }
         if (id == R.id.orders) {
             fragment = new Orders_Tab_Fragment();
+        }
+        if(id == R.id.myorders){
+            fragment = new My_Orders_Tab_Fragment();
         }
         if (id == R.id.logout) {
 

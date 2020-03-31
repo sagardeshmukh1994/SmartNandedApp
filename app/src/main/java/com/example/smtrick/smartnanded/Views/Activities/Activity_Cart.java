@@ -162,8 +162,6 @@ public class Activity_Cart extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onFinish() {
                         // TODO Auto-generated method stub
-                        Intent intent = new Intent(Activity_Cart.this, Activity_Cart.class);
-                        startActivity(intent);
                         dialog3.dismiss();
                     }
                 }.start();
@@ -179,9 +177,9 @@ public class Activity_Cart extends AppCompatActivity implements View.OnClickList
     private Order fillUserModel() {
 
         for (int i = 0; i < cartProductsList.size(); i++) {
-            orderProductsList.add("Product" + cartProductsList.get(i).getProductName() + "\n" +
-                    "Quantity" + cartProductsList.get(i).getProductQuantity() + "\n" +
-                    "Total Price" + cartProductsList.get(i).getTotalPrice() + "\n");
+            orderProductsList.add("Product - " + cartProductsList.get(i).getProductName() + "\n" +
+                    "Quantity - " + cartProductsList.get(i).getProductQuantity() + "\n" +
+                    "Total Price - " + cartProductsList.get(i).getTotalPrice() + "\n");
         }
         String id = Constant.ORDER_TABLE_REF.push().getKey();
         Order order = new Order();
@@ -192,7 +190,8 @@ public class Activity_Cart extends AppCompatActivity implements View.OnClickList
         order.setStatus(Constant.STATUS_PLACED);
         order.setUserName(appSharedPreference.getUserName());
         order.setOrderList(orderProductsList);
-
+        order.setTotalAmount(txtTotalPrice.getText().toString());
+        order.setUserId(appSharedPreference.getAgeniId());
 
         return order;
     }

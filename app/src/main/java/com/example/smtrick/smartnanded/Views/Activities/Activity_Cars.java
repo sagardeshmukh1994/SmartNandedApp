@@ -32,7 +32,7 @@ public class Activity_Cars extends AppCompatActivity {
     private SliderAdapterExample adapter;
     Products product;
     ArrayList<String> imageList;
-    TextView txtPrice, txtDescription;
+    TextView txtPrice, txtDescription,txtcarrBrand,txtcarModel,txtcarYear,txtcarFuel,txtcarKMDriven;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,15 +50,23 @@ public class Activity_Cars extends AppCompatActivity {
         sliderView = findViewById(R.id.imageSlider);
         txtPrice = findViewById(R.id.price);
         txtDescription = findViewById(R.id.desciption);
+        txtcarrBrand = findViewById(R.id.carbrandvalue);
+        txtcarModel = findViewById(R.id.carmodelvalue);
+        txtcarYear = findViewById(R.id.caryearvalue);
+        txtcarFuel = findViewById(R.id.carfuelvalue);
+        txtcarKMDriven = findViewById(R.id.carkmdrivendriven);
 
         txtDescription.setText(product.getProductDescription());
         if (product.getProductPrice() != null && !product.getProductPrice().equalsIgnoreCase("")) {
-//            Typeface tf = Typeface.createFromAsset(getAssets(), "font/Rupee.ttf");
-//            txtPrice.setTypeface(tf);
             txtPrice.setText("\u20B9 " + product.getProductPrice());
         }else {
             txtPrice.setText("");
         }
+        txtcarrBrand.setText(product.getProductName());
+        txtcarModel.setText(product.getCarModel());
+        txtcarYear.setText(product.getCarYear());
+        txtcarFuel.setText(product.getCarFuel());
+        txtcarKMDriven.setText(product.getCarKM());
 
         adapter = new SliderAdapterExample(this);
         sliderView.setSliderAdapter(adapter);

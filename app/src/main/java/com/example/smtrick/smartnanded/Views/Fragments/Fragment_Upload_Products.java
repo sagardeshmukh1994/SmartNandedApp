@@ -15,12 +15,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -62,12 +65,20 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
     //view objects
     private Button buttonChoose, buttonChooseSubImages;
     private Button buttonUpload;
-    private EditText editTextName, editTextPrice;
+    private EditText Idescription, editTextName, editTextPrice, editTextCarModel, editTextCarYear, editTextCarKMDriven,
+            editTextCarFuel, editTextbikeModel, editTextbikeYear, editTextbikeKMDriven,
+            editTextsalPeriod, editTextPositionType, editTextSalFrom, editTextSalTo, editTextProType, editTextProBedrooms,
+            editTextproFurnishing, editTextproConstructionStatus, editTextproListedBy, editTextproCarpetArea,
+            editTextproProjectName, editTextproParkings;
+    ;
     private ImageView imageView;
-    private EditText Idescription;
     private Spinner spinnerCategory;
     private RecyclerView recycleSubImages;
     private Product_SubImages_Adapter productSubImagesAdapter;
+    private LinearLayout layoutCarModel, layoutCarYear, layoutCarFuel, layoutCarKM, layoutbikeModel, layoutbikeYear,
+            layoutbikeKM, layoutSalPeriod, layoutPositionType, layoutSalFrom,
+            layoutSalTo, layoutProType, layoutProBedrooms, layoutproFurnishing, layoutproConstructionStatus, layoutproListedBy,
+            layoutproCarpetArea, layoutproProjectName, layoutproParkings;
 
 
     //uri to store file
@@ -106,13 +117,62 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
         buttonChoose = (Button) view.findViewById(R.id.buttonChoose);
         buttonChooseSubImages = (Button) view.findViewById(R.id.buttonChooseSubImages);
         buttonUpload = (Button) view.findViewById(R.id.buttonUpload);
+
         imageView = (ImageView) view.findViewById(R.id.imageView);
+
         editTextName = (EditText) view.findViewById(R.id.editText);
         editTextPrice = (EditText) view.findViewById(R.id.editTextProductPrice);
         Idescription = (EditText) view.findViewById(R.id.description);
+        editTextCarModel = (EditText) view.findViewById(R.id.editTextCarModel);
+        editTextCarYear = (EditText) view.findViewById(R.id.editTextCarYear);
+        editTextCarFuel = (EditText) view.findViewById(R.id.editTextCarFuel);
+        editTextCarKMDriven = (EditText) view.findViewById(R.id.editTextCarKMDriven);
+
+         editTextbikeModel = (EditText) view.findViewById(R.id.editTextbikeModel);
+        editTextbikeYear = (EditText) view.findViewById(R.id.editTextbikeYear);
+        editTextbikeKMDriven = (EditText) view.findViewById(R.id.editTextbikeKMDriven);
+
+        editTextsalPeriod = (EditText) view.findViewById(R.id.editTextsalaryperiod);
+        editTextPositionType = (EditText) view.findViewById(R.id.editTextPositionType);
+        editTextSalFrom = (EditText) view.findViewById(R.id.editTextSalaryFrom);
+        editTextSalTo = (EditText) view.findViewById(R.id.editTextSalaryTo);
+        editTextProType = (EditText) view.findViewById(R.id.editTextPropertyType);
+        editTextProBedrooms = (EditText) view.findViewById(R.id.editTextBedrooms);
+        editTextproFurnishing = (EditText) view.findViewById(R.id.editTextFurnishing);
+        editTextproConstructionStatus = (EditText) view.findViewById(R.id.editTextConstructionstatus);
+        editTextproListedBy = (EditText) view.findViewById(R.id.editTextListedBy);
+        editTextproCarpetArea = (EditText) view.findViewById(R.id.editTextKarpetarea);
+        editTextproProjectName = (EditText) view.findViewById(R.id.editTextParking);
+        editTextproParkings = (EditText) view.findViewById(R.id.editTextProjectName);
+
         spinnerCategory = (Spinner) view.findViewById(R.id.spinnerCategory);
 
+        layoutCarModel = (LinearLayout) view.findViewById(R.id.layoutCarMode);
+        layoutCarYear = (LinearLayout) view.findViewById(R.id.layoutCarYear);
+        layoutCarFuel = (LinearLayout) view.findViewById(R.id.layoutCarFuel);
+        layoutCarKM = (LinearLayout) view.findViewById(R.id.layoutCarKMDriven);
 
+         layoutbikeModel = (LinearLayout) view.findViewById(R.id.layoutbikeMode);
+        layoutbikeYear = (LinearLayout) view.findViewById(R.id.layoutbikeYear);
+        layoutbikeKM = (LinearLayout) view.findViewById(R.id.layoutbikeKMDriven);
+
+        layoutSalPeriod = (LinearLayout) view.findViewById(R.id.layoutSalaryPeriod);
+        layoutPositionType = (LinearLayout) view.findViewById(R.id.layoutPositionType);
+        layoutSalFrom = (LinearLayout) view.findViewById(R.id.layoutSalaryFrom);
+        layoutSalTo = (LinearLayout) view.findViewById(R.id.layoutSalaryTo);
+
+        layoutProType = (LinearLayout) view.findViewById(R.id.layoutPropertyType);
+        layoutProBedrooms = (LinearLayout) view.findViewById(R.id.layoutBedrooms);
+        layoutproFurnishing = (LinearLayout) view.findViewById(R.id.layoutFurnishing);
+        layoutproConstructionStatus = (LinearLayout) view.findViewById(R.id.layoutConstructionStatus);
+        layoutproListedBy = (LinearLayout) view.findViewById(R.id.layoutLisedBy);
+        layoutproCarpetArea = (LinearLayout) view.findViewById(R.id.layoutKarpetarea);
+        layoutproProjectName = (LinearLayout) view.findViewById(R.id.layoutProjectName);
+        layoutproParkings = (LinearLayout) view.findViewById(R.id.layoutParking);
+
+        hidecarDetails();
+        hidebikeDetails();
+        hidejobDetails();
 
         recycleSubImages = (RecyclerView) view.findViewById(R.id.recycleSubImages);
 
@@ -131,7 +191,37 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
         buttonChooseSubImages.setOnClickListener(this);
         buttonUpload.setOnClickListener(this);
 
+        spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String car = spinnerCategory.getSelectedItem().toString();
+                if (car.equalsIgnoreCase("Car")) {
+                    showcarDetails();
+                } else {
+                    hidecarDetails();
+                }
+                if (car.equalsIgnoreCase("Bike")) {
+                    showbikeDetails();
+                } else {
+                    hidebikeDetails();
+                }
+                if (car.equalsIgnoreCase("Jobs")) {
+                    showjobDetails();
+                } else {
+                    hidejobDetails();
+                }
+                if (car.equalsIgnoreCase("Properties")) {
+                    showpropertyDetails();
+                } else {
+                    hidepropertyDetails();
+                }
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         return view;
@@ -319,6 +409,7 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
 
         Products product = new Products();
         String uploadId = mDatabase.push().getKey();
+        String cat = spinnerCategory.getSelectedItem().toString();
 
         if (h.equalsIgnoreCase("full")) {
 
@@ -328,17 +419,97 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
             product.setProductCategory(spinnerCategory.getSelectedItem().toString());
             product.setUrl(downloadurl1);
             product.setSubImages(fileDoneList1);
-
             product.setProductId(uploadId);
+
+            if (cat.equalsIgnoreCase("Car")) {
+                if (!editTextCarModel.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarModel(editTextCarModel.getText().toString());
+                }
+                if (!editTextCarFuel.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarYear(editTextCarYear.getText().toString());
+                }
+                if (!editTextCarFuel.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarFuel(editTextCarFuel.getText().toString());
+                }
+                if (!editTextCarKMDriven.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarKM(editTextCarKMDriven.getText().toString());
+                }
+            } else if (cat.equalsIgnoreCase("Bike")) {
+                if (!editTextbikeModel.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarModel(editTextbikeModel.getText().toString());
+                }
+                if (!editTextbikeYear.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarYear(editTextbikeYear.getText().toString());
+                }
+                if (!editTextbikeKMDriven.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarKM(editTextbikeKMDriven.getText().toString());
+                }
+            } else if (cat.equalsIgnoreCase("Jobs")) {
+                product.setJobSalaryPeriod(editTextsalPeriod.getText().toString());
+                product.setJobPosition(editTextPositionType.getText().toString());
+                product.setJobSalaryFrom(editTextSalFrom.getText().toString());
+                product.setJobSalaryTo(editTextSalTo.getText().toString());
+
+            } else if (cat.equalsIgnoreCase("Properties")) {
+                product.setPropertyType(editTextProType.getText().toString());
+                product.setPropertyBedrooms(editTextProBedrooms.getText().toString());
+                product.setPropertyFurnishing(editTextproFurnishing.getText().toString());
+                product.setPropertyConstructionStatus(editTextproConstructionStatus.getText().toString());
+                product.setPropertyListedBy(editTextproListedBy.getText().toString());
+                product.setPropertyCarpetArea(editTextproCarpetArea.getText().toString());
+                product.setPropertyProjectName(editTextproProjectName.getText().toString());
+                product.setPropertyParkings(editTextproParkings.getText().toString());
+            }
+
         } else if (h.equalsIgnoreCase("part")) {
             product.setProductDescription(Idescription.getText().toString().trim());
             product.setProductName(editTextName.getText().toString().trim());
             product.setProductPrice(editTextPrice.getText().toString().trim());
             product.setProductCategory(spinnerCategory.getSelectedItem().toString());
-
             product.setUrl(downloadurl1);
-//            product.setSubImages(fileDoneList1);
             product.setProductId(uploadId);
+
+            if (cat.equalsIgnoreCase("Car")) {
+                if (!editTextCarModel.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarModel(editTextCarModel.getText().toString());
+                }
+                if (!editTextCarYear.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarYear(editTextCarYear.getText().toString());
+                }
+                if (!editTextCarFuel.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarFuel(editTextCarFuel.getText().toString());
+                }
+                if (!editTextCarKMDriven.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarKM(editTextCarKMDriven.getText().toString());
+                }
+            } else if (cat.equalsIgnoreCase("Bike")) {
+                if (!editTextbikeModel.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarModel(editTextbikeModel.getText().toString());
+                }
+                if (!editTextbikeYear.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarYear(editTextbikeYear.getText().toString());
+                }
+                if (!editTextbikeKMDriven.getText().toString().equalsIgnoreCase("")) {
+                    product.setCarKM(editTextbikeKMDriven.getText().toString());
+                }
+            } else if (cat.equalsIgnoreCase("Jobs")) {
+                product.setJobSalaryPeriod(editTextsalPeriod.getText().toString());
+                product.setJobPosition(editTextPositionType.getText().toString());
+                product.setJobSalaryFrom(editTextSalFrom.getText().toString());
+                product.setJobSalaryTo(editTextSalTo.getText().toString());
+
+            } else if (cat.equalsIgnoreCase("Properties")) {
+                product.setPropertyType(editTextProType.getText().toString());
+                product.setPropertyBedrooms(editTextProBedrooms.getText().toString());
+                product.setPropertyFurnishing(editTextproFurnishing.getText().toString());
+                product.setPropertyConstructionStatus(editTextproConstructionStatus.getText().toString());
+                product.setPropertyListedBy(editTextproListedBy.getText().toString());
+                product.setPropertyCarpetArea(editTextproCarpetArea.getText().toString());
+                product.setPropertyProjectName(editTextproProjectName.getText().toString());
+                product.setPropertyParkings(editTextproParkings.getText().toString());
+            }
+
+
         }
         return product;
     }
@@ -372,7 +543,7 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
                 Toast.makeText(getContext(), "Image Required!", Toast.LENGTH_SHORT).show();
                 return;
             }
-            
+
             uploadFile();
 
         }
@@ -390,6 +561,144 @@ public class Fragment_Upload_Products extends Fragment implements View.OnClickLi
         if (permissions[0].equals(Manifest.permission.CAMERA) && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             pickImage();
         }
+    }
+
+    public void showcarDetails() {
+        LinearLayout.LayoutParams params1 = (LinearLayout.LayoutParams) layoutCarModel.getLayoutParams();
+        LinearLayout.LayoutParams params2 = (LinearLayout.LayoutParams) layoutCarYear.getLayoutParams();
+        LinearLayout.LayoutParams params3 = (LinearLayout.LayoutParams) layoutCarFuel.getLayoutParams();
+        LinearLayout.LayoutParams params4 = (LinearLayout.LayoutParams) layoutCarKM.getLayoutParams();
+        params1.height = -1;
+        params2.height = -1;
+        params3.height = -1;
+        params4.height = -1;
+        layoutCarModel.setLayoutParams(params1);
+        layoutCarYear.setLayoutParams(params2);
+        layoutCarFuel.setLayoutParams(params3);
+        layoutCarKM.setLayoutParams(params4);
+    }
+
+    public void hidecarDetails() {
+        LinearLayout.LayoutParams params1 = (LinearLayout.LayoutParams) layoutCarModel.getLayoutParams();
+        LinearLayout.LayoutParams params2 = (LinearLayout.LayoutParams) layoutCarYear.getLayoutParams();
+        LinearLayout.LayoutParams params3 = (LinearLayout.LayoutParams) layoutCarFuel.getLayoutParams();
+        LinearLayout.LayoutParams params4 = (LinearLayout.LayoutParams) layoutCarKM.getLayoutParams();
+        params1.height = 0;
+        params2.height = 0;
+        params3.height = 0;
+        params4.height = 0;
+        layoutCarModel.setLayoutParams(params1);
+        layoutCarYear.setLayoutParams(params2);
+        layoutCarFuel.setLayoutParams(params3);
+        layoutCarKM.setLayoutParams(params4);
+    }
+
+    public void showbikeDetails() {
+        LinearLayout.LayoutParams params1 = (LinearLayout.LayoutParams) layoutbikeModel.getLayoutParams();
+        LinearLayout.LayoutParams params2 = (LinearLayout.LayoutParams) layoutbikeYear.getLayoutParams();
+        LinearLayout.LayoutParams params4 = (LinearLayout.LayoutParams) layoutbikeKM.getLayoutParams();
+        params1.height = -1;
+        params2.height = -1;
+        params4.height = -1;
+        layoutbikeModel.setLayoutParams(params1);
+        layoutbikeYear.setLayoutParams(params2);
+        layoutbikeKM.setLayoutParams(params4);
+    }
+
+    public void hidebikeDetails() {
+        LinearLayout.LayoutParams params1 = (LinearLayout.LayoutParams) layoutbikeModel.getLayoutParams();
+        LinearLayout.LayoutParams params2 = (LinearLayout.LayoutParams) layoutbikeYear.getLayoutParams();
+        LinearLayout.LayoutParams params4 = (LinearLayout.LayoutParams) layoutbikeKM.getLayoutParams();
+        params1.height = 0;
+        params2.height = 0;
+        params4.height = 0;
+        layoutbikeModel.setLayoutParams(params1);
+        layoutbikeYear.setLayoutParams(params2);
+        layoutbikeKM.setLayoutParams(params4);
+    }
+
+    public void showjobDetails() {
+        LinearLayout.LayoutParams params1 = (LinearLayout.LayoutParams) layoutSalPeriod.getLayoutParams();
+        LinearLayout.LayoutParams params2 = (LinearLayout.LayoutParams) layoutPositionType.getLayoutParams();
+        LinearLayout.LayoutParams params3 = (LinearLayout.LayoutParams) layoutSalFrom.getLayoutParams();
+        LinearLayout.LayoutParams params4 = (LinearLayout.LayoutParams) layoutSalTo.getLayoutParams();
+        params1.height = -1;
+        params2.height = -1;
+        params3.height = -1;
+        params4.height = -1;
+        layoutSalPeriod.setLayoutParams(params1);
+        layoutPositionType.setLayoutParams(params2);
+        layoutSalFrom.setLayoutParams(params3);
+        layoutSalTo.setLayoutParams(params4);
+    }
+
+    public void hidejobDetails() {
+        LinearLayout.LayoutParams params1 = (LinearLayout.LayoutParams) layoutSalPeriod.getLayoutParams();
+        LinearLayout.LayoutParams params2 = (LinearLayout.LayoutParams) layoutPositionType.getLayoutParams();
+        LinearLayout.LayoutParams params3 = (LinearLayout.LayoutParams) layoutSalFrom.getLayoutParams();
+        LinearLayout.LayoutParams params4 = (LinearLayout.LayoutParams) layoutSalTo.getLayoutParams();
+        params1.height = 0;
+        params2.height = 0;
+        params3.height = 0;
+        params4.height = 0;
+        layoutSalPeriod.setLayoutParams(params1);
+        layoutPositionType.setLayoutParams(params2);
+        layoutSalFrom.setLayoutParams(params3);
+        layoutSalTo.setLayoutParams(params4);
+    }
+
+    public void showpropertyDetails() {
+        LinearLayout.LayoutParams params1 = (LinearLayout.LayoutParams) layoutProType.getLayoutParams();
+        LinearLayout.LayoutParams params2 = (LinearLayout.LayoutParams) layoutProBedrooms.getLayoutParams();
+        LinearLayout.LayoutParams params3 = (LinearLayout.LayoutParams) layoutproFurnishing.getLayoutParams();
+        LinearLayout.LayoutParams params4 = (LinearLayout.LayoutParams) layoutproConstructionStatus.getLayoutParams();
+        LinearLayout.LayoutParams params5 = (LinearLayout.LayoutParams) layoutproListedBy.getLayoutParams();
+        LinearLayout.LayoutParams params6 = (LinearLayout.LayoutParams) layoutproCarpetArea.getLayoutParams();
+        LinearLayout.LayoutParams params7 = (LinearLayout.LayoutParams) layoutproProjectName.getLayoutParams();
+        LinearLayout.LayoutParams params8 = (LinearLayout.LayoutParams) layoutproParkings.getLayoutParams();
+        params1.height = -1;
+        params2.height = -1;
+        params3.height = -1;
+        params4.height = -1;
+        params5.height = -1;
+        params6.height = -1;
+        params7.height = -1;
+        params8.height = -1;
+        layoutProType.setLayoutParams(params1);
+        layoutProBedrooms.setLayoutParams(params2);
+        layoutproFurnishing.setLayoutParams(params3);
+        layoutproConstructionStatus.setLayoutParams(params4);
+        layoutproListedBy.setLayoutParams(params5);
+        layoutproCarpetArea.setLayoutParams(params6);
+        layoutproProjectName.setLayoutParams(params7);
+        layoutproParkings.setLayoutParams(params8);
+    }
+
+    public void hidepropertyDetails() {
+        LinearLayout.LayoutParams params1 = (LinearLayout.LayoutParams) layoutProType.getLayoutParams();
+        LinearLayout.LayoutParams params2 = (LinearLayout.LayoutParams) layoutProBedrooms.getLayoutParams();
+        LinearLayout.LayoutParams params3 = (LinearLayout.LayoutParams) layoutproFurnishing.getLayoutParams();
+        LinearLayout.LayoutParams params4 = (LinearLayout.LayoutParams) layoutproConstructionStatus.getLayoutParams();
+        LinearLayout.LayoutParams params5 = (LinearLayout.LayoutParams) layoutproListedBy.getLayoutParams();
+        LinearLayout.LayoutParams params6 = (LinearLayout.LayoutParams) layoutproCarpetArea.getLayoutParams();
+        LinearLayout.LayoutParams params7 = (LinearLayout.LayoutParams) layoutproProjectName.getLayoutParams();
+        LinearLayout.LayoutParams params8 = (LinearLayout.LayoutParams) layoutproParkings.getLayoutParams();
+        params1.height = 0;
+        params2.height = 0;
+        params3.height = 0;
+        params4.height = 0;
+        params5.height = 0;
+        params6.height = 0;
+        params7.height = 0;
+        params8.height = 0;
+        layoutProType.setLayoutParams(params1);
+        layoutProBedrooms.setLayoutParams(params2);
+        layoutproFurnishing.setLayoutParams(params3);
+        layoutproConstructionStatus.setLayoutParams(params4);
+        layoutproListedBy.setLayoutParams(params5);
+        layoutproCarpetArea.setLayoutParams(params6);
+        layoutproProjectName.setLayoutParams(params7);
+        layoutproParkings.setLayoutParams(params8);
     }
 
 

@@ -32,7 +32,7 @@ public class Activity_Mobiles extends AppCompatActivity {
     private SliderAdapterExample adapter;
     Products product;
     ArrayList<String> imageList;
-    TextView txtPrice, txtDescription;
+    TextView txtPrice, txtDescription,txtMobileBrand;
 
 
     @Override
@@ -51,6 +51,7 @@ public class Activity_Mobiles extends AppCompatActivity {
         sliderView = findViewById(R.id.imageSlider);
         txtPrice = findViewById(R.id.price);
         txtDescription = findViewById(R.id.desciption);
+        txtMobileBrand = findViewById(R.id.mobilebrandvalue);
 
         txtDescription.setText(product.getProductDescription());
         if (product.getProductPrice() != null && !product.getProductPrice().equalsIgnoreCase("")) {
@@ -60,6 +61,7 @@ public class Activity_Mobiles extends AppCompatActivity {
         }else {
             txtPrice.setText("");
         }
+        txtMobileBrand.setText(product.getProductName());
 
         adapter = new SliderAdapterExample(this);
         sliderView.setSliderAdapter(adapter);

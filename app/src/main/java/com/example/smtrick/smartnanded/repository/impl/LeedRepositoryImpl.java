@@ -226,4 +226,49 @@ public class LeedRepositoryImpl extends FirebaseTemplateRepository implements Le
             }
         });
     }
+
+        @Override
+    public void updateOrder(String leedId, Map leedMap, final CallBack callBack) {
+        final DatabaseReference databaseReference = Constant.ORDER_TABLE_REF.child(leedId);
+        fireBaseUpdateChildren(databaseReference, leedMap, new CallBack() {
+            @Override
+            public void onSuccess(Object object) {
+                callBack.onSuccess(object);
+            }
+
+            @Override
+            public void onError(Object object) {
+                callBack.onError(object);
+            }
+        });
+    }
+
+      @Override
+    public void readreadOrdersByUserId(String status, final CallBack callBack) {
+        final Query query = Constant.ORDER_TABLE_REF.orderByChild("userId").equalTo(status);
+        fireBaseNotifyChange(query, new CallBack() {
+            @Override
+            public void onSuccess(Object object) {
+                if (object != null) {
+                    DataSnapshot dataSnapshot = (DataSnapshot) object;
+                    if (dataSnapshot.getValue() != null & dataSnapshot.hasChildren()) {
+                        ArrayList<Order> leedsModelArrayList = new ArrayList<>();
+                        for (DataSnapshot suggestionSnapshot : dataSnapshot.getChildren()) {
+                            Order leedsModel = suggestionSnapshot.getValue(Order.class);
+
+                            leedsModelArrayList.add(leedsModel);
+                        }
+                        callBack.onSuccess(leedsModelArrayList);
+                    } else {
+                        callBack.onSuccess(null);
+                    }
+                }
+            }
+
+            @Override
+            public void onError(Object object) {
+                callBack.onError(object);
+            }
+        });
+    }
 }
