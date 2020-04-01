@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg"
+    android:background="@color/whitetextcolor"
     android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
 <!--        <ImageView-->
@@ -34,8 +35,11 @@
                 android:inputType="textPersonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/Black"
+                android:background="@drawable/edittext_border"
+                android:textColor="@color/hederbackground"
+                android:textColorHint="@color/hederbackground"
+                android:padding="10sp"
+
                 android:hint="@string/username" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,8 +56,11 @@
                 android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/Black"
-                android:textColor="@color/Black"
+
+                android:background="@drawable/edittext_border"
+                android:textColor="@color/hederbackground"
+                android:textColorHint="@color/hederbackground"
+                android:padding="10sp"
                 android:hint="@string/phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,8 +79,10 @@
                 android:layout_width="match_parent"
                 android:inputType="textPassword"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/Black"
-                android:textColor="@color/Black"
+                android:background="@drawable/edittext_border"
+                android:textColor="@color/hederbackground"
+                android:textColorHint="@color/hederbackground"
+                android:padding="10sp"
                 android:hint="@string/password" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,7 +92,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/view_dropshadow2"
+            android:textColor="@color/whitetextcolor"
             android:layout_weight="1"
             android:text="Generate OTP" />
 
@@ -97,10 +108,14 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edittextenterotp"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/Black"
-                android:textColor="@color/Black"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/edittext_border"
+                android:textColor="@color/hederbackground"
+                android:textColorHint="@color/hederbackground"
                 android:hint="Enter OTP" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -124,6 +139,9 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
+            android:background="@drawable/view_dropshadow2"
+            android:textColor="@color/whitetextcolor"
+
             android:text="@string/register" />
 
         <TextView
@@ -131,9 +149,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:text="@string/back_to_login"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/input_register_hint" />
     </LinearLayout>
 </ScrollView>

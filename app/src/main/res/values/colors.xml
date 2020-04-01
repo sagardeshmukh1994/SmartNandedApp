@@ -25,9 +25,10 @@
     <color name="circle_color_agri">#81FCD2</color>
     <color name="circle_color_offer">#F7A9AB</color>
     <color name="circle_color_other">#ECA6D4</color>
+    <color name="drower_color">#4863A0</color>
 
-    <color name="drower_color">#27A08F</color>
-    <color name="drower_icon_color">#176359</color>
+    <color name="drower_color1">#27A08F</color>
+    <color name="drower_icon_color">#346AF0</color>
 
     <color name="input_register">#888888</color>
     <color name="input_register_bg">#3b4148</color>

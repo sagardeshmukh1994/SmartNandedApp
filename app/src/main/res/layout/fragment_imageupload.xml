@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:background="#D6DBDF"
     android:orientation="vertical">
@@ -11,9 +11,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:orientation="vertical">
 
@@ -22,14 +22,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/edittextanimation"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:background="@drawable/edittextanimation"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:textColorHint="@color/drower_icon_color"
-            android:theme="@style/TextLabel">
+            android:theme="@style/TextLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText"
@@ -37,17 +37,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edittextanimation"
-                android:hint="Product Name/Brand"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:hint="Product Name"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
+
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:textColorHint="@color/drower_icon_color"
-            android:theme="@style/TextLabel">
+            android:theme="@style/TextLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextProductPrice"
@@ -55,508 +57,29 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edittextanimation"
+                android:padding="10dp"
                 android:hint="Product Price"
-                android:inputType="number"
-                android:padding="10dp" />
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:id="@+id/layoutCarMode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:textColorHint="@color/drower_icon_color"
-            android:theme="@style/TextLabel">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextCarModel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edittextanimation"
-                android:hint="Model"
-                android:padding="10dp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutCarYear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.google.android.material.textfield.TextInputLayout
+            android:theme="@style/TextLabel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/drower_icon_color"
-            android:theme="@style/TextLabel">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextCarYear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edittextanimation"
-                android:hint="Year"
-                android:padding="10dp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutCarFuel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/drower_icon_color"
-            android:theme="@style/TextLabel">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextCarFuel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edittextanimation"
-                android:hint="Fuel Type"
-                android:padding="10dp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutCarKMDriven"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/drower_icon_color"
-            android:theme="@style/TextLabel">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextCarKMDriven"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edittextanimation"
-                android:hint="KM Driven"
-                android:padding="10dp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutbikeMode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextbikeModel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Model"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutbikeYear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextbikeYear"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Year"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutbikeKMDriven"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextbikeKMDriven"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="KM Driven"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutSalaryPeriod"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextsalaryperiod"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Salary Period in Months"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutPositionType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextPositionType"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Position Type"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutSalaryFrom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextSalaryFrom"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Salary From"
-                    android:inputType="number"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutSalaryTo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextSalaryTo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Salary To"
-                    android:inputType="number"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutPropertyType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextPropertyType"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Property Type"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutBedrooms"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextBedrooms"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Bedrooms"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutFurnishing"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextFurnishing"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Furnishing"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutConstructionStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextConstructionstatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Construction Status"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutLisedBy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextListedBy"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Listed By"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutKarpetarea"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextKarpetarea"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Karpet area in sq feet"
-                    android:inputType="number"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutParking"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextParking"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Number Of Parkings"
-                    android:inputType="number"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutProjectName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/drower_icon_color"
-                android:theme="@style/TextLabel">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextProjectName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edittextanimation"
-                    android:hint="Project Name"
-                    android:padding="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/drower_icon_color"
-            android:theme="@style/TextLabel">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edittextanimation"
-                android:gravity="top"
                 android:hint="Product Details"
-                android:inputType="textMultiLine"
+                android:background="@drawable/edittextanimation"
                 android:padding="10dp"
-                android:scrollbars="vertical" />
+                android:gravity="top"
+                android:scrollbars="vertical"
+                android:inputType="textMultiLine" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -567,18 +90,19 @@
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:background="@drawable/button_shape"
-            android:padding="5dp"
             android:text="Choose Main Image"
-            android:textColor="@color/colorPrimary" />
+            android:padding="5dp"
+            android:textColor="@color/colorPrimary"/>
+
 
 
         <ImageView
             android:id="@+id/imageView"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="10dp" />
+            android:layout_alignParentLeft="true"/>
 
         <Button
             android:id="@+id/buttonChooseSubImages"
@@ -586,15 +110,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_shape"
             android:padding="5dp"
+            android:background="@drawable/button_shape"
             android:text="Choose Sub Image"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleSubImages"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
 
         <Button
@@ -603,10 +127,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:text="Upload Product"
             android:layout_marginBottom="20dp"
             android:background="@drawable/button_shape"
-            android:text="Upload Product"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"/>
 
     </LinearLayout>
 </ScrollView>

@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
-    android:background="@color/graycolor"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
     android:weightSum="100">
 
@@ -21,8 +21,8 @@
 
             <ImageView
                 android:id="@+id/image1"
-                android:layout_width="250sp"
-                android:layout_height="150sp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="20sp"
@@ -122,7 +122,7 @@
                             android:gravity="center"
                             android:padding="5sp"
                             android:text="Login"
-                            android:textColor="@color/darkgraycolor"
+                            android:textColor="@color/whitetextcolor"
                             android:textSize="15sp"
                             android:textStyle="normal|bold" />
 
@@ -135,7 +135,7 @@
                             android:gravity="center"
                             android:padding="5sp"
                             android:text="Register"
-                            android:textColor="@color/darkgraycolor"
+                            android:textColor="@color/whitetextcolor"
                             android:textSize="15sp"
                             android:textStyle="normal|bold" />
 
@@ -148,8 +148,7 @@
                             android:text="@string/btn_forgot_password"
                             android:textAllCaps="false"
                             android:textSize="16dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/colorPrimary"/>
+                            android:textColor="@color/input_register_hint"/>
 
                     </LinearLayout>
                 </RelativeLayout>

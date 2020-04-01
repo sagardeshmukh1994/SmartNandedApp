@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +18,7 @@ import java.util.TimerTask;
 public class SplashScreen extends AppCompatActivity implements AnimationListener {
 
 	// Set Duration of the Splash Screen
-	long Delay = 4000;
+	long Delay = 5000;
 	ImageView imageView1;
 	Animation animBounce;
 
@@ -31,12 +30,12 @@ public class SplashScreen extends AppCompatActivity implements AnimationListener
 
 		imageView1 = (ImageView) findViewById(R.id.image);
 
-		animBounce = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
-
-		animBounce.setAnimationListener(this);
+//		animBounce = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
+//
+//		animBounce.setAnimationListener(this);
 		
 		imageView1.setVisibility(View.VISIBLE);
-		imageView1.startAnimation(animBounce);
+//		imageView1.startAnimation(animBounce);
 
 		// Create a Timer
 		Timer RunSplash = new Timer();

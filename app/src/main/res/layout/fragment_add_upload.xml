@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="center"
-    android:background="#D6DBDF"
+    android:layout_gravity="center_vertical"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
@@ -57,13 +57,13 @@
 
         <Button
             android:id="@+id/buttonChoose"
-            android:layout_width="150dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/view_dropshadow2"
             android:text="Choose Image"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/white"/>
 
         <ImageView
             android:id="@+id/imageView"
@@ -82,8 +82,8 @@
             android:layout_marginTop="10dp"
             android:text="Upload Offer"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/button_shape"
-            android:textColor="@color/colorPrimary"/>
+            android:background="@drawable/view_dropshadow2"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 </ScrollView>
